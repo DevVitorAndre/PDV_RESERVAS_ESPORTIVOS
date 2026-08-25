@@ -1,0 +1,575 @@
+/* =============================================
+   LA CANCHA FUT 7
+   TELA DE CONFIRMAÇÃO DE RESERVA
+============================================= */
+
+
+.pagina-reserva {
+    min-height: 100vh;
+    padding: 45px 0 90px;
+    background: #f7f9fc;
+}
+
+
+/* VOLTAR */
+
+.voltar-agenda {
+    display: inline-block;
+
+    margin-bottom: 30px;
+
+    color: var(--azul);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.voltar-agenda:hover {
+    color: var(--laranja);
+}
+
+
+/* =============================================
+   CABEÇALHO
+============================================= */
+
+.reserva-cabecalho {
+    margin-bottom: 35px;
+}
+
+.reserva-cabecalho > span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--laranja);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.reserva-cabecalho h1 {
+    margin-bottom: 8px;
+
+    color: var(--azul-escuro);
+
+    font-size: 42px;
+
+    line-height: 1.15;
+}
+
+.reserva-cabecalho p {
+    color: var(--cinza-texto);
+
+    font-size: 16px;
+}
+
+
+/* =============================================
+   PASSOS
+============================================= */
+
+.passos-reserva {
+    max-width: 750px;
+
+    display: flex;
+    align-items: flex-start;
+
+    margin-bottom: 45px;
+}
+
+.passo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 80px;
+
+    gap: 8px;
+}
+
+.passo-numero {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #d9dee7;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #9199a8;
+
+    font-weight: 800;
+}
+
+.passo span {
+    color: #9199a8;
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+.passo.ativo .passo-numero {
+    border-color: var(--laranja);
+
+    background: var(--laranja);
+
+    color: white;
+}
+
+.passo.ativo span {
+    color: var(--laranja);
+
+    font-weight: 800;
+}
+
+.passo.concluido .passo-numero {
+    border-color: #22a861;
+
+    background: #22a861;
+
+    color: white;
+}
+
+.passo.concluido span {
+    color: #22a861;
+
+    font-weight: 700;
+}
+
+.passo-linha {
+    flex: 1;
+
+    height: 2px;
+
+    margin-top: 19px;
+
+    background: #d9dee7;
+}
+
+.passo-linha.ativo {
+    background: #22a861;
+}
+
+
+/* =============================================
+   LAYOUT
+============================================= */
+
+.reserva-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 350px;
+
+    gap: 30px;
+
+    align-items: start;
+}
+
+
+/* =============================================
+   CARD PRINCIPAL
+============================================= */
+
+.reserva-card-principal {
+    padding: 32px;
+
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: 18px;
+
+    background: white;
+
+    box-shadow:
+        0 10px 35px rgba(16, 38, 79, 0.05);
+}
+
+.reserva-card-topo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.mini-titulo {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--laranja);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.reserva-card-topo h2,
+.reserva-resumo h2 {
+    color: var(--azul-escuro);
+
+    font-size: 23px;
+}
+
+.reserva-status {
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: #eafaf2;
+
+    color: #199255;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+/* =============================================
+   QUADRA
+============================================= */
+
+.quadra-destaque {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+
+    padding: 22px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef5ff,
+            #f9fbff
+        );
+}
+
+.quadra-icone {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+
+    background: var(--azul);
+
+    font-size: 30px;
+}
+
+.quadra-destaque small {
+    color: var(--cinza-texto);
+}
+
+.quadra-destaque h3 {
+    margin: 2px 0;
+
+    color: var(--azul-escuro);
+
+    font-size: 20px;
+}
+
+.quadra-destaque p {
+    color: var(--cinza-texto);
+
+    font-size: 13px;
+}
+
+
+/* =============================================
+   INFORMAÇÕES
+============================================= */
+
+.reserva-informacoes {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+.informacao-card {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 18px;
+
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: 12px;
+}
+
+.informacao-icone {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: var(--azul-claro);
+
+    font-size: 19px;
+}
+
+.informacao-card > div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.informacao-card span {
+    color: var(--cinza-texto);
+
+    font-size: 12px;
+}
+
+.informacao-card strong {
+    color: var(--azul-escuro);
+
+    font-size: 15px;
+}
+
+
+/* =============================================
+   AVISO
+============================================= */
+
+.aviso-reserva {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    background: #fff7ed;
+}
+
+.aviso-reserva span {
+    font-size: 20px;
+}
+
+.aviso-reserva p {
+    color: #866449;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =============================================
+   RESUMO LATERAL
+============================================= */
+
+.reserva-resumo {
+    position: sticky;
+
+    top: 120px;
+
+    padding: 28px;
+
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: 18px;
+
+    background: white;
+
+    box-shadow:
+        0 12px 35px rgba(16, 38, 79, 0.08);
+}
+
+.reserva-resumo h2 {
+    margin-bottom: 25px;
+}
+
+.resumo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid var(--cinza-claro);
+}
+
+.resumo-item span {
+    color: var(--cinza-texto);
+
+    font-size: 13px;
+}
+
+.resumo-item strong {
+    color: var(--azul-escuro);
+
+    font-size: 13px;
+
+    text-align: right;
+}
+
+
+/* TOTAL */
+
+.resumo-total-reserva {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 22px;
+
+    padding-top: 5px;
+}
+
+.resumo-total-reserva span {
+    color: var(--azul-escuro);
+
+    font-weight: 800;
+}
+
+.resumo-total-reserva strong {
+    color: var(--azul);
+
+    font-size: 27px;
+}
+
+
+/* BOTÃO */
+
+.btn-continuar-login {
+    width: 100%;
+
+    margin-top: 25px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+.texto-seguranca {
+    margin-top: 13px;
+
+    color: var(--cinza-texto);
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+
+/* =============================================
+   TABLET
+============================================= */
+
+@media (max-width: 900px) {
+
+    .reserva-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .reserva-resumo {
+        position: static;
+    }
+
+}
+
+
+/* =============================================
+   CELULAR
+============================================= */
+
+@media (max-width: 600px) {
+
+    .pagina-reserva {
+        padding: 30px 0 60px;
+    }
+
+    .reserva-cabecalho h1 {
+        font-size: 31px;
+    }
+
+
+    /* PASSOS */
+
+    .passos-reserva {
+        overflow-x: auto;
+
+        padding-bottom: 10px;
+    }
+
+    .passo {
+        min-width: 65px;
+    }
+
+    .passo span {
+        font-size: 9px;
+    }
+
+
+    /* CARDS */
+
+    .reserva-card-principal {
+        padding: 20px;
+    }
+
+    .reserva-card-topo {
+        flex-direction: column;
+    }
+
+    .reserva-informacoes {
+        grid-template-columns: 1fr;
+    }
+
+    .quadra-destaque {
+        padding: 17px;
+    }
+
+    .quadra-icone {
+        width: 52px;
+        height: 52px;
+    }
+
+    .reserva-resumo {
+        padding: 22px;
+    }
+
+}

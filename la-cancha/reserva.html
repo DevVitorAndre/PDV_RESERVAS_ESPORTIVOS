@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Confirmar Reserva | La Cancha Fut 7</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reserva.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
+    <header class="cabecalho">
+
+        <div class="container cabecalho-conteudo">
+
+            <a href="index.html" class="logo">
+                <img src="img/logo.png"
+                     alt="La Cancha Fut 7">
+            </a>
+
+            <nav class="menu-principal">
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="agenda.html">
+                    Agenda
+                </a>
+
+                <a href="index.html#planos-fixos">
+                    Planos Fixos
+                </a>
+
+                <a href="login.html">
+                    Entrar
+                </a>
+
+            </nav>
+
+            <a href="agenda.html"
+               class="btn btn-reservar-topo">
+                Reservar horário
+            </a>
+
+            <button
+                class="btn-menu-mobile"
+                id="btnMenuMobile"
+                aria-label="Abrir menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+        <nav
+            class="menu-mobile"
+            id="menuMobile"
+        >
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="agenda.html">
+                Agenda
+            </a>
+
+            <a href="index.html#planos-fixos">
+                Planos Fixos
+            </a>
+
+            <a href="login.html">
+                Entrar
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CONTEÚDO
+    ========================== -->
+
+    <main class="pagina-reserva">
+
+        <div class="container">
+
+
+            <!-- VOLTAR -->
+
+            <a href="agenda.html"
+               class="voltar-agenda">
+
+                ← Voltar para agenda
+
+            </a>
+
+
+            <!-- TÍTULO -->
+
+            <section class="reserva-cabecalho">
+
+                <span>
+                    CONFIRMAÇÃO
+                </span>
+
+                <h1>
+                    Confira sua reserva
+                </h1>
+
+                <p>
+                    Verifique os dados abaixo antes de continuar.
+                </p>
+
+            </section>
+
+
+            <!-- PROGRESSO -->
+
+            <div class="passos-reserva">
+
+                <div class="passo concluido">
+
+                    <div class="passo-numero">
+                        ✓
+                    </div>
+
+                    <span>
+                        Horário
+                    </span>
+
+                </div>
+
+
+                <div class="passo-linha ativo"></div>
+
+
+                <div class="passo ativo">
+
+                    <div class="passo-numero">
+                        2
+                    </div>
+
+                    <span>
+                        Confirmação
+                    </span>
+
+                </div>
+
+
+                <div class="passo-linha"></div>
+
+
+                <div class="passo">
+
+                    <div class="passo-numero">
+                        3
+                    </div>
+
+                    <span>
+                        Identificação
+                    </span>
+
+                </div>
+
+
+                <div class="passo-linha"></div>
+
+
+                <div class="passo">
+
+                    <div class="passo-numero">
+                        4
+                    </div>
+
+                    <span>
+                        Pagamento
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 GRID
+            ========================== -->
+
+            <section class="reserva-layout">
+
+
+                <!-- DADOS DA RESERVA -->
+
+                <div class="reserva-card-principal">
+
+                    <div class="reserva-card-topo">
+
+                        <div>
+
+                            <span class="mini-titulo">
+                                SUA PARTIDA
+                            </span>
+
+                            <h2>
+                                Detalhes da reserva
+                            </h2>
+
+                        </div>
+
+                        <div class="reserva-status">
+                            ✓ Disponível
+                        </div>
+
+                    </div>
+
+
+                    <!-- QUADRA -->
+
+                    <div class="quadra-destaque">
+
+                        <div class="quadra-icone">
+                            ⚽
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Quadra
+                            </small>
+
+                            <h3>
+                                La Cancha Fut 7
+                            </h3>
+
+                            <p>
+                                Quadra Society
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- INFORMAÇÕES -->
+
+                    <div class="reserva-informacoes">
+
+
+                        <div class="informacao-card">
+
+                            <div class="informacao-icone">
+                                📅
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Data
+                                </span>
+
+                                <strong id="reservaData">
+                                    -
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="informacao-card">
+
+                            <div class="informacao-icone">
+                                🕐
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Horário
+                                </span>
+
+                                <strong id="reservaHorario">
+                                    -
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="informacao-card">
+
+                            <div class="informacao-icone">
+                                ⏱
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Duração
+                                </span>
+
+                                <strong id="reservaDuracao">
+                                    -
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="informacao-card">
+
+                            <div class="informacao-icone">
+                                🏟️
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Tipo
+                                </span>
+
+                                <strong>
+                                    Society Fut 7
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- AVISO -->
+
+                    <div class="aviso-reserva">
+
+                        <span>
+                            ℹ️
+                        </span>
+
+                        <p>
+                            O horário será reservado definitivamente
+                            após a confirmação do pagamento.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     RESUMO DO PAGAMENTO
+                ========================== -->
+
+                <aside class="reserva-resumo">
+
+                    <span class="mini-titulo">
+                        RESUMO
+                    </span>
+
+                    <h2>
+                        Sua reserva
+                    </h2>
+
+
+                    <div class="resumo-item">
+
+                        <span>
+                            Quadra
+                        </span>
+
+                        <strong>
+                            La Cancha Fut 7
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumo-item">
+
+                        <span>
+                            Data
+                        </span>
+
+                        <strong id="resumoData">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumo-item">
+
+                        <span>
+                            Horário
+                        </span>
+
+                        <strong id="resumoHorario">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumo-item">
+
+                        <span>
+                            Duração
+                        </span>
+
+                        <strong id="resumoDuracao">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumo-total-reserva">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="reservaValor">
+                            R$ 0,00
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-principal btn-continuar-login"
+                        id="btnContinuarLogin"
+                    >
+                        Continuar
+                    </button>
+
+
+                    <p class="texto-seguranca">
+                        🔒 Seus dados estarão protegidos.
+                    </p>
+
+                </aside>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+
+    <footer class="rodape">
+
+        <div class="container rodape-grid">
+
+            <div class="rodape-marca">
+
+                <img src="img/logo.png"
+                     alt="La Cancha Fut 7">
+
+                <p>
+                    Mais que uma quadra,
+                    uma paixão pelo futebol.
+                </p>
+
+            </div>
+
+
+            <div class="rodape-coluna">
+
+                <h3>
+                    Reservas
+                </h3>
+
+                <p>Agenda online</p>
+                <p>Horários fixos</p>
+
+            </div>
+
+
+            <div class="rodape-coluna">
+
+                <h3>
+                    Contato
+                </h3>
+
+                <p>WhatsApp</p>
+                <p>Instagram</p>
+
+            </div>
+
+
+            <div class="rodape-coluna">
+
+                <h3>
+                    La Cancha
+                </h3>
+
+                <p>
+                    Futebol, resenha e diversão.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/reserva.js"></script>
+
+</body>
+
+</html>
