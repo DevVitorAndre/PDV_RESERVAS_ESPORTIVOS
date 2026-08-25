@@ -1,0 +1,704 @@
+/* =====================================================
+   LA CANCHA FUT 7
+   AGENDA DO CLIENTE
+===================================================== */
+
+
+.pagina-agenda {
+    min-height: 100vh;
+
+    padding: 65px 0 90px;
+
+    background: #f7f9fc;
+}
+
+
+/* =====================================================
+   CABEÇALHO DA AGENDA
+===================================================== */
+
+.agenda-cabecalho {
+    max-width: 700px;
+
+    margin-bottom: 40px;
+}
+
+.agenda-etiqueta {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--laranja);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.agenda-cabecalho h1 {
+    margin-bottom: 10px;
+
+    color: var(--azul-escuro);
+
+    font-size: 42px;
+
+    line-height: 1.15;
+}
+
+.agenda-cabecalho p {
+    max-width: 600px;
+
+    color: var(--cinza-texto);
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   DATAS
+===================================================== */
+
+.seletor-data {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.datas-lista {
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 10px;
+}
+
+.data-card {
+    min-height: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1px;
+
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: var(--azul-escuro);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.data-card:hover {
+    border-color: var(--laranja);
+
+    transform: translateY(-2px);
+}
+
+.data-card span {
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.data-card strong {
+    font-size: 26px;
+}
+
+.data-card small {
+    color: var(--cinza-texto);
+}
+
+.data-card.ativo {
+    border: 2px solid var(--laranja);
+
+    background: #fff5ee;
+
+    color: var(--laranja);
+}
+
+.data-card.ativo small {
+    color: var(--laranja);
+}
+
+
+/* BOTÃO SETA */
+
+.btn-navegar-data {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: var(--azul-escuro);
+
+    font-size: 27px;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   LEGENDA
+===================================================== */
+
+.agenda-legenda {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    margin: 25px 0;
+
+    padding: 15px 0;
+}
+
+.agenda-legenda span {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #606979;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.bolinha {
+    width: 9px;
+    height: 9px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+}
+
+.verde {
+    background: #22a861;
+}
+
+.vermelha {
+    background: #e55454;
+}
+
+.cinza {
+    background: #9ca5b4;
+}
+
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.agenda-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 330px;
+
+    gap: 30px;
+
+    align-items: start;
+}
+
+
+/* =====================================================
+   LISTA DE HORÁRIOS
+===================================================== */
+
+.agenda-horarios {
+    padding: 28px;
+
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: 18px;
+
+    background: white;
+
+    box-shadow:
+        0 10px 35px
+        rgba(16, 38, 79, 0.05);
+}
+
+.agenda-dia-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.agenda-dia-titulo small {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: var(--cinza-texto);
+
+    font-size: 12px;
+}
+
+.agenda-dia-titulo h2 {
+    color: var(--azul-escuro);
+
+    font-size: 22px;
+}
+
+
+/* =====================================================
+   CARD DE HORÁRIO
+===================================================== */
+
+.horario-card {
+    width: 100%;
+
+    min-height: 94px;
+
+    display: grid;
+
+    grid-template-columns:
+        150px 1fr 130px;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 12px;
+
+    padding: 18px 20px;
+
+    border-radius: 12px;
+
+    text-align: left;
+}
+
+
+/* DISPONÍVEL */
+
+button.horario-card {
+    font-family: inherit;
+
+    cursor: pointer;
+}
+
+.horario-card.disponivel {
+    border: 1px solid #a8ddbf;
+
+    background: #f8fffb;
+
+    color: var(--azul-escuro);
+
+    transition: 0.2s;
+}
+
+.horario-card.disponivel:hover {
+    border-color: #22a861;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(34, 168, 97, 0.08);
+}
+
+.horario-card.disponivel.selecionado {
+    border: 2px solid #22a861;
+
+    background: #eafaf2;
+}
+
+
+/* RESERVADO */
+
+.horario-card.reservado {
+    border: 1px solid #efc1c1;
+
+    background: #fff8f8;
+}
+
+
+/* FIXO */
+
+.horario-card.fixo {
+    border: 1px solid #d9dde4;
+
+    background: #f5f6f8;
+}
+
+
+/* HORÁRIO */
+
+.horario-hora {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: var(--azul-escuro);
+}
+
+.horario-hora strong {
+    font-size: 17px;
+}
+
+.horario-hora span {
+    color: var(--cinza-texto);
+
+    font-size: 11px;
+}
+
+
+/* DETALHES */
+
+.horario-detalhes {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.horario-detalhes span {
+    color: var(--cinza-texto);
+
+    font-size: 12px;
+}
+
+.disponivel .horario-detalhes strong {
+    color: #199255;
+}
+
+.reservado .horario-detalhes strong {
+    color: #d64e4e;
+}
+
+.fixo .horario-detalhes strong {
+    color: #6d7583;
+}
+
+
+/* VALOR */
+
+.horario-valor {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+}
+
+.horario-valor small {
+    color: var(--cinza-texto);
+
+    font-size: 11px;
+}
+
+.horario-valor strong {
+    color: var(--azul);
+
+    font-size: 17px;
+}
+
+
+/* STATUS */
+
+.horario-status {
+    text-align: right;
+
+    color: #8a909d;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   RESUMO DA RESERVA
+===================================================== */
+
+.resumo-reserva {
+    position: sticky;
+
+    top: 120px;
+
+    padding: 26px;
+
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: 18px;
+
+    background: white;
+
+    box-shadow:
+        0 12px 35px
+        rgba(16, 38, 79, 0.08);
+}
+
+.resumo-etiqueta {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--laranja);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.resumo-reserva h2 {
+    margin-bottom: 25px;
+
+    color: var(--azul-escuro);
+
+    font-size: 21px;
+}
+
+
+/* VAZIO */
+
+.resumo-vazio {
+    padding: 30px 5px;
+
+    text-align: center;
+}
+
+.icone-resumo {
+    margin-bottom: 10px;
+
+    font-size: 38px;
+}
+
+.resumo-vazio p {
+    color: var(--cinza-texto);
+
+    font-size: 14px;
+}
+
+
+/* DADOS */
+
+.resumo-dados {
+    display: none;
+}
+
+.resumo-dados.ativo {
+    display: block;
+}
+
+.resumo-linha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid var(--cinza-claro);
+}
+
+.resumo-linha span {
+    color: var(--cinza-texto);
+
+    font-size: 13px;
+}
+
+.resumo-linha strong {
+    color: var(--azul-escuro);
+
+    font-size: 13px;
+
+    text-align: right;
+}
+
+
+/* TOTAL */
+
+.resumo-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 18px;
+
+    padding-top: 5px;
+}
+
+.resumo-total span {
+    color: var(--azul-escuro);
+
+    font-weight: 700;
+}
+
+.resumo-total strong {
+    color: var(--azul);
+
+    font-size: 25px;
+}
+
+.btn-continuar {
+    width: 100%;
+
+    margin-top: 22px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .agenda-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .resumo-reserva {
+        position: static;
+    }
+
+    .datas-lista {
+        overflow-x: auto;
+
+        display: flex;
+
+        padding-bottom: 5px;
+    }
+
+    .data-card {
+        min-width: 90px;
+    }
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .pagina-agenda {
+        padding: 40px 0 60px;
+    }
+
+    .agenda-cabecalho h1 {
+        font-size: 32px;
+    }
+
+
+    /* DATAS */
+
+    .btn-navegar-data {
+        display: none;
+    }
+
+    .seletor-data {
+        display: block;
+    }
+
+    .datas-lista {
+        width: 100%;
+
+        gap: 8px;
+    }
+
+    .data-card {
+        min-width: 72px;
+        min-height: 88px;
+    }
+
+
+    /* LEGENDA */
+
+    .agenda-legenda {
+        gap: 13px;
+    }
+
+
+    /* LISTA */
+
+    .agenda-horarios {
+        padding: 18px;
+    }
+
+    .agenda-dia-titulo h2 {
+        font-size: 19px;
+    }
+
+
+    /* HORÁRIO */
+
+    .horario-card {
+        grid-template-columns:
+            1fr auto;
+
+        gap: 10px;
+
+        min-height: auto;
+
+        padding: 17px;
+    }
+
+    .horario-hora {
+        grid-column: 1;
+
+        flex-wrap: wrap;
+    }
+
+    .horario-detalhes {
+        grid-column: 1;
+    }
+
+    .horario-valor,
+    .horario-status {
+        grid-column: 2;
+
+        grid-row: 1 / 3;
+
+        align-self: center;
+    }
+
+}
+
+
+/* =====================================================
+   CELULAR PEQUENO
+===================================================== */
+
+@media (max-width: 390px) {
+
+    .horario-hora strong {
+        font-size: 15px;
+    }
+
+    .horario-valor strong {
+        font-size: 15px;
+    }
+
+}

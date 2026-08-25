@@ -1,0 +1,1377 @@
+/* =========================================================
+   LA CANCHA FUT 7
+   CSS PRINCIPAL
+========================================================= */
+
+
+/* =========================================================
+   1. RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f7f9fc;
+    color: #12203f;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   2. VARIÁVEIS DE CORES
+========================================================= */
+
+:root {
+    --azul-escuro: #10264f;
+    --azul: #174b9a;
+    --azul-claro: #eaf2ff;
+
+    --laranja: #ff7417;
+    --laranja-hover: #e96208;
+    --laranja-claro: #fff1e7;
+
+    --verde: #22a861;
+    --verde-claro: #eafaf2;
+
+    --branco: #ffffff;
+
+    --cinza-fundo: #f7f9fc;
+    --cinza-claro: #eef1f5;
+    --cinza-borda: #e2e6ec;
+    --cinza-texto: #737b8c;
+
+    --sombra:
+        0 15px 40px rgba(16, 38, 79, 0.10);
+
+    --radius: 14px;
+}
+
+
+/* =========================================================
+   3. CONFIGURAÇÃO GERAL
+========================================================= */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   4. BOTÕES
+========================================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 13px 24px;
+
+    border-radius: 9px;
+
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border 0.2s ease,
+        transform 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-principal {
+    background: var(--laranja);
+    color: var(--branco);
+}
+
+.btn-principal:hover {
+    background: var(--laranja-hover);
+}
+
+.btn-secundario {
+    background: transparent;
+
+    border: 2px solid var(--azul);
+    color: var(--azul);
+}
+
+.btn-secundario:hover {
+    background: var(--azul);
+    color: var(--branco);
+}
+
+
+/* =========================================================
+   5. CABEÇALHO
+========================================================= */
+
+.cabecalho {
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-bottom: 1px solid var(--cinza-borda);
+
+    backdrop-filter: blur(10px);
+}
+
+.cabecalho-conteudo {
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 135px;
+    height: auto;
+}
+
+
+/* MENU DESKTOP */
+
+.menu-principal {
+    display: flex;
+    align-items: center;
+
+    gap: 35px;
+}
+
+.menu-principal a {
+    position: relative;
+
+    padding: 33px 0;
+
+    color: var(--azul-escuro);
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: color 0.2s ease;
+}
+
+.menu-principal a:hover,
+.menu-principal a.ativo {
+    color: var(--laranja);
+}
+
+.menu-principal a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 24px;
+
+    width: 0;
+    height: 3px;
+
+    border-radius: 10px;
+
+    background: var(--laranja);
+
+    transition: width 0.2s ease;
+}
+
+.menu-principal a:hover::after,
+.menu-principal a.ativo::after {
+    width: 100%;
+}
+
+
+/* BOTÃO TOPO */
+
+.btn-reservar-topo {
+    background: var(--laranja);
+    color: var(--branco);
+
+    white-space: nowrap;
+}
+
+.btn-reservar-topo:hover {
+    background: var(--laranja-hover);
+}
+
+
+/* BOTÃO MENU MOBILE */
+
+.btn-menu-mobile {
+    display: none;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: var(--azul-claro);
+
+    color: var(--azul-escuro);
+
+    font-size: 26px;
+
+    cursor: pointer;
+}
+
+
+/* MENU MOBILE */
+
+.menu-mobile {
+    display: none;
+
+    width: 100%;
+
+    padding: 15px 5% 25px;
+
+    background: var(--branco);
+
+    border-top: 1px solid var(--cinza-borda);
+}
+
+.menu-mobile a {
+    display: block;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid var(--cinza-claro);
+
+    color: var(--azul-escuro);
+
+    font-weight: 700;
+}
+
+.menu-mobile a:hover {
+    color: var(--laranja);
+}
+
+.menu-mobile .btn-reserva-mobile {
+    margin-top: 15px;
+
+    padding: 14px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: var(--laranja);
+
+    color: var(--branco);
+
+    text-align: center;
+}
+
+
+/*
+    Depois vamos usar o JavaScript para adicionar
+    esta classe quando clicar no botão ☰
+*/
+
+.menu-mobile.aberto {
+    display: block;
+}
+
+
+/* =========================================================
+   6. HERO
+========================================================= */
+
+.hero {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 85px 0 95px;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(23, 75, 154, 0.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 15% 70%,
+            rgba(255, 116, 23, 0.08),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #f4f8ff,
+            #ffffff
+        );
+}
+
+
+/* GRID */
+
+.hero-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.15fr 0.85fr;
+
+    align-items: center;
+
+    gap: 80px;
+}
+
+
+/* =========================================================
+   7. TEXTO DO HERO
+========================================================= */
+
+.hero-texto {
+    max-width: 650px;
+}
+
+.hero-etiqueta {
+    display: inline-block;
+
+    margin-bottom: 17px;
+
+    color: var(--laranja);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+.hero-texto h1 {
+    margin-bottom: 25px;
+
+    color: var(--azul-escuro);
+
+    font-size: clamp(42px, 5vw, 64px);
+
+    line-height: 1.04;
+
+    letter-spacing: -2px;
+}
+
+.hero-texto h1 span {
+    display: block;
+
+    color: var(--laranja);
+}
+
+.hero-texto > p {
+    max-width: 570px;
+
+    margin-bottom: 32px;
+
+    color: var(--cinza-texto);
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* BOTÕES HERO */
+
+.hero-botoes {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    margin-bottom: 45px;
+}
+
+
+/* =========================================================
+   8. BENEFÍCIOS PEQUENOS HERO
+========================================================= */
+
+.hero-beneficios {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 28px;
+}
+
+.hero-beneficio {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.icone-beneficio {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: var(--azul-claro);
+
+    font-size: 20px;
+}
+
+.hero-beneficio div {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-beneficio strong {
+    color: var(--azul-escuro);
+
+    font-size: 14px;
+}
+
+.hero-beneficio small {
+    color: var(--cinza-texto);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   9. CARD AGENDA
+========================================================= */
+
+.card-agenda {
+    position: relative;
+
+    padding: 28px;
+
+    border: 1px solid rgba(16, 38, 79, 0.06);
+
+    border-radius: 20px;
+
+    background: var(--branco);
+
+    box-shadow: var(--sombra);
+}
+
+.card-agenda::before {
+    content: "";
+
+    position: absolute;
+
+    top: -7px;
+    right: -7px;
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 116, 23, 0.06);
+
+    z-index: 0;
+}
+
+.card-agenda > * {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* TOPO CARD */
+
+.card-agenda-topo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.titulo-menor {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--laranja);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.card-agenda h2 {
+    color: var(--azul-escuro);
+
+    font-size: 23px;
+}
+
+.badge-online {
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    background: var(--verde-claro);
+
+    color: var(--verde);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/* DATA */
+
+.agenda-data {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    background: var(--azul-claro);
+
+    color: var(--azul);
+}
+
+.agenda-data > span {
+    font-size: 22px;
+}
+
+.agenda-data div {
+    display: flex;
+    flex-direction: column;
+}
+
+.agenda-data small {
+    color: #6f7f9a;
+}
+
+.agenda-data strong {
+    color: var(--azul-escuro);
+}
+
+
+/* =========================================================
+   10. ITEM DE HORÁRIO
+========================================================= */
+
+.horario-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 18px 4px;
+
+    border-bottom: 1px solid var(--cinza-claro);
+
+    transition:
+        background 0.2s ease,
+        padding 0.2s ease;
+}
+
+.horario-item:hover {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border-radius: 8px;
+
+    background: #fafbfe;
+}
+
+.horario-info,
+.horario-preco {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.horario-info strong,
+.horario-preco strong {
+    color: var(--azul-escuro);
+}
+
+.horario-info span {
+    color: var(--cinza-texto);
+
+    font-size: 13px;
+}
+
+.horario-preco {
+    align-items: flex-end;
+
+    text-align: right;
+}
+
+.status-disponivel {
+    color: var(--verde);
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+/* LINK AGENDA */
+
+.link-agenda-completa {
+    display: block;
+
+    margin-top: 22px;
+
+    color: var(--azul);
+
+    font-weight: 800;
+
+    text-align: center;
+
+    transition: color 0.2s ease;
+}
+
+.link-agenda-completa:hover {
+    color: var(--laranja);
+}
+
+
+/* =========================================================
+   11. RECURSOS
+========================================================= */
+
+.recursos {
+    padding: 90px 0;
+
+    background: var(--branco);
+}
+
+
+/* TÍTULO DE SEÇÃO */
+
+.titulo-secao {
+    max-width: 700px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+.titulo-secao > span {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--laranja);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.titulo-secao h2 {
+    margin-bottom: 13px;
+
+    color: var(--azul-escuro);
+
+    font-size: clamp(30px, 4vw, 42px);
+
+    line-height: 1.15;
+}
+
+.titulo-secao p {
+    color: var(--cinza-texto);
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+
+/* GRID RECURSOS */
+
+.recursos-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 22px;
+}
+
+.recurso-card {
+    padding: 30px 25px;
+
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: var(--radius);
+
+    background: var(--branco);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border 0.25s ease;
+}
+
+.recurso-card:hover {
+    transform: translateY(-7px);
+
+    border-color: #cbd9f1;
+
+    box-shadow:
+        0 12px 35px rgba(16, 38, 79, 0.09);
+}
+
+.recurso-icone {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 14px;
+
+    background: var(--azul-claro);
+
+    font-size: 26px;
+}
+
+.recurso-card:nth-child(2) .recurso-icone,
+.recurso-card:nth-child(4) .recurso-icone {
+    background: var(--laranja-claro);
+}
+
+.recurso-card h3 {
+    margin-bottom: 10px;
+
+    color: var(--azul-escuro);
+
+    font-size: 19px;
+}
+
+.recurso-card p {
+    color: var(--cinza-texto);
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   12. PLANOS FIXOS
+========================================================= */
+
+.planos {
+    padding: 90px 0;
+
+    background: #f5f8fc;
+}
+
+.plano-destaque {
+    max-width: 950px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--azul-escuro),
+            #174b9a
+        );
+
+    box-shadow: var(--sombra);
+}
+
+.plano-texto {
+    max-width: 600px;
+}
+
+.plano-etiqueta {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: #ffad72;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.plano-destaque h3 {
+    margin-bottom: 10px;
+
+    color: var(--branco);
+
+    font-size: 30px;
+
+    line-height: 1.2;
+}
+
+.plano-destaque p {
+    color: #ccd8ed;
+
+    line-height: 1.6;
+}
+
+.plano-destaque .btn-principal {
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   13. CTA FINAL
+========================================================= */
+
+.cta-final {
+    padding: 70px 0;
+
+    background: var(--branco);
+}
+
+.cta-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    padding: 45px;
+
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f4f8ff
+        );
+
+    box-shadow:
+        0 12px 40px rgba(16, 38, 79, 0.06);
+}
+
+.cta-conteudo span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--laranja);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.cta-conteudo h2 {
+    margin-bottom: 7px;
+
+    color: var(--azul-escuro);
+
+    font-size: 32px;
+}
+
+.cta-conteudo p {
+    color: var(--cinza-texto);
+}
+
+
+/* =========================================================
+   14. RODAPÉ
+========================================================= */
+
+.rodape {
+    background: #091b3b;
+
+    color: var(--branco);
+}
+
+.rodape-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.3fr 1fr 1fr 1fr;
+
+    gap: 45px;
+
+    padding-top: 55px;
+    padding-bottom: 55px;
+}
+
+.rodape-marca img {
+    width: 140px;
+
+    margin-bottom: 18px;
+}
+
+.rodape-marca p {
+    max-width: 230px;
+
+    color: #aebbd1;
+
+    line-height: 1.6;
+}
+
+.rodape-coluna h3 {
+    margin-bottom: 17px;
+
+    font-size: 16px;
+}
+
+.rodape-coluna p {
+    margin-bottom: 9px;
+
+    color: #aebbd1;
+
+    font-size: 14px;
+}
+
+.rodape-final {
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.rodape-final .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.rodape-final p {
+    color: #8494ad;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   15. TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .menu-principal {
+        gap: 20px;
+    }
+
+    .menu-principal a {
+        font-size: 14px;
+    }
+
+    .hero-grid {
+        gap: 45px;
+    }
+
+    .recursos-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .rodape-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   16. MENU MOBILE / TABLET MENOR
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .cabecalho-conteudo {
+        min-height: 78px;
+    }
+
+    .logo img {
+        width: 110px;
+    }
+
+    .menu-principal {
+        display: none;
+    }
+
+    .btn-reservar-topo {
+        margin-left: auto;
+    }
+
+    .btn-menu-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        padding: 60px 0 75px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .hero-texto {
+        max-width: 700px;
+
+        margin: 0 auto;
+
+        text-align: center;
+    }
+
+    .hero-texto > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-botoes {
+        justify-content: center;
+    }
+
+    .hero-beneficios {
+        justify-content: center;
+    }
+
+
+    /* AGENDA */
+
+    .card-agenda {
+        max-width: 650px;
+
+        width: 100%;
+
+        margin: 0 auto;
+    }
+
+
+    /* PLANOS */
+
+    .plano-destaque {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    /* CTA */
+
+    .cta-conteudo {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
+
+
+/* =========================================================
+   17. CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 92%;
+    }
+
+
+    /* CABEÇALHO */
+
+    .cabecalho-conteudo {
+        min-height: 70px;
+
+        gap: 10px;
+    }
+
+    .logo img {
+        width: 95px;
+    }
+
+    .btn-reservar-topo {
+        display: none;
+    }
+
+    .btn-menu-mobile {
+        margin-left: auto;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        padding: 45px 0 60px;
+    }
+
+    .hero-etiqueta {
+        font-size: 11px;
+    }
+
+    .hero-texto h1 {
+        font-size: 38px;
+
+        letter-spacing: -1.3px;
+    }
+
+    .hero-texto > p {
+        font-size: 15px;
+
+        line-height: 1.6;
+    }
+
+    .hero-botoes {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .hero-botoes .btn {
+        width: 100%;
+    }
+
+    .hero-beneficios {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+    .hero-beneficio {
+        padding: 12px;
+
+        border: 1px solid var(--cinza-borda);
+
+        border-radius: 10px;
+
+        background: var(--branco);
+    }
+
+    .hero-beneficio:last-child {
+        grid-column: 1 / -1;
+    }
+
+
+    /* CARD */
+
+    .card-agenda {
+        padding: 21px;
+    }
+
+    .card-agenda-topo h2 {
+        font-size: 20px;
+    }
+
+    .badge-online {
+        font-size: 10px;
+    }
+
+
+    /* HORÁRIOS */
+
+    .horario-item {
+        gap: 10px;
+
+        padding: 16px 0;
+    }
+
+    .horario-info strong,
+    .horario-preco strong {
+        font-size: 14px;
+    }
+
+    .horario-info span {
+        font-size: 11px;
+    }
+
+
+    /* RECURSOS */
+
+    .recursos,
+    .planos {
+        padding: 65px 0;
+    }
+
+    .titulo-secao {
+        margin-bottom: 35px;
+    }
+
+    .titulo-secao h2 {
+        font-size: 30px;
+    }
+
+    .recursos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recurso-card {
+        padding: 25px;
+    }
+
+
+    /* PLANO */
+
+    .plano-destaque {
+        padding: 28px 22px;
+    }
+
+    .plano-destaque h3 {
+        font-size: 25px;
+    }
+
+    .plano-destaque .btn {
+        width: 100%;
+    }
+
+
+    /* CTA */
+
+    .cta-final {
+        padding: 55px 0;
+    }
+
+    .cta-conteudo {
+        padding: 28px 22px;
+    }
+
+    .cta-conteudo h2 {
+        font-size: 26px;
+    }
+
+    .cta-conteudo .btn {
+        width: 100%;
+    }
+
+
+    /* RODAPÉ */
+
+    .rodape-grid {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        padding-top: 45px;
+        padding-bottom: 45px;
+    }
+
+}
+
+
+/* =========================================================
+   18. CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .hero-texto h1 {
+        font-size: 33px;
+    }
+
+    .hero-beneficios {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-beneficio:last-child {
+        grid-column: auto;
+    }
+
+    .card-agenda-topo {
+        flex-direction: column;
+    }
+
+    .horario-item {
+        align-items: flex-start;
+    }
+
+    .horario-preco {
+        align-items: flex-end;
+
+        min-width: 90px;
+    }
+
+}
