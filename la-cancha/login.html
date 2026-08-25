@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Entrar | La Cancha Fut 7</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
+    <header class="cabecalho">
+
+        <div class="container cabecalho-conteudo">
+
+            <a href="index.html" class="logo">
+                <img
+                    src="img/logo.png"
+                    alt="La Cancha Fut 7"
+                >
+            </a>
+
+            <nav class="menu-principal">
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="agenda.html">
+                    Agenda
+                </a>
+
+                <a href="index.html#planos-fixos">
+                    Planos Fixos
+                </a>
+
+                <a href="login.html" class="ativo">
+                    Entrar
+                </a>
+
+            </nav>
+
+            <a
+                href="agenda.html"
+                class="btn btn-reservar-topo"
+            >
+                Reservar horário
+            </a>
+
+            <button
+                class="btn-menu-mobile"
+                id="btnMenuMobile"
+                aria-label="Abrir menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+
+        <nav
+            class="menu-mobile"
+            id="menuMobile"
+        >
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="agenda.html">
+                Agenda
+            </a>
+
+            <a href="index.html#planos-fixos">
+                Planos Fixos
+            </a>
+
+            <a href="login.html">
+                Entrar
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CONTEÚDO
+    ========================== -->
+
+    <main class="pagina-login">
+
+        <div class="container login-container">
+
+
+            <!-- =========================
+                 LOGIN
+            ========================== -->
+
+            <section class="login-card">
+
+                <div class="login-topo">
+
+                    <span>
+                        IDENTIFICAÇÃO
+                    </span>
+
+                    <h1>
+                        Finalize sua reserva
+                    </h1>
+
+                    <p>
+                        Entre com sua conta ou informe seus
+                        dados para continuar.
+                    </p>
+
+                </div>
+
+
+                <!-- GOOGLE -->
+
+                <button
+                    type="button"
+                    class="btn-google"
+                    id="btnGoogle"
+                >
+
+                    <span class="google-icone">
+                        G
+                    </span>
+
+                    Continuar com Google
+
+                </button>
+
+
+                <!-- SEPARADOR -->
+
+                <div class="separador">
+
+                    <span></span>
+
+                    <p>
+                        ou continue com seus dados
+                    </p>
+
+                    <span></span>
+
+                </div>
+
+
+                <!-- FORMULÁRIO -->
+
+                <form id="formLogin">
+
+                    <div class="campo">
+
+                        <label for="nome">
+                            Nome completo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Digite seu nome"
+                            autocomplete="name"
+                            required
+                        >
+
+                        <small
+                            class="erro"
+                            id="erroNome"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="whatsapp">
+                            WhatsApp
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="whatsapp"
+                            name="whatsapp"
+                            placeholder="(51) 99999-9999"
+                            maxlength="15"
+                            autocomplete="tel"
+                            required
+                        >
+
+                        <small
+                            class="erro"
+                            id="erroWhatsapp"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="seuemail@email.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <small
+                            class="erro"
+                            id="erroEmail"
+                        ></small>
+
+                    </div>
+
+
+                    <label class="lembrar-dados">
+
+                        <input
+                            type="checkbox"
+                            id="lembrar"
+                        >
+
+                        <span>
+                            Lembrar meus dados neste dispositivo
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-principal btn-continuar"
+                    >
+                        Continuar para pagamento
+                    </button>
+
+                </form>
+
+
+                <div class="seguranca-login">
+
+                    🔒
+
+                    <p>
+                        Seus dados serão utilizados somente
+                        para sua reserva.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 RESUMO DA RESERVA
+            ========================== -->
+
+            <aside
+                class="login-reserva"
+                id="cardReserva"
+            >
+
+                <span class="login-reserva-etiqueta">
+                    SUA RESERVA
+                </span>
+
+                <h2>
+                    Resumo
+                </h2>
+
+
+                <div class="quadra-login">
+
+                    <div class="quadra-login-icone">
+                        ⚽
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            La Cancha Fut 7
+                        </strong>
+
+                        <span>
+                            Quadra Society
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="login-reserva-linha">
+
+                    <span>
+                        📅 Data
+                    </span>
+
+                    <strong id="loginData">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="login-reserva-linha">
+
+                    <span>
+                        🕐 Horário
+                    </span>
+
+                    <strong id="loginHorario">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="login-reserva-linha">
+
+                    <span>
+                        ⏱ Duração
+                    </span>
+
+                    <strong id="loginDuracao">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="login-reserva-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="loginValor">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="agenda.html"
+                    class="alterar-horario"
+                >
+                    Alterar horário
+                </a>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+
+    <footer class="rodape">
+
+        <div class="container rodape-grid">
+
+            <div class="rodape-marca">
+
+                <img
+                    src="img/logo.png"
+                    alt="La Cancha Fut 7"
+                >
+
+                <p>
+                    Mais que uma quadra,
+                    uma paixão pelo futebol.
+                </p>
+
+            </div>
+
+
+            <div class="rodape-coluna">
+
+                <h3>
+                    Reservas
+                </h3>
+
+                <p>Agenda online</p>
+                <p>Horários fixos</p>
+
+            </div>
+
+
+            <div class="rodape-coluna">
+
+                <h3>
+                    Contato
+                </h3>
+
+                <p>WhatsApp</p>
+                <p>Instagram</p>
+
+            </div>
+
+
+            <div class="rodape-coluna">
+
+                <h3>
+                    Segurança
+                </h3>
+
+                <p>
+                    Pagamentos e dados protegidos.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
+
+</body>
+
+</html>

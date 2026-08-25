@@ -1,0 +1,561 @@
+/* ==================================================
+   LA CANCHA FUT 7
+   LOGIN DO CLIENTE
+================================================== */
+
+
+.pagina-login {
+    min-height: calc(100vh - 90px);
+
+    padding: 70px 0 100px;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255, 116, 23, 0.07),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(23, 75, 154, 0.09),
+            transparent 30%
+        ),
+        #f7f9fc;
+}
+
+
+/* ==================================================
+   LAYOUT
+================================================== */
+
+.login-container {
+    max-width: 1000px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 350px;
+
+    gap: 35px;
+
+    align-items: start;
+}
+
+
+/* ==================================================
+   CARD LOGIN
+================================================== */
+
+.login-card {
+    padding: 38px;
+
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: 20px;
+
+    background: white;
+
+    box-shadow:
+        0 15px 45px rgba(16, 38, 79, 0.08);
+}
+
+
+/* TOPO */
+
+.login-topo {
+    margin-bottom: 30px;
+}
+
+.login-topo > span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--laranja);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+.login-topo h1 {
+    margin-bottom: 10px;
+
+    color: var(--azul-escuro);
+
+    font-size: 36px;
+
+    line-height: 1.15;
+}
+
+.login-topo p {
+    max-width: 500px;
+
+    color: var(--cinza-texto);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* ==================================================
+   GOOGLE
+================================================== */
+
+.btn-google {
+    width: 100%;
+
+    min-height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    border: 1px solid #d9dee7;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: #28334d;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-google:hover {
+    border-color: #bfc7d4;
+
+    background: #fafbfc;
+
+    transform: translateY(-1px);
+}
+
+.google-icone {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4285f4,
+            #34a853,
+            #fbbc05,
+            #ea4335
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 900;
+}
+
+
+/* ==================================================
+   SEPARADOR
+================================================== */
+
+.separador {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 28px 0;
+}
+
+.separador span {
+    flex: 1;
+
+    height: 1px;
+
+    background: #e5e8ee;
+}
+
+.separador p {
+    color: #9299a7;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+}
+
+
+/* ==================================================
+   FORMULÁRIO
+================================================== */
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--azul-escuro);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.campo input {
+    width: 100%;
+
+    min-height: 50px;
+
+    padding: 0 15px;
+
+    border: 1px solid #dce1e8;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: var(--azul-escuro);
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.campo input::placeholder {
+    color: #a2a9b4;
+}
+
+.campo input:focus {
+    border-color: var(--azul);
+
+    box-shadow:
+        0 0 0 3px rgba(23, 75, 154, 0.08);
+}
+
+.campo input.campo-erro {
+    border-color: #df4f4f;
+
+    box-shadow:
+        0 0 0 3px rgba(223, 79, 79, 0.06);
+}
+
+.erro {
+    display: block;
+
+    min-height: 16px;
+
+    margin-top: 4px;
+
+    color: #df4f4f;
+
+    font-size: 11px;
+}
+
+
+/* ==================================================
+   LEMBRAR
+================================================== */
+
+.lembrar-dados {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 5px 0 25px;
+
+    cursor: pointer;
+}
+
+.lembrar-dados input {
+    accent-color: var(--azul);
+}
+
+.lembrar-dados span {
+    color: var(--cinza-texto);
+
+    font-size: 12px;
+}
+
+
+/* ==================================================
+   CONTINUAR
+================================================== */
+
+.btn-continuar {
+    width: 100%;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   SEGURANÇA
+================================================== */
+
+.seguranca-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 18px;
+
+    color: #858d9c;
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+
+/* ==================================================
+   RESUMO
+================================================== */
+
+.login-reserva {
+    position: sticky;
+
+    top: 120px;
+
+    padding: 28px;
+
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: 20px;
+
+    background: white;
+
+    box-shadow:
+        0 15px 45px rgba(16, 38, 79, 0.08);
+}
+
+.login-reserva-etiqueta {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--laranja);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.login-reserva h2 {
+    margin-bottom: 22px;
+
+    color: var(--azul-escuro);
+
+    font-size: 23px;
+}
+
+
+/* ==================================================
+   QUADRA
+================================================== */
+
+.quadra-login {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 20px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background: var(--azul-claro);
+}
+
+.quadra-login-icone {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: var(--azul);
+
+    font-size: 21px;
+}
+
+.quadra-login div:last-child {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.quadra-login strong {
+    color: var(--azul-escuro);
+
+    font-size: 14px;
+}
+
+.quadra-login span {
+    color: var(--cinza-texto);
+
+    font-size: 11px;
+}
+
+
+/* ==================================================
+   LINHAS RESERVA
+================================================== */
+
+.login-reserva-linha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid var(--cinza-claro);
+}
+
+.login-reserva-linha span {
+    color: var(--cinza-texto);
+
+    font-size: 12px;
+}
+
+.login-reserva-linha strong {
+    color: var(--azul-escuro);
+
+    font-size: 12px;
+
+    text-align: right;
+}
+
+
+/* TOTAL */
+
+.login-reserva-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 20px;
+}
+
+.login-reserva-total span {
+    color: var(--azul-escuro);
+
+    font-weight: 700;
+}
+
+.login-reserva-total strong {
+    color: var(--azul);
+
+    font-size: 25px;
+}
+
+
+/* ALTERAR */
+
+.alterar-horario {
+    display: block;
+
+    margin-top: 20px;
+
+    color: var(--azul);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-align: center;
+}
+
+.alterar-horario:hover {
+    color: var(--laranja);
+}
+
+
+/* ==================================================
+   TABLET
+================================================== */
+
+@media (max-width: 850px) {
+
+    .login-container {
+        grid-template-columns: 1fr;
+
+        max-width: 650px;
+    }
+
+    .login-reserva {
+        position: static;
+
+        order: -1;
+    }
+
+}
+
+
+/* ==================================================
+   CELULAR
+================================================== */
+
+@media (max-width: 600px) {
+
+    .pagina-login {
+        padding: 35px 0 65px;
+    }
+
+    .login-card {
+        padding: 24px 20px;
+    }
+
+    .login-topo h1 {
+        font-size: 29px;
+    }
+
+    .login-reserva {
+        padding: 22px;
+    }
+
+    .separador {
+        gap: 8px;
+    }
+
+    .separador p {
+        font-size: 10px;
+    }
+
+}
