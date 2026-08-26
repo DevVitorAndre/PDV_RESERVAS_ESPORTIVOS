@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Acesso Gerente | La Cancha Fut 7</title>
+
+    <link rel="icon" type="image/png" href="../img/logo.png">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/gerente.css">
+</head>
+
+<body class="admin-login-body">
+
+    <main class="admin-login-pagina">
+
+        <!-- LADO ESQUERDO -->
+        <section class="admin-login-marca">
+
+            <a href="../index.html" class="admin-login-logo">
+
+                <img
+                    src="../img/logo.png"
+                    alt="La Cancha Fut 7"
+                >
+
+            </a>
+
+            <div class="admin-login-apresentacao">
+
+                <span>
+                    PAINEL ADMINISTRATIVO
+                </span>
+
+                <h1>
+                    Gestão simples para a
+                    <strong>La Cancha Fut 7.</strong>
+                </h1>
+
+                <p>
+                    Controle reservas, horários, comandas,
+                    financeiro e notas fiscais em um só lugar.
+                </p>
+
+            </div>
+
+            <div class="admin-login-recursos">
+
+                <div>
+                    <span>📅</span>
+
+                    <p>
+                        Agenda e reservas
+                    </p>
+                </div>
+
+                <div>
+                    <span>🛒</span>
+
+                    <p>
+                        PDV e comandas
+                    </p>
+                </div>
+
+                <div>
+                    <span>💰</span>
+
+                    <p>
+                        Financeiro
+                    </p>
+                </div>
+
+                <div>
+                    <span>🧾</span>
+
+                    <p>
+                        Gestão fiscal
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LADO DIREITO -->
+        <section class="admin-login-area">
+
+            <div class="admin-login-card">
+
+                <a
+                    href="../index.html"
+                    class="admin-login-voltar"
+                >
+                    ← Voltar para o site
+                </a>
+
+
+                <div class="admin-login-titulo">
+
+                    <span>
+                        ACESSO RESTRITO
+                    </span>
+
+                    <h2>
+                        Entrar na gerência
+                    </h2>
+
+                    <p>
+                        Informe suas credenciais para acessar
+                        o painel administrativo.
+                    </p>
+
+                </div>
+
+
+                <form id="formLoginGerente">
+
+                    <!-- EMAIL -->
+                    <div class="admin-campo">
+
+                        <label for="emailGerente">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="emailGerente"
+                            placeholder="gerente@lacancha.com.br"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <small
+                            class="admin-login-erro"
+                            id="erroEmailGerente"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- SENHA -->
+                    <div class="admin-campo">
+
+                        <div class="admin-label-senha">
+
+                            <label for="senhaGerente">
+                                Senha
+                            </label>
+
+                            <a href="#">
+                                Esqueci minha senha
+                            </a>
+
+                        </div>
+
+
+                        <div class="admin-senha-area">
+
+                            <input
+                                type="password"
+                                id="senhaGerente"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="btnMostrarSenha"
+                                class="btn-mostrar-senha"
+                                aria-label="Mostrar senha"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="admin-login-erro"
+                            id="erroSenhaGerente"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- LEMBRAR -->
+                    <label class="admin-login-lembrar">
+
+                        <input
+                            type="checkbox"
+                            id="lembrarGerente"
+                        >
+
+                        <span>
+                            Manter conectado neste dispositivo
+                        </span>
+
+                    </label>
+
+
+                    <!-- ENTRAR -->
+                    <button
+                        type="submit"
+                        class="btn-admin-login"
+                    >
+                        Entrar no painel
+                    </button>
+
+                </form>
+
+
+                <div class="admin-login-seguranca">
+
+                    <span>🔒</span>
+
+                    <p>
+                        Área exclusiva para usuários autorizados
+                        da La Cancha Fut 7.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/gerente.js"></script>
+
+</body>
+
+</html>

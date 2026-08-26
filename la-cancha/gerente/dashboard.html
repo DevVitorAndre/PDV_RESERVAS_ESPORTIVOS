@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | La Cancha Fut 7</title>
+
+    <link rel="icon" type="image/png" href="../img/logo.png">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/gerente.css">
+</head>
+
+<body class="admin-body">
+
+    <!-- ============================
+         MENU LATERAL
+    ============================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img
+                src="../img/logo.png"
+                alt="La Cancha Fut 7"
+            >
+
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html" class="ativo">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="agenda.html">
+                <span>📅</span>
+                Agenda
+            </a>
+
+            <a href="horarios.html">
+                <span>🕐</span>
+                Horários
+            </a>
+
+            <a href="#">
+                <span>🔁</span>
+                Horários Fixos
+            </a>
+
+            <a href="clientes.html">
+                <span>👥</span>
+                Clientes
+            </a>
+
+            <a href="#">
+                <span>🛒</span>
+                PDV / Caixa
+            </a>
+
+            <a href="#">
+                <span>📦</span>
+                Produtos
+            </a>
+
+            <a href="#">
+                <span>💰</span>
+                Financeiro
+            </a>
+
+            <a href="#">
+                <span>🧾</span>
+                Fiscal
+            </a>
+
+            <a href="precos.html">
+                <span>⚙️</span>
+                Configurações
+            </a>
+
+        </nav>
+
+        <div class="sidebar-rodape">
+
+            <a href="../index.html">
+                ← Voltar ao site
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ============================
+         CONTEÚDO
+    ============================= -->
+
+    <main class="admin-main">
+
+        <!-- TOPO -->
+
+        <header class="admin-topo">
+
+            <button
+                class="btn-sidebar-mobile"
+                id="btnSidebar"
+            >
+                ☰
+            </button>
+
+            <div>
+
+                <span class="admin-boas-vindas">
+                    PAINEL ADMINISTRATIVO
+                </span>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+            </div>
+
+            <div class="admin-usuario">
+
+                <div class="admin-avatar">
+                    G
+                </div>
+
+                <div>
+
+                    <strong>
+                        Gerente
+                    </strong>
+
+                    <span>
+                        Administrador
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- DATA -->
+
+        <section class="dashboard-data">
+
+            <div>
+
+                <h2>
+                    Visão geral
+                </h2>
+
+                <p>
+                    Acompanhe o movimento da La Cancha hoje.
+                </p>
+
+            </div>
+
+            <div class="data-hoje">
+                📅 25/08/2026
+            </div>
+
+        </section>
+
+
+        <!-- ============================
+             INDICADORES
+        ============================= -->
+
+        <section class="cards-indicadores">
+
+            <article class="indicador-card">
+
+                <div class="indicador-icone azul">
+                    📅
+                </div>
+
+                <div>
+
+                    <span>
+                        Reservas hoje
+                    </span>
+
+                    <strong>
+                        8
+                    </strong>
+
+                    <small class="positivo">
+                        +2 em relação a ontem
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <article class="indicador-card">
+
+                <div class="indicador-icone verde">
+                    💰
+                </div>
+
+                <div>
+
+                    <span>
+                        Receita hoje
+                    </span>
+
+                    <strong>
+                        R$ 1.250
+                    </strong>
+
+                    <small>
+                        Reservas + PDV
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <article class="indicador-card">
+
+                <div class="indicador-icone laranja">
+                    🛒
+                </div>
+
+                <div>
+
+                    <span>
+                        Vendas PDV
+                    </span>
+
+                    <strong>
+                        R$ 480
+                    </strong>
+
+                    <small>
+                        18 vendas hoje
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <article class="indicador-card">
+
+                <div class="indicador-icone vermelho">
+                    💸
+                </div>
+
+                <div>
+
+                    <span>
+                        Contas a pagar
+                    </span>
+
+                    <strong>
+                        R$ 2.300
+                    </strong>
+
+                    <small>
+                        4 pendentes
+                    </small>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- ============================
+             GRID PRINCIPAL
+        ============================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- AGENDA -->
+
+            <article class="painel-card agenda-hoje">
+
+                <div class="painel-card-topo">
+
+                    <div>
+
+                        <span class="mini-etiqueta">
+                            AGENDA
+                        </span>
+
+                        <h2>
+                            Agenda de hoje
+                        </h2>
+
+                    </div>
+
+                    <a href="agenda.html">
+                        Ver agenda →
+                    </a>
+
+                </div>
+
+
+                <div class="agenda-admin-lista">
+
+
+                    <div class="agenda-admin-item">
+
+                        <div class="agenda-admin-hora">
+                            16:15
+                            <span>17:15</span>
+                        </div>
+
+                        <div class="agenda-admin-cliente">
+
+                            <strong>
+                                João da Silva
+                            </strong>
+
+                            <span>
+                                Reserva online
+                            </span>
+
+                        </div>
+
+                        <span class="badge confirmado">
+                            Pago
+                        </span>
+
+                    </div>
+
+
+                    <div class="agenda-admin-item">
+
+                        <div class="agenda-admin-hora">
+                            17:30
+                            <span>18:30</span>
+                        </div>
+
+                        <div class="agenda-admin-cliente">
+
+                            <strong>
+                                Resenha FC
+                            </strong>
+
+                            <span>
+                                Reserva online
+                            </span>
+
+                        </div>
+
+                        <span class="badge confirmado">
+                            Pago
+                        </span>
+
+                    </div>
+
+
+                    <div class="agenda-admin-item">
+
+                        <div class="agenda-admin-hora">
+                            18:45
+                            <span>20:15</span>
+                        </div>
+
+                        <div class="agenda-admin-cliente">
+
+                            <strong>
+                                Disponível
+                            </strong>
+
+                            <span>
+                                R$ 180,00
+                            </span>
+
+                        </div>
+
+                        <span class="badge livre">
+                            Livre
+                        </span>
+
+                    </div>
+
+
+                    <div class="agenda-admin-item">
+
+                        <div class="agenda-admin-hora">
+                            20:30
+                            <span>21:30</span>
+                        </div>
+
+                        <div class="agenda-admin-cliente">
+
+                            <strong>
+                                Futebol dos Guris
+                            </strong>
+
+                            <span>
+                                Horário recorrente
+                            </span>
+
+                        </div>
+
+                        <span class="badge fixo">
+                            Fixo
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="horarios.html"
+                    class="btn-admin-principal"
+                >
+                    + Cadastrar horário
+                </a>
+
+            </article>
+
+
+
+            <!-- COMANDAS -->
+
+            <article class="painel-card">
+
+                <div class="painel-card-topo">
+
+                    <div>
+
+                        <span class="mini-etiqueta">
+                            PDV
+                        </span>
+
+                        <h2>
+                            Comandas abertas
+                        </h2>
+
+                    </div>
+
+                    <a href="#">
+                        Ver todas →
+                    </a>
+
+                </div>
+
+
+                <div class="comandas-lista">
+
+                    <div class="comanda-item">
+
+                        <div>
+
+                            <strong>
+                                #031
+                            </strong>
+
+                            <span>
+                                João
+                            </span>
+
+                        </div>
+
+                        <strong>
+                            R$ 42,00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="comanda-item">
+
+                        <div>
+
+                            <strong>
+                                #032
+                            </strong>
+
+                            <span>
+                                Resenha FC
+                            </span>
+
+                        </div>
+
+                        <strong>
+                            R$ 86,00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="comanda-item">
+
+                        <div>
+
+                            <strong>
+                                #033
+                            </strong>
+
+                            <span>
+                                Carlos
+                            </span>
+
+                        </div>
+
+                        <strong>
+                            R$ 28,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <button class="btn-admin-secundario">
+                    + Abrir nova comanda
+                </button>
+
+            </article>
+
+        </section>
+
+
+        <!-- ============================
+             FINANCEIRO
+        ============================= -->
+
+        <section class="dashboard-grid dashboard-grid-inferior">
+
+
+            <article class="painel-card">
+
+                <div class="painel-card-topo">
+
+                    <div>
+
+                        <span class="mini-etiqueta">
+                            FINANCEIRO
+                        </span>
+
+                        <h2>
+                            Resultado do mês
+                        </h2>
+
+                    </div>
+
+                    <a href="#">
+                        Detalhes →
+                    </a>
+
+                </div>
+
+
+                <div class="financeiro-lista">
+
+                    <div>
+
+                        <span>
+                            Reservas
+                        </span>
+
+                        <strong class="positivo">
+                            R$ 18.500,00
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Vendas PDV
+                        </span>
+
+                        <strong class="positivo">
+                            R$ 6.200,00
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Despesas
+                        </span>
+
+                        <strong class="negativo">
+                            - R$ 9.400,00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="financeiro-total">
+
+                        <span>
+                            Resultado
+                        </span>
+
+                        <strong>
+                            R$ 15.300,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- FISCAL -->
+
+            <article class="painel-card">
+
+                <div class="painel-card-topo">
+
+                    <div>
+
+                        <span class="mini-etiqueta">
+                            FISCAL
+                        </span>
+
+                        <h2>
+                            Notas fiscais
+                        </h2>
+
+                    </div>
+
+                    <a href="#">
+                        Abrir fiscal →
+                    </a>
+
+                </div>
+
+
+                <div class="fiscal-resumo">
+
+                    <div class="fiscal-item">
+
+                        <span class="fiscal-bolinha verde"></span>
+
+                        <div>
+
+                            <strong>
+                                136
+                            </strong>
+
+                            <span>
+                                Autorizadas
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="fiscal-item">
+
+                        <span class="fiscal-bolinha amarelo"></span>
+
+                        <div>
+
+                            <strong>
+                                6
+                            </strong>
+
+                            <span>
+                                Com problema
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="fiscal-item">
+
+                        <span class="fiscal-bolinha cinza"></span>
+
+                        <div>
+
+                            <strong>
+                                3
+                            </strong>
+
+                            <span>
+                                Aguardando envio
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button class="btn-admin-secundario">
+                    Ver notas com problema
+                </button>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/gerente.js"></script>
+
+</body>
+
+</html>

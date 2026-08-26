@@ -559,3 +559,34 @@
     }
 
 }
+
+.acesso-gerencia {
+    margin-top: 25px;
+    padding-top: 20px;
+
+    border-top: 1px solid #e5e8ee;
+
+    text-align: center;
+}
+
+.acesso-gerencia span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #8a929f;
+
+    font-size: 11px;
+}
+
+.acesso-gerencia a {
+    color: var(--azul);
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.acesso-gerencia a:hover {
+    color: var(--laranja);
+}
