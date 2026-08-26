@@ -1,0 +1,561 @@
+/* =====================================================
+   LA CANCHA FUT 7
+   CONFIRMAÇÃO DA RESERVA
+===================================================== */
+
+.confirmacao-body {
+    min-height: 100vh;
+    margin: 0;
+    background: #f5f7fb;
+    color: #10264f;
+}
+
+
+/* =====================================================
+   TOPO
+===================================================== */
+
+.confirmacao-topo {
+    background: white;
+    border-bottom: 1px solid #e5e9ef;
+}
+
+.confirmacao-topo-conteudo {
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.confirmacao-logo {
+    display: flex;
+    align-items: center;
+}
+
+.confirmacao-logo img {
+    width: 54px;
+    height: 54px;
+
+    object-fit: contain;
+}
+
+.confirmacao-topo-texto {
+    display: flex;
+    flex-direction: column;
+}
+
+.confirmacao-topo-texto strong {
+    color: #10264f;
+    font-size: 14px;
+}
+
+.confirmacao-topo-texto span {
+    color: #87909d;
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   CONTEÚDO
+===================================================== */
+
+.confirmacao-main {
+    padding: 35px 0 60px;
+}
+
+.confirmacao-container {
+    max-width: 820px;
+}
+
+
+/* =====================================================
+   PROGRESSO
+===================================================== */
+
+.confirmacao-progresso {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    margin-bottom: 30px;
+}
+
+.confirmacao-etapa {
+    width: 72px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.confirmacao-etapa > span {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #22a861;
+    color: white;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.confirmacao-etapa small {
+    margin-top: 6px;
+
+    color: #697586;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.confirmacao-linha {
+    width: 55px;
+    height: 2px;
+
+    margin-top: 14px;
+
+    background: #22a861;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.confirmacao-card {
+    padding: 32px;
+
+    border: 1px solid #e1e6ed;
+    border-radius: 18px;
+
+    background: white;
+
+    box-shadow:
+        0 12px 40px rgba(16, 38, 79, 0.06);
+}
+
+
+/* =====================================================
+   SUCESSO
+===================================================== */
+
+.confirmacao-sucesso {
+    text-align: center;
+}
+
+.confirmacao-check {
+    width: 66px;
+    height: 66px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e9f8ef;
+    color: #22a861;
+
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.confirmacao-etiqueta {
+    display: inline-block;
+
+    margin-bottom: 7px;
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    background: #e9f8ef;
+    color: #188c4f;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+.confirmacao-sucesso h1 {
+    margin: 0;
+
+    color: #10264f;
+
+    font-size: 27px;
+}
+
+.confirmacao-sucesso p {
+    margin: 8px auto 0;
+
+    color: #7a8492;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   CÓDIGO
+===================================================== */
+
+.confirmacao-codigo {
+    margin: 25px 0;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border: 1px dashed #ff7417;
+    border-radius: 12px;
+
+    background: #fff8f3;
+}
+
+.confirmacao-codigo span {
+    display: block;
+
+    color: #9a704f;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+.confirmacao-codigo strong {
+    display: block;
+
+    margin: 5px 0;
+
+    color: #ff7417;
+
+    font-size: 26px;
+    letter-spacing: 2px;
+}
+
+.confirmacao-codigo small {
+    color: #9c8879;
+    font-size: 8px;
+}
+
+
+/* =====================================================
+   SEÇÕES
+===================================================== */
+
+.confirmacao-secao {
+    margin-top: 18px;
+    padding: 20px;
+
+    border: 1px solid #e4e8ee;
+    border-radius: 12px;
+}
+
+.confirmacao-secao-topo {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 16px;
+}
+
+.confirmacao-secao-topo > span {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #eaf2ff;
+
+    font-size: 17px;
+}
+
+.confirmacao-secao-topo small {
+    color: #8994a1;
+
+    font-size: 7px;
+    font-weight: 800;
+}
+
+.confirmacao-secao-topo h2 {
+    margin: 2px 0 0;
+
+    color: #10264f;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.confirmacao-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+.confirmacao-dado {
+    min-width: 0;
+
+    padding: 13px;
+
+    border-radius: 8px;
+
+    background: #f7f9fb;
+}
+
+.confirmacao-dado-email {
+    grid-column: 1 / -1;
+}
+
+.confirmacao-dado span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #89929f;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.confirmacao-dado strong {
+    display: block;
+
+    overflow-wrap: anywhere;
+
+    color: #10264f;
+
+    font-size: 11px;
+}
+
+.confirmacao-dado .confirmacao-valor {
+    color: #22a861;
+    font-size: 14px;
+}
+
+.confirmacao-status-pago {
+    color: #22a861 !important;
+}
+
+
+/* =====================================================
+   FIXO
+===================================================== */
+
+.confirmacao-fixo {
+    display: none;
+
+    align-items: flex-start;
+
+    gap: 11px;
+
+    margin-top: 12px;
+    padding: 14px;
+
+    border: 1px solid #e8dcff;
+    border-radius: 9px;
+
+    background: #f8f4ff;
+}
+
+.confirmacao-fixo.ativo {
+    display: flex;
+}
+
+.confirmacao-fixo-icone {
+    font-size: 20px;
+}
+
+.confirmacao-fixo strong {
+    color: #7043b6;
+    font-size: 10px;
+}
+
+.confirmacao-fixo p {
+    margin: 3px 0 0;
+
+    color: #817490;
+
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   AVISO
+===================================================== */
+
+.confirmacao-aviso {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin-top: 18px;
+    padding: 14px;
+
+    border-radius: 9px;
+
+    background: #fff7ed;
+}
+
+.confirmacao-aviso span {
+    font-size: 15px;
+}
+
+.confirmacao-aviso p {
+    margin: 0;
+
+    color: #886849;
+
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   AÇÕES
+===================================================== */
+
+.confirmacao-acoes {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+.confirmacao-btn-principal,
+.confirmacao-btn-secundario {
+    min-height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1;
+
+    padding: 0 18px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.confirmacao-btn-principal {
+    background: #ff7417;
+    color: white;
+}
+
+.confirmacao-btn-principal:hover {
+    background: #e96208;
+}
+
+.confirmacao-btn-secundario {
+    border: 1px solid #dce2e9;
+
+    background: white;
+    color: #10264f;
+}
+
+
+/* =====================================================
+   INVÁLIDA
+===================================================== */
+
+.confirmacao-invalida {
+    display: none;
+
+    text-align: center;
+}
+
+.confirmacao-invalida.ativo {
+    display: block;
+}
+
+.confirmacao-invalida-icone {
+    margin-bottom: 10px;
+
+    font-size: 36px;
+}
+
+.confirmacao-invalida h1 {
+    color: #10264f;
+}
+
+.confirmacao-invalida p {
+    margin-bottom: 20px;
+
+    color: #7e8895;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media (max-width: 650px) {
+
+    .confirmacao-main {
+        padding: 20px 0 40px;
+    }
+
+    .confirmacao-card {
+        padding: 20px 15px;
+    }
+
+    .confirmacao-progresso {
+        overflow: hidden;
+    }
+
+    .confirmacao-etapa {
+        width: 58px;
+    }
+
+    .confirmacao-etapa small {
+        font-size: 6px;
+    }
+
+    .confirmacao-linha {
+        width: 25px;
+    }
+
+    .confirmacao-sucesso h1 {
+        font-size: 21px;
+    }
+
+    .confirmacao-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .confirmacao-dado-email {
+        grid-column: auto;
+    }
+
+    .confirmacao-acoes {
+        flex-direction: column-reverse;
+    }
+
+}

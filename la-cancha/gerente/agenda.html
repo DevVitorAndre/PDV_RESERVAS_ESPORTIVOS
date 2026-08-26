@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Agenda | La Cancha Fut 7
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../img/logo.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/gerente.css"
+    >
+
+</head>
+
+
+<body class="admin-body">
+
+
+    <!-- ==================================================
+         MENU LATERAL
+    =================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="sidebar-logo">
+
+            <img
+                src="../img/logo.png"
+                alt="La Cancha Fut 7"
+            >
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html">
+
+                <span>
+                    🏠
+                </span>
+
+                Dashboard
+
+            </a>
+
+
+            <a
+                href="agenda.html"
+                class="ativo"
+            >
+
+                <span>
+                    📅
+                </span>
+
+                Agenda
+
+            </a>
+
+
+            <a href="horarios.html">
+
+                <span>
+                    🕐
+                </span>
+
+                Horários
+
+            </a>
+
+
+            <a href="#">
+
+                <span>
+                    🔁
+                </span>
+
+                Horários Fixos
+
+            </a>
+
+
+            <a href="clientes.html">
+
+                <span>
+                    👥
+                </span>
+
+                Clientes
+
+            </a>
+
+
+            <a href="#">
+
+                <span>
+                    🛒
+                </span>
+
+                PDV / Caixa
+
+            </a>
+
+
+            <a href="#">
+
+                <span>
+                    📦
+                </span>
+
+                Produtos
+
+            </a>
+
+
+            <a href="#">
+
+                <span>
+                    💰
+                </span>
+
+                Financeiro
+
+            </a>
+
+
+            <a href="#">
+
+                <span>
+                    🧾
+                </span>
+
+                Fiscal
+
+            </a>
+
+
+            <a href="precos.html">
+
+                <span>
+                    ⚙️
+                </span>
+
+                Configurações
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-rodape">
+
+            <a href="../index.html">
+                ← Voltar ao site
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         CONTEÚDO
+    =================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- ==================================================
+             TOPO
+        =================================================== -->
+
+        <header class="admin-topo">
+
+            <button
+                type="button"
+                class="btn-sidebar-mobile"
+                id="btnSidebar"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <span class="admin-boas-vindas">
+                    AGENDA
+                </span>
+
+                <h1>
+                    Agenda da cancha
+                </h1>
+
+            </div>
+
+
+            <div class="admin-usuario">
+
+                <div class="admin-avatar">
+                    G
+                </div>
+
+                <div>
+
+                    <strong>
+                        Gerente
+                    </strong>
+
+                    <span>
+                        Administrador
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==================================================
+             CABEÇALHO DA AGENDA
+        =================================================== -->
+
+        <section class="agenda-gerente-cabecalho">
+
+            <div>
+
+                <span class="mini-etiqueta">
+                    CONTROLE DE RESERVAS
+                </span>
+
+                <h2 id="agendaGerenteTituloData">
+                    Agenda
+                </h2>
+
+                <p>
+                    Consulte horários disponíveis, reservas,
+                    horários fixos e bloqueios.
+                </p>
+
+            </div>
+
+
+            <a
+                href="horarios.html"
+                class="btn-admin-principal agenda-btn-cadastrar"
+            >
+                + Cadastrar horário
+            </a>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             NAVEGAÇÃO DE DATA
+        =================================================== -->
+
+        <section class="agenda-gerente-controles">
+
+            <div class="agenda-gerente-data-nav">
+
+                <button
+                    type="button"
+                    class="agenda-btn-nav"
+                    id="agendaDiaAnterior"
+                    title="Dia anterior"
+                >
+                    ←
+                </button>
+
+
+                <input
+                    type="date"
+                    id="agendaGerenteData"
+                >
+
+
+                <button
+                    type="button"
+                    class="agenda-btn-nav"
+                    id="agendaProximoDia"
+                    title="Próximo dia"
+                >
+                    →
+                </button>
+
+            </div>
+
+
+            <div class="agenda-gerente-atalhos">
+
+                <button
+                    type="button"
+                    id="agendaBtnHoje"
+                >
+                    Hoje
+                </button>
+
+                <button
+                    type="button"
+                    id="agendaBtnAmanha"
+                >
+                    Amanhã
+                </button>
+
+            </div>
+
+
+            <div class="agenda-gerente-filtro">
+
+                <label for="agendaFiltroStatus">
+                    Status
+                </label>
+
+                <select id="agendaFiltroStatus">
+
+                    <option value="todos">
+                        Todos
+                    </option>
+
+                    <option value="disponivel">
+                        Disponíveis
+                    </option>
+
+                    <option value="reservado">
+                        Reservados
+                    </option>
+
+                    <option value="fixo">
+                        Fixos
+                    </option>
+
+                    <option value="bloqueado">
+                        Bloqueados
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             INDICADORES DO DIA
+        =================================================== -->
+
+        <section class="agenda-gerente-resumo">
+
+
+            <article class="agenda-resumo-card">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="agendaTotal">
+                    0
+                </strong>
+
+                <small>
+                    horários
+                </small>
+
+            </article>
+
+
+
+            <article class="agenda-resumo-card disponivel">
+
+                <span>
+                    Disponíveis
+                </span>
+
+                <strong id="agendaDisponiveis">
+                    0
+                </strong>
+
+                <small>
+                    livres
+                </small>
+
+            </article>
+
+
+
+            <article class="agenda-resumo-card reservado">
+
+                <span>
+                    Reservados
+                </span>
+
+                <strong id="agendaReservados">
+                    0
+                </strong>
+
+                <small>
+                    pagos
+                </small>
+
+            </article>
+
+
+
+            <article class="agenda-resumo-card fixo">
+
+                <span>
+                    Fixos
+                </span>
+
+                <strong id="agendaFixos">
+                    0
+                </strong>
+
+                <small>
+                    recorrentes
+                </small>
+
+            </article>
+
+
+
+            <article class="agenda-resumo-card bloqueado">
+
+                <span>
+                    Bloqueados
+                </span>
+
+                <strong id="agendaBloqueados">
+                    0
+                </strong>
+
+                <small>
+                    indisponíveis
+                </small>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             LISTAGEM
+        =================================================== -->
+
+        <section class="painel-card agenda-gerente-painel">
+
+            <div class="painel-card-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        HORÁRIOS
+                    </span>
+
+                    <h2 id="agendaListaTitulo">
+                        Agenda do dia
+                    </h2>
+
+                </div>
+
+
+                <span
+                    class="agenda-gerente-contagem"
+                    id="agendaQuantidadeExibida"
+                >
+                    0 horários
+                </span>
+
+            </div>
+
+
+
+            <!-- LISTA -->
+
+            <div
+                class="agenda-gerente-lista"
+                id="agendaGerenteLista"
+            >
+            </div>
+
+
+
+            <!-- VAZIO -->
+
+            <div
+                class="agenda-gerente-vazio"
+                id="agendaGerenteVazio"
+            >
+
+                <div>
+                    ⚽
+                </div>
+
+                <h3>
+                    Nenhum horário encontrado
+                </h3>
+
+                <p>
+                    Não existem horários cadastrados
+                    para esta data.
+                </p>
+
+                <a
+                    href="horarios.html"
+                    class="btn-admin-principal"
+                >
+                    + Cadastrar disponibilidade
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==================================================
+         MODAL DE DETALHES
+    =================================================== -->
+
+    <div
+        class="agenda-modal-fundo"
+        id="agendaModal"
+    >
+
+        <div class="agenda-modal">
+
+            <div class="agenda-modal-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        DETALHES
+                    </span>
+
+                    <h2>
+                        Reserva
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="agendaModalFechar"
+                    aria-label="Fechar"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div id="agendaModalConteudo">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
+    <script src="../js/gerente.js"></script>
+    <script src="../js/agenda-gerente.js"></script>
+
+</body>
+
+</html>

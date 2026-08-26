@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Reserva Confirmada | La Cancha Fut 7
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/confirmacao.css"
+    >
+
+</head>
+
+
+<body class="confirmacao-body">
+
+
+    <!-- ==================================================
+         CABEÇALHO
+    =================================================== -->
+
+    <header class="confirmacao-topo">
+
+        <div class="container confirmacao-topo-conteudo">
+
+            <a
+                href="index.html"
+                class="confirmacao-logo"
+            >
+
+                <img
+                    src="img/logo.png"
+                    alt="La Cancha Fut 7"
+                >
+
+            </a>
+
+
+            <div class="confirmacao-topo-texto">
+
+                <strong>
+                    La Cancha Fut 7
+                </strong>
+
+                <span>
+                    Reserva online
+                </span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <main class="confirmacao-main">
+
+        <div class="container confirmacao-container">
+
+
+            <!-- ==================================================
+                 PROGRESSO
+            =================================================== -->
+
+            <section class="confirmacao-progresso">
+
+                <div class="confirmacao-etapa concluida">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    <small>
+                        Horário
+                    </small>
+
+                </div>
+
+
+                <div class="confirmacao-linha concluida">
+                </div>
+
+
+                <div class="confirmacao-etapa concluida">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    <small>
+                        Identificação
+                    </small>
+
+                </div>
+
+
+                <div class="confirmacao-linha concluida">
+                </div>
+
+
+                <div class="confirmacao-etapa concluida">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    <small>
+                        Pagamento
+                    </small>
+
+                </div>
+
+
+                <div class="confirmacao-linha concluida">
+                </div>
+
+
+                <div class="confirmacao-etapa concluida">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    <small>
+                        Confirmação
+                    </small>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 CONTEÚDO VÁLIDO
+            =================================================== -->
+
+            <section
+                class="confirmacao-card"
+                id="confirmacaoConteudo"
+            >
+
+
+                <!-- SUCESSO -->
+
+                <div class="confirmacao-sucesso">
+
+                    <div class="confirmacao-check">
+                        ✓
+                    </div>
+
+                    <span class="confirmacao-etiqueta">
+                        PAGAMENTO APROVADO
+                    </span>
+
+                    <h1>
+                        Sua reserva está confirmada!
+                    </h1>
+
+                    <p>
+                        Tudo certo. Seu horário foi reservado
+                        na La Cancha Fut 7.
+                    </p>
+
+                </div>
+
+
+
+                <!-- CÓDIGO -->
+
+                <div class="confirmacao-codigo">
+
+                    <span>
+                        CÓDIGO DA RESERVA
+                    </span>
+
+                    <strong id="confirmacaoCodigo">
+                        LC------
+                    </strong>
+
+                    <small>
+                        Guarde este código para identificação
+                        da sua reserva.
+                    </small>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     RESERVA
+                =================================================== -->
+
+                <section class="confirmacao-secao">
+
+                    <div class="confirmacao-secao-topo">
+
+                        <span>
+                            ⚽
+                        </span>
+
+                        <div>
+
+                            <small>
+                                RESERVA
+                            </small>
+
+                            <h2>
+                                Detalhes da partida
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="confirmacao-grid">
+
+
+                        <div class="confirmacao-dado">
+
+                            <span>
+                                Tipo
+                            </span>
+
+                            <strong id="confirmacaoTipo">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="confirmacao-dado">
+
+                            <span>
+                                Data
+                            </span>
+
+                            <strong id="confirmacaoData">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="confirmacao-dado">
+
+                            <span>
+                                Horário
+                            </span>
+
+                            <strong id="confirmacaoHorario">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="confirmacao-dado">
+
+                            <span>
+                                Valor
+                            </span>
+
+                            <strong
+                                class="confirmacao-valor"
+                                id="confirmacaoValor"
+                            >
+                                R$ 0,00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FIXO -->
+
+                    <div
+                        class="confirmacao-fixo"
+                        id="confirmacaoFixo"
+                    >
+
+                        <div class="confirmacao-fixo-icone">
+                            🔁
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Horário fixo mensal
+                            </strong>
+
+                            <p id="confirmacaoFixoTexto">
+                                -
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     CLIENTE
+                =================================================== -->
+
+                <section class="confirmacao-secao">
+
+                    <div class="confirmacao-secao-topo">
+
+                        <span>
+                            👤
+                        </span>
+
+                        <div>
+
+                            <small>
+                                CLIENTE
+                            </small>
+
+                            <h2>
+                                Dados da reserva
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="confirmacao-grid">
+
+
+                        <div class="confirmacao-dado">
+
+                            <span>
+                                Nome
+                            </span>
+
+                            <strong id="confirmacaoClienteNome">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="confirmacao-dado">
+
+                            <span>
+                                WhatsApp
+                            </span>
+
+                            <strong id="confirmacaoClienteWhatsapp">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="confirmacao-dado confirmacao-dado-email">
+
+                            <span>
+                                E-mail
+                            </span>
+
+                            <strong id="confirmacaoClienteEmail">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     PAGAMENTO
+                =================================================== -->
+
+                <section class="confirmacao-secao">
+
+                    <div class="confirmacao-secao-topo">
+
+                        <span>
+                            💳
+                        </span>
+
+                        <div>
+
+                            <small>
+                                PAGAMENTO
+                            </small>
+
+                            <h2>
+                                Pagamento confirmado
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="confirmacao-grid">
+
+
+                        <div class="confirmacao-dado">
+
+                            <span>
+                                Forma de pagamento
+                            </span>
+
+                            <strong id="confirmacaoFormaPagamento">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="confirmacao-dado">
+
+                            <span>
+                                Status
+                            </span>
+
+                            <strong class="confirmacao-status-pago">
+                                ● Pago
+                            </strong>
+
+                        </div>
+
+
+                        <div class="confirmacao-dado confirmacao-dado-email">
+
+                            <span>
+                                Data do pagamento
+                            </span>
+
+                            <strong id="confirmacaoDataPagamento">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     AVISO
+                =================================================== -->
+
+                <div class="confirmacao-aviso">
+
+                    <span>
+                        ℹ️
+                    </span>
+
+                    <p>
+                        Após a confirmação do pagamento,
+                        a reserva é considerada confirmada.
+                        Para situações excepcionais ou alterações,
+                        entre em contato diretamente com a
+                        La Cancha Fut 7.
+                    </p>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     BOTÕES
+                =================================================== -->
+
+                <div class="confirmacao-acoes">
+
+                    <a
+                        href="index.html"
+                        class="confirmacao-btn-secundario"
+                    >
+                        Voltar ao início
+                    </a>
+
+
+                    <a
+                        href="agenda.html"
+                        class="confirmacao-btn-principal"
+                    >
+                        Ver outros horários
+                    </a>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 CONFIRMAÇÃO INVÁLIDA
+            =================================================== -->
+
+            <section
+                class="confirmacao-card confirmacao-invalida"
+                id="confirmacaoInvalida"
+            >
+
+                <div class="confirmacao-invalida-icone">
+                    ⚠️
+                </div>
+
+                <h1>
+                    Reserva não encontrada
+                </h1>
+
+                <p>
+                    Não encontramos uma reserva confirmada
+                    nesta sessão.
+                </p>
+
+                <a
+                    href="agenda.html"
+                    class="confirmacao-btn-principal"
+                >
+                    Ver agenda
+                </a>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <script src="js/confirmacao.js"></script>
+
+</body>
+
+</html>

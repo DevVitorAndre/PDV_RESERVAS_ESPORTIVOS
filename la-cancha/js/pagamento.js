@@ -5,17 +5,12 @@
 
 (() => {
 
-
     // ==================================================
     // CONFIGURAÇÕES
     // ==================================================
 
-    const TEMPO_PAGAMENTO_MINUTOS =
-        10;
-
-    const ANTECEDENCIA_MINIMA_MINUTOS =
-        60;
-
+    const TEMPO_PAGAMENTO_MINUTOS = 10;
+    const ANTECEDENCIA_MINIMA_MINUTOS = 60;
 
     const STORAGE_HORARIOS =
         "horariosLaCancha";
@@ -43,7 +38,6 @@
         "reservaConfirmadaLaCancha";
 
 
-
     // ==================================================
     // ELEMENTOS
     // ==================================================
@@ -69,6 +63,8 @@
         );
 
 
+    // MÉTODOS
+
     const btnPix =
         document.getElementById(
             "btnPagamentoPix"
@@ -89,6 +85,8 @@
             "painelCartao"
         );
 
+
+    // PIX
 
     const pixValor =
         document.getElementById(
@@ -111,6 +109,8 @@
         );
 
 
+    // CARTÃO
+
     const formCartao =
         document.getElementById(
             "formCartao"
@@ -121,6 +121,8 @@
             "mensagemCartao"
         );
 
+
+    // RESUMO
 
     const resumoTipo =
         document.getElementById(
@@ -178,20 +180,8 @@
         );
 
 
-    const pagamentoSucesso =
-        document.getElementById(
-            "pagamentoSucesso"
-        );
-
-    const codigoReservaSucesso =
-        document.getElementById(
-            "codigoReservaSucesso"
-        );
-
-
-
     // ==================================================
-    // DADOS
+    // ESTADO
     // ==================================================
 
     let cliente =
@@ -204,24 +194,20 @@
             SESSION_RESERVA
         );
 
-    let horarioAtual =
-        null;
+    let horarioAtual = null;
 
-    let pagamentoExpirado =
-        false;
+    let pagamentoExpirado = false;
 
-    let intervaloContador =
-        null;
+    let pagamentoProcessando = false;
 
+    let intervaloContador = null;
 
 
     // ==================================================
-    // UTILITÁRIOS
+    // SESSION STORAGE
     // ==================================================
 
-    function carregarSession(
-        chave
-    ) {
+    function carregarSession(chave) {
 
         try {
 
@@ -229,7 +215,6 @@
                 sessionStorage.getItem(
                     chave
                 );
-
 
             return valor
                 ? JSON.parse(valor)
@@ -249,10 +234,11 @@
     }
 
 
+    // ==================================================
+    // LOCAL STORAGE
+    // ==================================================
 
-    function carregarLocal(
-        chave
-    ) {
+    function carregarLocal(chave) {
 
         try {
 
@@ -261,12 +247,12 @@
                     chave
                 );
 
+            if (!valor) {
+                return [];
+            }
 
             const dados =
-                valor
-                    ? JSON.parse(valor)
-                    : [];
-
+                JSON.parse(valor);
 
             return Array.isArray(dados)
                 ? dados
@@ -286,7 +272,6 @@
     }
 
 
-
     function salvarLocal(
         chave,
         dados
@@ -300,6 +285,9 @@
     }
 
 
+    // ==================================================
+    // IDs
+    // ==================================================
 
     function gerarId() {
 
@@ -313,7 +301,6 @@
 
         }
 
-
         return (
             Date.now().toString() +
             "-" +
@@ -325,7 +312,6 @@
     }
 
 
-
     function gerarCodigoReserva() {
 
         const numero =
@@ -335,38 +321,35 @@
                 900000
             );
 
+        return `LC-${numero}`;
 
-        return (
-            `LC-${numero}`
+    }
+
+
+    // ==================================================
+    // MOEDA
+    // ==================================================
+
+    function formatarValor(valor) {
+
+        return Number(
+            valor || 0
+        ).toLocaleString(
+            "pt-BR",
+            {
+                style: "currency",
+                currency: "BRL"
+            }
         );
 
     }
 
 
+    // ==================================================
+    // DATAS
+    // ==================================================
 
-    function formatarValor(
-        valor
-    ) {
-
-        return Number(valor)
-            .toLocaleString(
-                "pt-BR",
-                {
-                    style:
-                        "currency",
-
-                    currency:
-                        "BRL"
-                }
-            );
-
-    }
-
-
-
-    function criarDataLocal(
-        data
-    ) {
+    function criarDataLocal(data) {
 
         const [
             ano,
@@ -377,7 +360,6 @@
                 .split("-")
                 .map(Number);
 
-
         return new Date(
             ano,
             mes - 1,
@@ -387,41 +369,56 @@
     }
 
 
+    function dataParaString(data) {
 
-    function formatarData(
-        data
-    ) {
+        const ano =
+            data.getFullYear();
+
+        const mes =
+            String(
+                data.getMonth() + 1
+            ).padStart(
+                2,
+                "0"
+            );
+
+        const dia =
+            String(
+                data.getDate()
+            ).padStart(
+                2,
+                "0"
+            );
+
+        return `${ano}-${mes}-${dia}`;
+
+    }
+
+
+    function formatarData(data) {
 
         return criarDataLocal(
             data
         ).toLocaleDateString(
             "pt-BR",
             {
-                weekday:
-                    "long",
-
-                day:
-                    "2-digit",
-
-                month:
-                    "long",
-
-                year:
-                    "numeric"
+                weekday: "long",
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
             }
         );
 
     }
 
 
-
     // ==================================================
     // ERRO
     // ==================================================
 
-    function mostrarErro(
-        mensagem
-    ) {
+    function mostrarErro(mensagem) {
+
+        pagamentoProcessando = false;
 
         if (conteudo) {
 
@@ -430,28 +427,25 @@
 
         }
 
+        if (erroTexto) {
 
-        if (pagamentoSucesso) {
-
-            pagamentoSucesso.style.display =
-                "none";
+            erroTexto.textContent =
+                mensagem;
 
         }
 
+        if (erroGeral) {
 
-        erroTexto.textContent =
-            mensagem;
+            erroGeral.style.display =
+                "block";
 
-
-        erroGeral.style.display =
-            "block";
+        }
 
     }
 
 
-
     // ==================================================
-    // ANTECEDÊNCIA
+    // ANTECEDÊNCIA MÍNIMA
     // ==================================================
 
     function possuiAntecedencia(
@@ -491,7 +485,7 @@
             new Date();
 
 
-        const diferenca =
+        const diferencaMinutos =
             (
                 inicio.getTime() -
                 agora.getTime()
@@ -501,16 +495,15 @@
 
 
         return (
-            diferenca >=
+            diferencaMinutos >=
             ANTECEDENCIA_MINIMA_MINUTOS
         );
 
     }
 
 
-
     // ==================================================
-    // VALIDAR RESERVA NOVAMENTE
+    // VALIDAR RESERVA
     // ==================================================
 
     function validarReservaAtual() {
@@ -550,7 +543,7 @@
 
         horarioAtual =
             horarios.find(
-                (horario) =>
+                horario =>
                     horario.id ===
                     reserva.horarioId
             );
@@ -581,8 +574,9 @@
         }
 
 
-
+        // ==============================================
         // AVULSO
+        // ==============================================
 
         if (
             reserva.tipo ===
@@ -591,9 +585,9 @@
 
             if (
                 !horarioAtual.aceitaAvulso ||
-                !Number(
+                Number(
                     horarioAtual.valorAvulso
-                )
+                ) <= 0
             ) {
 
                 return {
@@ -613,8 +607,9 @@
         }
 
 
-
+        // ==============================================
         // FIXO
+        // ==============================================
 
         else if (
             reserva.tipo ===
@@ -623,9 +618,9 @@
 
             if (
                 !horarioAtual.aceitaFixo ||
-                !Number(
+                Number(
                     horarioAtual.valorFixo
-                )
+                ) <= 0
             ) {
 
                 return {
@@ -656,6 +651,9 @@
         }
 
 
+        // ==============================================
+        // ANTECEDÊNCIA
+        // ==============================================
 
         if (
             !possuiAntecedencia(
@@ -672,11 +670,12 @@
         }
 
 
-
         /*
-            ATUALIZA OS DADOS COM
-            O QUE REALMENTE ESTÁ CADASTRADO
-            PELO GERENTE.
+            NÃO CONFIAMOS EM DATA,
+            HORÁRIO OU PREÇO DA URL.
+
+            O VALOR CORRETO VEM DO
+            CADASTRO DO GERENTE.
         */
 
         reserva.data =
@@ -704,7 +703,6 @@
     }
 
 
-
     // ==================================================
     // RESUMO
     // ==================================================
@@ -716,96 +714,146 @@
             "fixo";
 
 
-        resumoTipo.textContent =
-            ehFixo
-                ? "Horário fixo mensal"
-                : "Reserva avulsa";
+        if (resumoTipo) {
 
-
-        resumoTipoIcone.textContent =
-            ehFixo
-                ? "🔁"
-                : "⚽";
-
-
-        resumoData.textContent =
-            formatarData(
-                reserva.data
-            );
-
-
-        resumoHorario.textContent =
-            `${reserva.inicio} → ${reserva.fim}`;
-
-
-        if (ehFixo) {
-
-            resumoRecorrenciaLinha
-                .style
-                .display =
-                "flex";
-
-
-            const diaSemana =
-                criarDataLocal(
-                    reserva.data
-                )
-                .toLocaleDateString(
-                    "pt-BR",
-                    {
-                        weekday:
-                            "long"
-                    }
-                );
-
-
-            resumoRecorrencia.textContent =
-                `Toda ${diaSemana}`;
-
-        } else {
-
-            resumoRecorrenciaLinha
-                .style
-                .display =
-                "none";
+            resumoTipo.textContent =
+                ehFixo
+                    ? "Horário fixo mensal"
+                    : "Reserva avulsa";
 
         }
 
 
-        resumoClienteNome.textContent =
-            cliente.nome ||
-            "-";
+        if (resumoTipoIcone) {
+
+            resumoTipoIcone.textContent =
+                ehFixo
+                    ? "🔁"
+                    : "⚽";
+
+        }
 
 
-        resumoClienteWhatsapp.textContent =
-            cliente.whatsapp ||
-            "-";
+        if (resumoData) {
+
+            resumoData.textContent =
+                formatarData(
+                    reserva.data
+                );
+
+        }
 
 
-        resumoClienteEmail.textContent =
-            cliente.email ||
-            "-";
+        if (resumoHorario) {
+
+            resumoHorario.textContent =
+                `${reserva.inicio} → ${reserva.fim}`;
+
+        }
 
 
-        resumoValor.textContent =
-            formatarValor(
-                reserva.valor
-            );
+        if (
+            resumoRecorrenciaLinha
+        ) {
+
+            if (ehFixo) {
+
+                resumoRecorrenciaLinha
+                    .style
+                    .display =
+                    "flex";
 
 
-        pixValor.textContent =
-            formatarValor(
-                reserva.valor
-            );
+                const diaSemana =
+                    criarDataLocal(
+                        reserva.data
+                    )
+                    .toLocaleDateString(
+                        "pt-BR",
+                        {
+                            weekday:
+                                "long"
+                        }
+                    );
 
 
-        resumoTotalDescricao.textContent =
-            ehFixo
-                ? "mensalidade"
-                : "por jogo";
+                if (resumoRecorrencia) {
+
+                    resumoRecorrencia
+                        .textContent =
+                        `Toda ${diaSemana}`;
+
+                }
+
+            } else {
+
+                resumoRecorrenciaLinha
+                    .style
+                    .display =
+                    "none";
+
+            }
+
+        }
+
+
+        if (resumoClienteNome) {
+
+            resumoClienteNome.textContent =
+                cliente.nome ||
+                "-";
+
+        }
+
+
+        if (resumoClienteWhatsapp) {
+
+            resumoClienteWhatsapp.textContent =
+                cliente.whatsapp ||
+                "-";
+
+        }
+
+
+        if (resumoClienteEmail) {
+
+            resumoClienteEmail.textContent =
+                cliente.email ||
+                "-";
+
+        }
+
+
+        if (resumoValor) {
+
+            resumoValor.textContent =
+                formatarValor(
+                    reserva.valor
+                );
+
+        }
+
+
+        if (pixValor) {
+
+            pixValor.textContent =
+                formatarValor(
+                    reserva.valor
+                );
+
+        }
+
+
+        if (resumoTotalDescricao) {
+
+            resumoTotalDescricao.textContent =
+                ehFixo
+                    ? "mensalidade"
+                    : "por jogo";
+
+        }
 
     }
-
 
 
     // ==================================================
@@ -813,6 +861,11 @@
     // ==================================================
 
     function criarCodigoPix() {
+
+        if (!pixCodigo) {
+            return;
+        }
+
 
         pixCodigo.value =
             (
@@ -828,9 +881,8 @@
     }
 
 
-
     // ==================================================
-    // MÉTODOS
+    // MÉTODO DE PAGAMENTO
     // ==================================================
 
     function selecionarMetodo(
@@ -842,102 +894,146 @@
             "pix";
 
 
-        btnPix.classList.toggle(
-            "ativo",
-            usarPix
-        );
+        if (btnPix) {
+
+            btnPix.classList.toggle(
+                "ativo",
+                usarPix
+            );
+
+        }
 
 
-        btnCartao.classList.toggle(
-            "ativo",
-            !usarPix
-        );
+        if (btnCartao) {
+
+            btnCartao.classList.toggle(
+                "ativo",
+                !usarPix
+            );
+
+        }
 
 
-        painelPix.classList.toggle(
-            "ativo",
-            usarPix
-        );
+        if (painelPix) {
+
+            painelPix.classList.toggle(
+                "ativo",
+                usarPix
+            );
+
+        }
 
 
-        painelCartao.classList.toggle(
-            "ativo",
-            !usarPix
+        if (painelCartao) {
+
+            painelCartao.classList.toggle(
+                "ativo",
+                !usarPix
+            );
+
+        }
+
+    }
+
+
+    if (btnPix) {
+
+        btnPix.addEventListener(
+            "click",
+            () => {
+
+                selecionarMetodo(
+                    "pix"
+                );
+
+            }
         );
 
     }
 
 
+    if (btnCartao) {
 
-    btnPix.addEventListener(
-        "click",
-        () => {
+        btnCartao.addEventListener(
+            "click",
+            () => {
 
-            selecionarMetodo(
-                "pix"
-            );
+                selecionarMetodo(
+                    "cartao"
+                );
 
-        }
-    );
+            }
+        );
 
-
-
-    btnCartao.addEventListener(
-        "click",
-        () => {
-
-            selecionarMetodo(
-                "cartao"
-            );
-
-        }
-    );
-
+    }
 
 
     // ==================================================
     // COPIAR PIX
     // ==================================================
 
-    btnCopiarPix.addEventListener(
-        "click",
-        async () => {
+    if (
+        btnCopiarPix &&
+        pixCodigo
+    ) {
 
-            try {
+        btnCopiarPix.addEventListener(
+            "click",
+            async () => {
 
-                await navigator.clipboard
-                    .writeText(
-                        pixCodigo.value
+                try {
+
+                    if (
+                        navigator.clipboard &&
+                        navigator.clipboard.writeText
+                    ) {
+
+                        await navigator
+                            .clipboard
+                            .writeText(
+                                pixCodigo.value
+                            );
+
+                    } else {
+
+                        pixCodigo.select();
+
+                        document.execCommand(
+                            "copy"
+                        );
+
+                    }
+
+
+                    btnCopiarPix.textContent =
+                        "Copiado ✓";
+
+
+                    setTimeout(
+                        () => {
+
+                            btnCopiarPix.textContent =
+                                "Copiar";
+
+                        },
+                        1500
                     );
 
+                } catch (erro) {
 
-                btnCopiarPix.textContent =
-                    "Copiado ✓";
+                    console.error(
+                        "Erro ao copiar PIX:",
+                        erro
+                    );
 
+                    pixCodigo.select();
 
-                setTimeout(
-                    () => {
-
-                        btnCopiarPix.textContent =
-                            "Copiar";
-
-                    },
-                    1500
-                );
-
-            } catch {
-
-                pixCodigo.select();
-
-                document.execCommand(
-                    "copy"
-                );
+                }
 
             }
+        );
 
-        }
-    );
-
+    }
 
 
     // ==================================================
@@ -991,7 +1087,6 @@
         }
 
 
-
         function atualizar() {
 
             const restante =
@@ -1008,28 +1103,50 @@
                     true;
 
 
-                contador.textContent =
-                    "00:00";
+                if (contador) {
+
+                    contador.textContent =
+                        "00:00";
+
+                }
 
 
-                btnSimularPix.disabled =
-                    true;
+                if (btnSimularPix) {
+
+                    btnSimularPix.disabled =
+                        true;
+
+                }
 
 
-                const submit =
-                    formCartao
-                        .querySelector(
-                            'button[type="submit"]'
-                        );
+                if (formCartao) {
+
+                    const submit =
+                        formCartao
+                            .querySelector(
+                                'button[type="submit"]'
+                            );
 
 
-                submit.disabled =
-                    true;
+                    if (submit) {
+
+                        submit.disabled =
+                            true;
+
+                    }
+
+                }
 
 
-                clearInterval(
+                if (
                     intervaloContador
-                );
+                ) {
+
+                    clearInterval(
+                        intervaloContador
+                    );
+
+                }
 
 
                 mostrarErro(
@@ -1061,24 +1178,28 @@
                 60;
 
 
-            contador.textContent =
-                (
-                    String(minutos)
-                        .padStart(
+            if (contador) {
+
+                contador.textContent =
+                    (
+                        String(
+                            minutos
+                        ).padStart(
                             2,
                             "0"
                         )
-                    +
-                    ":"
-                    +
-                    String(
-                        segundosRestantes
-                    )
-                    .padStart(
-                        2,
-                        "0"
-                    )
-                );
+                        +
+                        ":"
+                        +
+                        String(
+                            segundosRestantes
+                        ).padStart(
+                            2,
+                            "0"
+                        )
+                    );
+
+            }
 
         }
 
@@ -1095,9 +1216,48 @@
     }
 
 
+    // ==================================================
+    // DESABILITAR BOTÕES DURANTE PROCESSAMENTO
+    // ==================================================
+
+    function definirProcessando(
+        processando
+    ) {
+
+        pagamentoProcessando =
+            processando;
+
+
+        if (btnSimularPix) {
+
+            btnSimularPix.disabled =
+                processando;
+
+        }
+
+
+        if (formCartao) {
+
+            const submit =
+                formCartao.querySelector(
+                    'button[type="submit"]'
+                );
+
+
+            if (submit) {
+
+                submit.disabled =
+                    processando;
+
+            }
+
+        }
+
+    }
+
 
     // ==================================================
-    // BLOQUEAR HORÁRIO AVULSO
+    // CONFIRMAR AVULSO
     // ==================================================
 
     function confirmarAvulso(
@@ -1112,7 +1272,7 @@
 
         const indice =
             horarios.findIndex(
-                (horario) =>
+                horario =>
                     horario.id ===
                     horarioAtual.id
             );
@@ -1120,6 +1280,31 @@
 
         if (
             indice === -1
+        ) {
+
+            return false;
+
+        }
+
+
+        /*
+            REVALIDA MAIS UMA VEZ
+            ANTES DE ALTERAR.
+        */
+
+        if (
+            horarios[indice].status !==
+            "disponivel"
+        ) {
+
+            return false;
+
+        }
+
+
+        if (
+            !horarios[indice]
+                .aceitaAvulso
         ) {
 
             return false;
@@ -1146,9 +1331,66 @@
     }
 
 
+    // ==================================================
+    // GERAR DATAS SEMANAIS DO FIXO
+    // ==================================================
+
+    function gerarDatasFixasEsperadas() {
+
+        const inicio =
+            criarDataLocal(
+                horarioAtual.data
+            );
+
+
+        const mesInicial =
+            inicio.getMonth();
+
+        const anoInicial =
+            inicio.getFullYear();
+
+
+        const datas =
+            [];
+
+
+        const atual =
+            new Date(
+                inicio.getFullYear(),
+                inicio.getMonth(),
+                inicio.getDate()
+            );
+
+
+        while (
+            atual.getMonth() ===
+                mesInicial &&
+            atual.getFullYear() ===
+                anoInicial
+        ) {
+
+            datas.push(
+                dataParaString(
+                    atual
+                )
+            );
+
+
+            atual.setDate(
+                atual.getDate() +
+                7
+            );
+
+        }
+
+
+        return datas;
+
+    }
+
 
     // ==================================================
-    // BLOQUEAR HORÁRIO FIXO
+    // CONFIRMAR HORÁRIO FIXO
     // ==================================================
 
     function confirmarFixo(
@@ -1161,22 +1403,114 @@
             );
 
 
-        const dataInicial =
-            criarDataLocal(
-                horarioAtual.data
+        const datasEsperadas =
+            gerarDatasFixasEsperadas();
+
+
+        const ocorrencias =
+            [];
+
+
+        /*
+            PRIMEIRO ENCONTRAMOS TODAS
+            AS OCORRÊNCIAS.
+
+            NÃO ALTERAMOS NADA AINDA.
+        */
+
+        for (
+            const dataEsperada
+            of datasEsperadas
+        ) {
+
+            const horario =
+                horarios.find(
+                    item => {
+
+                        if (
+                            item.data !==
+                            dataEsperada
+                        ) {
+
+                            return false;
+
+                        }
+
+
+                        // CADASTRO MENSAL
+
+                        if (
+                            horarioAtual.serieId
+                        ) {
+
+                            return (
+                                item.serieId ===
+                                horarioAtual.serieId
+                            );
+
+                        }
+
+
+                        // FALLBACK MANUAL
+
+                        return (
+                            item.inicio ===
+                                horarioAtual.inicio &&
+                            item.fim ===
+                                horarioAtual.fim &&
+                            item.aceitaFixo
+                        );
+
+                    }
+                );
+
+
+            if (!horario) {
+
+                return {
+                    ok: false,
+
+                    erro:
+                        `Não é possível contratar este horário como fixo porque ${formatarData(dataEsperada)} não possui esta disponibilidade cadastrada.`
+                };
+
+            }
+
+
+            ocorrencias.push(
+                horario
+            );
+
+        }
+
+
+        /*
+            AGORA VERIFICAMOS SE TODAS
+            CONTINUAM DISPONÍVEIS.
+
+            ISSO IMPEDE CONTRATO FIXO
+            PELA METADE.
+        */
+
+        const indisponivel =
+            ocorrencias.find(
+                horario =>
+                    horario.status !==
+                        "disponivel" ||
+                    !horario.aceitaFixo
             );
 
 
-        const mes =
-            dataInicial.getMonth();
+        if (indisponivel) {
 
+            return {
+                ok: false,
 
-        const ano =
-            dataInicial.getFullYear();
+                erro:
+                    `Não é possível confirmar o horário fixo porque ${formatarData(indisponivel.data)} já não está disponível.`
+            };
 
-
-        const diaSemana =
-            dataInicial.getDay();
+        }
 
 
         const contratoId =
@@ -1187,96 +1521,13 @@
             [];
 
 
+        /*
+            SOMENTE AGORA ALTERAMOS
+            TODAS AS OCORRÊNCIAS.
+        */
 
-        horarios.forEach(
-            (horario) => {
-
-                if (
-                    horario.status !==
-                    "disponivel"
-                ) {
-
-                    return;
-
-                }
-
-
-                if (
-                    horario.data <
-                    horarioAtual.data
-                ) {
-
-                    return;
-
-                }
-
-
-                const dataHorario =
-                    criarDataLocal(
-                        horario.data
-                    );
-
-
-                if (
-                    dataHorario.getMonth() !==
-                    mes ||
-                    dataHorario.getFullYear() !==
-                    ano
-                ) {
-
-                    return;
-
-                }
-
-
-
-                let pertenceSerie =
-                    false;
-
-
-
-                // CADASTRO MENSAL
-
-                if (
-                    horarioAtual.serieId &&
-                    horario.serieId ===
-                    horarioAtual.serieId
-                ) {
-
-                    pertenceSerie =
-                        true;
-
-                }
-
-
-
-                // FALLBACK PARA CADASTRO MANUAL
-
-                if (
-                    !horarioAtual.serieId &&
-                    dataHorario.getDay() ===
-                    diaSemana &&
-                    horario.inicio ===
-                    horarioAtual.inicio &&
-                    horario.fim ===
-                    horarioAtual.fim &&
-                    horario.aceitaFixo
-                ) {
-
-                    pertenceSerie =
-                        true;
-
-                }
-
-
-
-                if (!pertenceSerie) {
-
-                    return;
-
-                }
-
-
+        ocorrencias.forEach(
+            horario => {
 
                 horario.status =
                     "fixo";
@@ -1298,27 +1549,25 @@
         );
 
 
-
-        if (
-            bloqueados.length === 0
-        ) {
-
-            return false;
-
-        }
-
-
-
         salvarLocal(
             STORAGE_HORARIOS,
             horarios
         );
 
 
+        // ==============================================
+        // CONTRATO FIXO
+        // ==============================================
 
         const contratos =
             carregarLocal(
                 STORAGE_FIXOS
+            );
+
+
+        const dataInicial =
+            criarDataLocal(
+                horarioAtual.data
             );
 
 
@@ -1328,7 +1577,9 @@
                 id:
                     contratoId,
 
-                reservaId,
+                reservaId:
+
+                    reservaId,
 
                 serieId:
                     horarioAtual.serieId ||
@@ -1337,7 +1588,8 @@
                 cliente:
                     cliente,
 
-                diaSemana,
+                diaSemana:
+                    dataInicial.getDay(),
 
                 inicio:
                     horarioAtual.inicio,
@@ -1380,10 +1632,12 @@
         );
 
 
-        return bloqueados;
+        return {
+            ok: true,
+            datas: bloqueados
+        };
 
     }
-
 
 
     // ==================================================
@@ -1394,6 +1648,17 @@
         formaPagamento
     ) {
 
+        // EVITA CLIQUE DUPLO
+
+        if (
+            pagamentoProcessando
+        ) {
+
+            return;
+
+        }
+
+
         if (
             pagamentoExpirado
         ) {
@@ -1403,23 +1668,36 @@
         }
 
 
+        definirProcessando(
+            true
+        );
 
-        // REVALIDA ANTES DE CONFIRMAR
+
+        // ==============================================
+        // REVALIDAÇÃO
+        // ==============================================
 
         const validacao =
             validarReservaAtual();
 
 
-        if (!validacao.ok) {
+        if (
+            !validacao.ok
+        ) {
+
+            definirProcessando(
+                false
+            );
+
 
             mostrarErro(
                 validacao.erro
             );
 
+
             return;
 
         }
-
 
 
         const reservaId =
@@ -1434,6 +1712,9 @@
             null;
 
 
+        // ==============================================
+        // AVULSO
+        // ==============================================
 
         if (
             reserva.tipo ===
@@ -1448,27 +1729,15 @@
 
             if (!sucesso) {
 
-                mostrarErro(
-                    "Não foi possível confirmar este horário."
+                definirProcessando(
+                    false
                 );
 
-                return;
-
-            }
-
-        } else {
-
-            datasFixas =
-                confirmarFixo(
-                    reservaId
-                );
-
-
-            if (!datasFixas) {
 
                 mostrarErro(
-                    "Não foi possível gerar o horário fixo deste mês."
+                    "Não foi possível confirmar este horário. Ele pode ter sido reservado por outra pessoa."
                 );
+
 
                 return;
 
@@ -1477,15 +1746,50 @@
         }
 
 
+        // ==============================================
+        // FIXO
+        // ==============================================
+
+        else {
+
+            const resultadoFixo =
+                confirmarFixo(
+                    reservaId
+                );
+
+
+            if (
+                !resultadoFixo.ok
+            ) {
+
+                definirProcessando(
+                    false
+                );
+
+
+                mostrarErro(
+                    resultadoFixo.erro
+                );
+
+
+                return;
+
+            }
+
+
+            datasFixas =
+                resultadoFixo.datas;
+
+        }
+
 
         // ==================================================
         // REGISTRAR RESERVA
         // ==================================================
 
-        const reservas =
-            carregarLocal(
-                STORAGE_RESERVAS
-            );
+        const agora =
+            new Date()
+                .toISOString();
 
 
         const novaReserva =
@@ -1494,7 +1798,8 @@
             id:
                 reservaId,
 
-            codigo,
+            codigo:
+                codigo,
 
             horarioId:
                 horarioAtual.id,
@@ -1516,24 +1821,31 @@
                     reserva.valor
                 ),
 
-            cliente,
+            cliente:
+                cliente,
 
             status:
                 "paga",
 
-            formaPagamento,
+            formaPagamento:
+                formaPagamento,
 
-            datasFixas,
+            datasFixas:
+                datasFixas,
 
             criadoEm:
-                new Date()
-                    .toISOString(),
+                agora,
 
             pagoEm:
-                new Date()
-                    .toISOString()
+                agora
 
         };
+
+
+        const reservas =
+            carregarLocal(
+                STORAGE_RESERVAS
+            );
 
 
         reservas.push(
@@ -1547,16 +1859,9 @@
         );
 
 
-
         // ==================================================
         // REGISTRAR PAGAMENTO
         // ==================================================
-
-        const pagamentos =
-            carregarLocal(
-                STORAGE_PAGAMENTOS
-            );
-
 
         const pagamento =
         {
@@ -1564,7 +1869,8 @@
             id:
                 gerarId(),
 
-            reservaId,
+            reservaId:
+                reservaId,
 
             codigoReserva:
                 codigo,
@@ -1581,10 +1887,15 @@
                 "aprovado",
 
             pagoEm:
-                new Date()
-                    .toISOString()
+                agora
 
         };
+
+
+        const pagamentos =
+            carregarLocal(
+                STORAGE_PAGAMENTOS
+            );
 
 
         pagamentos.push(
@@ -1598,9 +1909,8 @@
         );
 
 
-
         // ==================================================
-        // CONFIRMAÇÃO EM SESSION
+        // SALVAR CONFIRMAÇÃO
         // ==================================================
 
         sessionStorage.setItem(
@@ -1610,146 +1920,187 @@
                     reserva:
                         novaReserva,
 
-                    pagamento
+                    pagamento:
+                        pagamento
                 }
             )
         );
 
+
+        // ==================================================
+        // LIMPAR PAGAMENTO PENDENTE
+        // ==================================================
 
         sessionStorage.removeItem(
             SESSION_PAGAMENTO
         );
 
 
-
-        if (intervaloContador) {
+        if (
+            intervaloContador
+        ) {
 
             clearInterval(
                 intervaloContador
             );
 
+
+            intervaloContador =
+                null;
+
         }
 
 
-
         // ==================================================
-        // MOSTRAR SUCESSO
+        // REDIRECIONAR
         // ==================================================
 
-        conteudo.style.display =
-            "none";
+        /*
+            A RESERVA JÁ ESTÁ:
+            ✓ PAGA
+            ✓ REGISTRADA
+            ✓ HORÁRIO BLOQUEADO
+            ✓ DISPONÍVEL NO DASHBOARD
+            ✓ DISPONÍVEL NA AGENDA DO GERENTE
 
+            AGORA VAMOS PARA A
+            PÁGINA DE CONFIRMAÇÃO.
+        */
 
-        erroGeral.style.display =
-            "none";
-
-
-        codigoReservaSucesso
-            .textContent =
-            codigo;
-
-
-        pagamentoSucesso
-            .style
-            .display =
-            "block";
-
-
-        window.scrollTo(
-            {
-                top: 0,
-                behavior:
-                    "smooth"
-            }
-        );
+        window.location.href =
+            "confirmacao.html";
 
     }
-
 
 
     // ==================================================
     // PIX APROVADO
     // ==================================================
 
-    btnSimularPix.addEventListener(
-        "click",
-        () => {
+    if (btnSimularPix) {
 
-            finalizarPagamento(
-                "pix"
-            );
+        btnSimularPix.addEventListener(
+            "click",
+            () => {
 
-        }
-    );
+                finalizarPagamento(
+                    "pix"
+                );
 
+            }
+        );
+
+    }
 
 
     // ==================================================
     // CARTÃO
     // ==================================================
 
-    formCartao.addEventListener(
-        "submit",
-        (event) => {
+    if (formCartao) {
 
-            event.preventDefault();
+        formCartao.addEventListener(
+            "submit",
+            event => {
 
-
-            mensagemCartao.textContent =
-                "";
+                event.preventDefault();
 
 
-            const numero =
-                document.getElementById(
-                    "cartaoNumero"
-                ).value.trim();
+                if (
+                    pagamentoProcessando ||
+                    pagamentoExpirado
+                ) {
+
+                    return;
+
+                }
 
 
-            const validade =
-                document.getElementById(
-                    "cartaoValidade"
-                ).value.trim();
+                if (mensagemCartao) {
+
+                    mensagemCartao.textContent =
+                        "";
+
+                }
 
 
-            const cvv =
-                document.getElementById(
-                    "cartaoCvv"
-                ).value.trim();
+                const numero =
+                    document.getElementById(
+                        "cartaoNumero"
+                    )
+                    ?.value
+                    .trim() ||
+                    "";
 
 
-            const nome =
-                document.getElementById(
-                    "cartaoNome"
-                ).value.trim();
+                const validade =
+                    document.getElementById(
+                        "cartaoValidade"
+                    )
+                    ?.value
+                    .trim() ||
+                    "";
 
 
+                const cvv =
+                    document.getElementById(
+                        "cartaoCvv"
+                    )
+                    ?.value
+                    .trim() ||
+                    "";
 
-            if (
-                !numero ||
-                !validade ||
-                !cvv ||
-                !nome
-            ) {
 
-                mensagemCartao.textContent =
-                    "Preencha os dados do cartão para simular o pagamento.";
+                const nome =
+                    document.getElementById(
+                        "cartaoNome"
+                    )
+                    ?.value
+                    .trim() ||
+                    "";
 
-                return;
+
+                if (
+                    !numero ||
+                    !validade ||
+                    !cvv ||
+                    !nome
+                ) {
+
+                    if (
+                        mensagemCartao
+                    ) {
+
+                        mensagemCartao.textContent =
+                            "Preencha os dados do cartão para simular o pagamento.";
+
+                    }
+
+
+                    return;
+
+                }
+
+
+                /*
+                    PROTÓTIPO.
+
+                    NÃO EXISTE COBRANÇA
+                    REAL DE CARTÃO AQUI.
+                */
+
+                finalizarPagamento(
+                    "cartao"
+                );
 
             }
+        );
 
-
-            finalizarPagamento(
-                "cartao"
-            );
-
-        }
-    );
-
+    }
 
 
     // ==================================================
-    // MÁSCARA CARTÃO
+    // MÁSCARA DO NÚMERO DO CARTÃO
     // ==================================================
 
     const cartaoNumero =
@@ -1758,36 +2109,43 @@
         );
 
 
-    cartaoNumero.addEventListener(
-        "input",
-        () => {
+    if (cartaoNumero) {
 
-            let valor =
-                cartaoNumero.value
-                    .replace(
-                        /\D/g,
-                        ""
-                    )
-                    .substring(
-                        0,
-                        16
+        cartaoNumero.addEventListener(
+            "input",
+            () => {
+
+                let valor =
+                    cartaoNumero.value
+                        .replace(
+                            /\D/g,
+                            ""
+                        )
+                        .substring(
+                            0,
+                            16
+                        );
+
+
+                valor =
+                    valor.replace(
+                        /(\d{4})(?=\d)/g,
+                        "$1 "
                     );
 
 
-            valor =
-                valor.replace(
-                    /(\d{4})(?=\d)/g,
-                    "$1 "
-                );
+                cartaoNumero.value =
+                    valor;
+
+            }
+        );
+
+    }
 
 
-            cartaoNumero.value =
-                valor;
-
-        }
-    );
-
-
+    // ==================================================
+    // MÁSCARA DA VALIDADE
+    // ==================================================
 
     const cartaoValidade =
         document.getElementById(
@@ -1795,47 +2153,51 @@
         );
 
 
-    cartaoValidade.addEventListener(
-        "input",
-        () => {
+    if (cartaoValidade) {
 
-            let valor =
-                cartaoValidade.value
-                    .replace(
-                        /\D/g,
-                        ""
-                    )
-                    .substring(
-                        0,
-                        4
-                    );
+        cartaoValidade.addEventListener(
+            "input",
+            () => {
+
+                let valor =
+                    cartaoValidade.value
+                        .replace(
+                            /\D/g,
+                            ""
+                        )
+                        .substring(
+                            0,
+                            4
+                        );
 
 
-            if (
-                valor.length > 2
-            ) {
+                if (
+                    valor.length >
+                    2
+                ) {
 
-                valor =
-                    valor.substring(
-                        0,
-                        2
-                    )
-                    +
-                    "/"
-                    +
-                    valor.substring(
-                        2
-                    );
+                    valor =
+                        valor.substring(
+                            0,
+                            2
+                        )
+                        +
+                        "/"
+                        +
+                        valor.substring(
+                            2
+                        );
+
+                }
+
+
+                cartaoValidade.value =
+                    valor;
 
             }
+        );
 
-
-            cartaoValidade.value =
-                valor;
-
-        }
-    );
-
+    }
 
 
     // ==================================================
@@ -1848,11 +2210,14 @@
             validarReservaAtual();
 
 
-        if (!validacao.ok) {
+        if (
+            !validacao.ok
+        ) {
 
             mostrarErro(
                 validacao.erro
             );
+
 
             return;
 
@@ -1862,6 +2227,10 @@
         preencherResumo();
 
         criarCodigoPix();
+
+        selecionarMetodo(
+            "pix"
+        );
 
         iniciarContador();
 
@@ -1873,8 +2242,6 @@
     }
 
 
-
     iniciar();
-
 
 })();
