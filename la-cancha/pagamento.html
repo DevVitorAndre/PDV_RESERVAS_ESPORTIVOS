@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Pagamento | La Cancha Fut 7
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/pagamento.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         CABEÇALHO
+    =================================================== -->
+
+    <header class="cabecalho">
+
+        <div class="container cabecalho-conteudo">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <img
+                    src="img/logo.png"
+                    alt="La Cancha Fut 7"
+                >
+
+            </a>
+
+
+            <nav class="menu-principal">
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="agenda.html">
+                    Agenda
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==================================================
+         CONTEÚDO
+    =================================================== -->
+
+    <main class="pagina-pagamento">
+
+        <div class="container">
+
+
+            <!-- ==================================================
+                 PROGRESSO
+            =================================================== -->
+
+            <div class="pagamento-progresso">
+
+                <div class="etapa concluida">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    <small>
+                        Horário
+                    </small>
+
+                </div>
+
+
+                <div class="linha concluida">
+                </div>
+
+
+                <div class="etapa concluida">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    <small>
+                        Identificação
+                    </small>
+
+                </div>
+
+
+                <div class="linha concluida">
+                </div>
+
+
+                <div class="etapa ativa">
+
+                    <span>
+                        3
+                    </span>
+
+                    <small>
+                        Pagamento
+                    </small>
+
+                </div>
+
+
+                <div class="linha">
+                </div>
+
+
+                <div class="etapa">
+
+                    <span>
+                        4
+                    </span>
+
+                    <small>
+                        Confirmação
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 ERRO GERAL
+            =================================================== -->
+
+            <div
+                class="pagamento-erro-geral"
+                id="pagamentoErroGeral"
+            >
+
+                <strong>
+                    Não foi possível continuar
+                </strong>
+
+                <p id="pagamentoErroTexto">
+                </p>
+
+                <a
+                    href="agenda.html"
+                    class="pagamento-btn-principal"
+                >
+                    Voltar para agenda
+                </a>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 ÁREA PRINCIPAL
+            =================================================== -->
+
+            <section
+                class="pagamento-layout"
+                id="pagamentoConteudo"
+            >
+
+
+                <!-- ==================================================
+                     PAGAMENTO
+                =================================================== -->
+
+                <div class="pagamento-principal">
+
+
+                    <div class="pagamento-titulo">
+
+                        <span>
+                            PAGAMENTO
+                        </span>
+
+                        <h1>
+                            Finalize sua reserva
+                        </h1>
+
+                        <p>
+                            Escolha uma forma de pagamento
+                            para confirmar seu horário.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- ==================================================
+                         CRONÔMETRO
+                    =================================================== -->
+
+                    <div class="pagamento-tempo">
+
+                        <div class="pagamento-tempo-icone">
+                            ⏱️
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Tempo para concluir
+                            </span>
+
+                            <strong id="pagamentoContador">
+                                10:00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ==================================================
+                         FORMA DE PAGAMENTO
+                    =================================================== -->
+
+                    <div class="pagamento-formas">
+
+
+                        <button
+                            type="button"
+                            class="pagamento-forma ativo"
+                            id="btnPagamentoPix"
+                        >
+
+                            <div class="forma-icone">
+                                ◆
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    PIX
+                                </strong>
+
+                                <span>
+                                    Aprovação rápida
+                                </span>
+
+                            </div>
+
+                        </button>
+
+
+
+                        <button
+                            type="button"
+                            class="pagamento-forma"
+                            id="btnPagamentoCartao"
+                        >
+
+                            <div class="forma-icone">
+                                💳
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Cartão
+                                </strong>
+
+                                <span>
+                                    Crédito
+                                </span>
+
+                            </div>
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <!-- ==================================================
+                         PIX
+                    =================================================== -->
+
+                    <section
+                        class="pagamento-metodo ativo"
+                        id="painelPix"
+                    >
+
+                        <div class="pagamento-metodo-topo">
+
+                            <span>
+                                PIX
+                            </span>
+
+                            <h2>
+                                Pague com PIX
+                            </h2>
+
+                            <p>
+                                No sistema real, o QR Code será
+                                gerado pelo gateway de pagamento.
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- QR CODE SIMULADO -->
+
+                        <div class="pix-area">
+
+                            <div class="pix-qrcode">
+
+                                <div class="pix-qrcode-fake">
+
+                                    <span>
+                                        PIX
+                                    </span>
+
+                                    <small>
+                                        QR CODE
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="pix-info">
+
+                                <span>
+                                    Valor
+                                </span>
+
+                                <strong id="pixValor">
+                                    R$ 0,00
+                                </strong>
+
+                                <small>
+                                    La Cancha Fut 7
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- COPIA E COLA -->
+
+                        <div class="pix-copia">
+
+                            <label>
+                                PIX Copia e Cola
+                            </label>
+
+                            <div>
+
+                                <input
+                                    type="text"
+                                    id="pixCodigo"
+                                    readonly
+                                >
+
+                                <button
+                                    type="button"
+                                    id="btnCopiarPix"
+                                >
+                                    Copiar
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="pagamento-aviso-prototipo">
+
+                            <strong>
+                                ⚠️ Ambiente de demonstração
+                            </strong>
+
+                            <p>
+                                Nenhum pagamento real será realizado.
+                                Este botão simula o retorno aprovado
+                                do gateway de pagamento.
+                            </p>
+
+                        </div>
+
+
+
+                        <button
+                            type="button"
+                            class="pagamento-btn-principal"
+                            id="btnSimularPix"
+                        >
+                            Simular pagamento PIX aprovado
+                        </button>
+
+                    </section>
+
+
+
+                    <!-- ==================================================
+                         CARTÃO
+                    =================================================== -->
+
+                    <section
+                        class="pagamento-metodo"
+                        id="painelCartao"
+                    >
+
+                        <div class="pagamento-metodo-topo">
+
+                            <span>
+                                CARTÃO
+                            </span>
+
+                            <h2>
+                                Pagamento no cartão
+                            </h2>
+
+                            <p>
+                                Os dados abaixo servem somente
+                                para testar a interface.
+                            </p>
+
+                        </div>
+
+
+
+                        <form
+                            id="formCartao"
+                            autocomplete="off"
+                        >
+
+
+                            <div class="pagamento-campo">
+
+                                <label for="cartaoNumero">
+                                    Número do cartão
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="cartaoNumero"
+                                    maxlength="19"
+                                    placeholder="0000 0000 0000 0000"
+                                >
+
+                            </div>
+
+
+
+                            <div class="pagamento-campos-duplos">
+
+
+                                <div class="pagamento-campo">
+
+                                    <label for="cartaoValidade">
+                                        Validade
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="cartaoValidade"
+                                        maxlength="5"
+                                        placeholder="MM/AA"
+                                    >
+
+                                </div>
+
+
+
+                                <div class="pagamento-campo">
+
+                                    <label for="cartaoCvv">
+                                        CVV
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="cartaoCvv"
+                                        maxlength="4"
+                                        placeholder="123"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="pagamento-campo">
+
+                                <label for="cartaoNome">
+                                    Nome no cartão
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="cartaoNome"
+                                    placeholder="Nome completo"
+                                >
+
+                            </div>
+
+
+
+                            <div class="pagamento-aviso-prototipo">
+
+                                <strong>
+                                    ⚠️ Ambiente de demonstração
+                                </strong>
+
+                                <p>
+                                    Não utilize dados reais de cartão.
+                                    Nenhuma cobrança será realizada.
+                                </p>
+
+                            </div>
+
+
+
+                            <button
+                                type="submit"
+                                class="pagamento-btn-principal"
+                            >
+                                Simular pagamento aprovado
+                            </button>
+
+
+                            <p
+                                class="pagamento-mensagem"
+                                id="mensagemCartao"
+                            >
+                            </p>
+
+                        </form>
+
+                    </section>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     RESUMO
+                =================================================== -->
+
+                <aside class="pagamento-resumo">
+
+
+                    <div class="pagamento-resumo-topo">
+
+                        <span>
+                            SUA RESERVA
+                        </span>
+
+                        <h2>
+                            Resumo
+                        </h2>
+
+                    </div>
+
+
+
+                    <div class="resumo-tipo">
+
+                        <span id="resumoTipoIcone">
+                            ⚽
+                        </span>
+
+                        <div>
+
+                            <small>
+                                Tipo de reserva
+                            </small>
+
+                            <strong id="resumoTipo">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="resumo-linha">
+
+                        <span>
+                            Data
+                        </span>
+
+                        <strong id="resumoData">
+                            -
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="resumo-linha">
+
+                        <span>
+                            Horário
+                        </span>
+
+                        <strong id="resumoHorario">
+                            -
+                        </strong>
+
+                    </div>
+
+
+
+                    <div
+                        class="resumo-linha"
+                        id="resumoRecorrenciaLinha"
+                    >
+
+                        <span>
+                            Recorrência
+                        </span>
+
+                        <strong id="resumoRecorrencia">
+                            -
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="resumo-separador">
+                    </div>
+
+
+
+                    <div class="resumo-cliente">
+
+                        <span>
+                            CLIENTE
+                        </span>
+
+                        <strong id="resumoClienteNome">
+                            -
+                        </strong>
+
+                        <small id="resumoClienteWhatsapp">
+                            -
+                        </small>
+
+                        <small id="resumoClienteEmail">
+                            -
+                        </small>
+
+                    </div>
+
+
+
+                    <div class="resumo-separador">
+                    </div>
+
+
+
+                    <div class="resumo-total">
+
+                        <div>
+
+                            <span>
+                                Total
+                            </span>
+
+                            <small id="resumoTotalDescricao">
+                                por jogo
+                            </small>
+
+                        </div>
+
+                        <strong id="resumoValor">
+                            R$ 0,00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumo-seguranca">
+
+                        🔒 Pagamento seguro
+
+                    </div>
+
+                </aside>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 PAGAMENTO APROVADO
+            =================================================== -->
+
+            <section
+                class="pagamento-sucesso"
+                id="pagamentoSucesso"
+            >
+
+                <div class="sucesso-icone">
+                    ✓
+                </div>
+
+                <span>
+                    PAGAMENTO APROVADO
+                </span>
+
+                <h1>
+                    Reserva confirmada!
+                </h1>
+
+                <p>
+                    Seu pagamento foi aprovado e o horário
+                    já foi retirado da agenda disponível.
+                </p>
+
+
+                <div class="sucesso-codigo">
+
+                    <small>
+                        Código da reserva
+                    </small>
+
+                    <strong id="codigoReservaSucesso">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="sucesso-acoes">
+
+                    <a
+                        href="index.html"
+                        class="pagamento-btn-principal"
+                    >
+                        Voltar ao início
+                    </a>
+
+                    <a
+                        href="agenda.html"
+                        class="pagamento-btn-secundario"
+                    >
+                        Ver agenda
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <script src="js/pagamento.js"></script>
+
+</body>
+
+</html>

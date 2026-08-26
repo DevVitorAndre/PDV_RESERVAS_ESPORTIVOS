@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,21 +10,40 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Dashboard | La Cancha Fut 7</title>
+    <title>
+        Dashboard | La Cancha Fut 7
+    </title>
 
-    <link rel="icon" type="image/png" href="../img/logo.png">
+    <link
+        rel="icon"
+        type="image/png"
+        href="../img/logo.png"
+    >
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/gerente.css">
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/gerente.css"
+    >
+
 </head>
+
 
 <body class="admin-body">
 
-    <!-- ============================
-         MENU LATERAL
-    ============================= -->
 
-    <aside class="sidebar" id="sidebar">
+    <!-- ==================================================
+         MENU LATERAL
+    =================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
 
         <div class="sidebar-logo">
 
@@ -34,64 +54,119 @@
 
         </div>
 
+
         <nav class="sidebar-menu">
 
-            <a href="dashboard.html" class="ativo">
-                <span>🏠</span>
+            <a
+                href="dashboard.html"
+                class="ativo"
+            >
+                <span>
+                    🏠
+                </span>
+
                 Dashboard
             </a>
 
+
             <a href="agenda.html">
-                <span>📅</span>
+
+                <span>
+                    📅
+                </span>
+
                 Agenda
             </a>
 
+
             <a href="horarios.html">
-                <span>🕐</span>
+
+                <span>
+                    🕐
+                </span>
+
                 Horários
             </a>
 
+
             <a href="#">
-                <span>🔁</span>
+
+                <span>
+                    🔁
+                </span>
+
                 Horários Fixos
             </a>
 
+
             <a href="clientes.html">
-                <span>👥</span>
+
+                <span>
+                    👥
+                </span>
+
                 Clientes
             </a>
 
+
             <a href="#">
-                <span>🛒</span>
+
+                <span>
+                    🛒
+                </span>
+
                 PDV / Caixa
             </a>
 
+
             <a href="#">
-                <span>📦</span>
+
+                <span>
+                    📦
+                </span>
+
                 Produtos
             </a>
 
+
             <a href="#">
-                <span>💰</span>
+
+                <span>
+                    💰
+                </span>
+
                 Financeiro
             </a>
 
+
             <a href="#">
-                <span>🧾</span>
+
+                <span>
+                    🧾
+                </span>
+
                 Fiscal
             </a>
 
+
             <a href="precos.html">
-                <span>⚙️</span>
+
+                <span>
+                    ⚙️
+                </span>
+
                 Configurações
             </a>
 
         </nav>
 
+
         <div class="sidebar-rodape">
 
             <a href="../index.html">
+
                 ← Voltar ao site
+
             </a>
 
         </div>
@@ -99,22 +174,28 @@
     </aside>
 
 
-    <!-- ============================
+
+    <!-- ==================================================
          CONTEÚDO
-    ============================= -->
+    =================================================== -->
 
     <main class="admin-main">
 
-        <!-- TOPO -->
+
+        <!-- ==================================================
+             TOPO
+        =================================================== -->
 
         <header class="admin-topo">
 
             <button
+                type="button"
                 class="btn-sidebar-mobile"
                 id="btnSidebar"
             >
                 ☰
             </button>
+
 
             <div>
 
@@ -127,6 +208,7 @@
                 </h1>
 
             </div>
+
 
             <div class="admin-usuario">
 
@@ -151,7 +233,10 @@
         </header>
 
 
-        <!-- DATA -->
+
+        <!-- ==================================================
+             VISÃO GERAL / DATA
+        =================================================== -->
 
         <section class="dashboard-data">
 
@@ -167,18 +252,26 @@
 
             </div>
 
-            <div class="data-hoje">
-                📅 25/08/2026
+
+            <div
+                class="data-hoje"
+                id="dashboardDataHoje"
+            >
+                📅 --
             </div>
 
         </section>
 
 
-        <!-- ============================
+
+        <!-- ==================================================
              INDICADORES
-        ============================= -->
+        =================================================== -->
 
         <section class="cards-indicadores">
+
+
+            <!-- RESERVAS HOJE -->
 
             <article class="indicador-card">
 
@@ -192,18 +285,21 @@
                         Reservas hoje
                     </span>
 
-                    <strong>
-                        8
+                    <strong id="dashboardReservasHoje">
+                        0
                     </strong>
 
-                    <small class="positivo">
-                        +2 em relação a ontem
+                    <small>
+                        Avulsas + fixas
                     </small>
 
                 </div>
 
             </article>
 
+
+
+            <!-- RECEITA HOJE -->
 
             <article class="indicador-card">
 
@@ -217,37 +313,40 @@
                         Receita hoje
                     </span>
 
-                    <strong>
-                        R$ 1.250
+                    <strong id="dashboardReceitaHoje">
+                        R$ 0,00
                     </strong>
 
                     <small>
-                        Reservas + PDV
+                        Pagamentos aprovados
                     </small>
 
                 </div>
 
             </article>
 
+
+
+            <!-- HORÁRIOS LIVRES -->
 
             <article class="indicador-card">
 
                 <div class="indicador-icone laranja">
-                    🛒
+                    🕐
                 </div>
 
                 <div>
 
                     <span>
-                        Vendas PDV
+                        Horários livres hoje
                     </span>
 
-                    <strong>
-                        R$ 480
+                    <strong id="dashboardHorariosLivres">
+                        0
                     </strong>
 
                     <small>
-                        18 vendas hoje
+                        Disponíveis para reserva
                     </small>
 
                 </div>
@@ -255,24 +354,27 @@
             </article>
 
 
+
+            <!-- HORÁRIOS FIXOS -->
+
             <article class="indicador-card">
 
                 <div class="indicador-icone vermelho">
-                    💸
+                    🔁
                 </div>
 
                 <div>
 
                     <span>
-                        Contas a pagar
+                        Horários fixos
                     </span>
 
-                    <strong>
-                        R$ 2.300
+                    <strong id="dashboardFixosAtivos">
+                        0
                     </strong>
 
                     <small>
-                        4 pendentes
+                        Contratos ativos
                     </small>
 
                 </div>
@@ -282,14 +384,17 @@
         </section>
 
 
-        <!-- ============================
+
+        <!-- ==================================================
              GRID PRINCIPAL
-        ============================= -->
+        =================================================== -->
 
         <section class="dashboard-grid">
 
 
-            <!-- AGENDA -->
+            <!-- ==================================================
+                 AGENDA DE HOJE
+            =================================================== -->
 
             <article class="painel-card agenda-hoje">
 
@@ -307,6 +412,7 @@
 
                     </div>
 
+
                     <a href="agenda.html">
                         Ver agenda →
                     </a>
@@ -314,113 +420,54 @@
                 </div>
 
 
-                <div class="agenda-admin-lista">
+
+                <!-- LISTA DINÂMICA -->
+
+                <div
+                    class="agenda-admin-lista"
+                    id="dashboardAgendaHoje"
+                >
+                </div>
 
 
-                    <div class="agenda-admin-item">
 
-                        <div class="agenda-admin-hora">
-                            16:15
-                            <span>17:15</span>
-                        </div>
+                <!-- ESTADO VAZIO -->
 
-                        <div class="agenda-admin-cliente">
+                <div
+                    id="dashboardAgendaVazia"
+                    style="
+                        display: none;
+                        padding: 30px 10px;
+                        text-align: center;
+                    "
+                >
 
-                            <strong>
-                                João da Silva
-                            </strong>
-
-                            <span>
-                                Reserva online
-                            </span>
-
-                        </div>
-
-                        <span class="badge confirmado">
-                            Pago
-                        </span>
-
+                    <div
+                        style="
+                            font-size: 28px;
+                            margin-bottom: 8px;
+                        "
+                    >
+                        ⚽
                     </div>
 
+                    <strong>
+                        Nenhum horário cadastrado para hoje
+                    </strong>
 
-                    <div class="agenda-admin-item">
-
-                        <div class="agenda-admin-hora">
-                            17:30
-                            <span>18:30</span>
-                        </div>
-
-                        <div class="agenda-admin-cliente">
-
-                            <strong>
-                                Resenha FC
-                            </strong>
-
-                            <span>
-                                Reserva online
-                            </span>
-
-                        </div>
-
-                        <span class="badge confirmado">
-                            Pago
-                        </span>
-
-                    </div>
-
-
-                    <div class="agenda-admin-item">
-
-                        <div class="agenda-admin-hora">
-                            18:45
-                            <span>20:15</span>
-                        </div>
-
-                        <div class="agenda-admin-cliente">
-
-                            <strong>
-                                Disponível
-                            </strong>
-
-                            <span>
-                                R$ 180,00
-                            </span>
-
-                        </div>
-
-                        <span class="badge livre">
-                            Livre
-                        </span>
-
-                    </div>
-
-
-                    <div class="agenda-admin-item">
-
-                        <div class="agenda-admin-hora">
-                            20:30
-                            <span>21:30</span>
-                        </div>
-
-                        <div class="agenda-admin-cliente">
-
-                            <strong>
-                                Futebol dos Guris
-                            </strong>
-
-                            <span>
-                                Horário recorrente
-                            </span>
-
-                        </div>
-
-                        <span class="badge fixo">
-                            Fixo
-                        </span>
-
-                    </div>
+                    <p
+                        style="
+                            margin-top: 5px;
+                            color: #7a8492;
+                            font-size: 11px;
+                        "
+                    >
+                        Cadastre disponibilidades para começar
+                        a receber reservas.
+                    </p>
 
                 </div>
+
 
 
                 <a
@@ -434,7 +481,9 @@
 
 
 
-            <!-- COMANDAS -->
+            <!-- ==================================================
+                 ÚLTIMAS RESERVAS
+            =================================================== -->
 
             <article class="painel-card">
 
@@ -443,104 +492,91 @@
                     <div>
 
                         <span class="mini-etiqueta">
-                            PDV
+                            RESERVAS
                         </span>
 
                         <h2>
-                            Comandas abertas
+                            Últimas reservas
                         </h2>
 
                     </div>
 
-                    <a href="#">
-                        Ver todas →
+
+                    <a href="agenda.html">
+                        Ver agenda →
                     </a>
 
                 </div>
 
 
-                <div class="comandas-lista">
 
-                    <div class="comanda-item">
+                <!-- LISTA DINÂMICA -->
 
-                        <div>
-
-                            <strong>
-                                #031
-                            </strong>
-
-                            <span>
-                                João
-                            </span>
-
-                        </div>
-
-                        <strong>
-                            R$ 42,00
-                        </strong>
-
-                    </div>
-
-
-                    <div class="comanda-item">
-
-                        <div>
-
-                            <strong>
-                                #032
-                            </strong>
-
-                            <span>
-                                Resenha FC
-                            </span>
-
-                        </div>
-
-                        <strong>
-                            R$ 86,00
-                        </strong>
-
-                    </div>
-
-
-                    <div class="comanda-item">
-
-                        <div>
-
-                            <strong>
-                                #033
-                            </strong>
-
-                            <span>
-                                Carlos
-                            </span>
-
-                        </div>
-
-                        <strong>
-                            R$ 28,00
-                        </strong>
-
-                    </div>
-
+                <div
+                    class="comandas-lista"
+                    id="dashboardUltimasReservas"
+                >
                 </div>
 
 
-                <button class="btn-admin-secundario">
-                    + Abrir nova comanda
-                </button>
+
+                <!-- ESTADO VAZIO -->
+
+                <div
+                    id="dashboardUltimasReservasVazio"
+                    style="
+                        display: none;
+                        padding: 30px 10px;
+                        text-align: center;
+                    "
+                >
+
+                    <div
+                        style="
+                            font-size: 26px;
+                            margin-bottom: 8px;
+                        "
+                    >
+                        📅
+                    </div>
+
+                    <strong>
+                        Nenhuma reserva realizada
+                    </strong>
+
+                    <p
+                        style="
+                            margin-top: 5px;
+                            color: #7a8492;
+                            font-size: 11px;
+                        "
+                    >
+                        As novas reservas aparecerão aqui.
+                    </p>
+
+                </div>
 
             </article>
 
         </section>
 
 
-        <!-- ============================
-             FINANCEIRO
-        ============================= -->
 
-        <section class="dashboard-grid dashboard-grid-inferior">
+        <!-- ==================================================
+             FINANCEIRO / FISCAL
+        =================================================== -->
 
+        <section
+            class="
+                dashboard-grid
+                dashboard-grid-inferior
+            "
+        >
+
+
+            <!-- ==================================================
+                 FINANCEIRO
+            =================================================== -->
 
             <article class="painel-card">
 
@@ -558,6 +594,7 @@
 
                     </div>
 
+
                     <a href="#">
                         Detalhes →
                     </a>
@@ -565,7 +602,11 @@
                 </div>
 
 
+
                 <div class="financeiro-lista">
+
+
+                    <!-- RESERVAS -->
 
                     <div>
 
@@ -573,12 +614,18 @@
                             Reservas
                         </span>
 
-                        <strong class="positivo">
-                            R$ 18.500,00
+                        <strong
+                            class="positivo"
+                            id="dashboardReservasMes"
+                        >
+                            R$ 0,00
                         </strong>
 
                     </div>
 
+
+
+                    <!-- PDV -->
 
                     <div>
 
@@ -586,12 +633,18 @@
                             Vendas PDV
                         </span>
 
-                        <strong class="positivo">
-                            R$ 6.200,00
+                        <strong
+                            class="positivo"
+                            id="dashboardPdvMes"
+                        >
+                            R$ 0,00
                         </strong>
 
                     </div>
 
+
+
+                    <!-- DESPESAS -->
 
                     <div>
 
@@ -599,12 +652,18 @@
                             Despesas
                         </span>
 
-                        <strong class="negativo">
-                            - R$ 9.400,00
+                        <strong
+                            class="negativo"
+                            id="dashboardDespesasMes"
+                        >
+                            R$ 0,00
                         </strong>
 
                     </div>
 
+
+
+                    <!-- RESULTADO -->
 
                     <div class="financeiro-total">
 
@@ -612,8 +671,8 @@
                             Resultado
                         </span>
 
-                        <strong>
-                            R$ 15.300,00
+                        <strong id="dashboardResultadoMes">
+                            R$ 0,00
                         </strong>
 
                     </div>
@@ -624,7 +683,9 @@
 
 
 
-            <!-- FISCAL -->
+            <!-- ==================================================
+                 FISCAL
+            =================================================== -->
 
             <article class="painel-card">
 
@@ -642,6 +703,7 @@
 
                     </div>
 
+
                     <a href="#">
                         Abrir fiscal →
                     </a>
@@ -649,16 +711,26 @@
                 </div>
 
 
+
                 <div class="fiscal-resumo">
+
+
+                    <!-- AUTORIZADAS -->
 
                     <div class="fiscal-item">
 
-                        <span class="fiscal-bolinha verde"></span>
+                        <span
+                            class="
+                                fiscal-bolinha
+                                verde
+                            "
+                        >
+                        </span>
 
                         <div>
 
                             <strong>
-                                136
+                                0
                             </strong>
 
                             <span>
@@ -670,14 +742,23 @@
                     </div>
 
 
+
+                    <!-- COM PROBLEMA -->
+
                     <div class="fiscal-item">
 
-                        <span class="fiscal-bolinha amarelo"></span>
+                        <span
+                            class="
+                                fiscal-bolinha
+                                amarelo
+                            "
+                        >
+                        </span>
 
                         <div>
 
                             <strong>
-                                6
+                                0
                             </strong>
 
                             <span>
@@ -689,14 +770,23 @@
                     </div>
 
 
+
+                    <!-- AGUARDANDO -->
+
                     <div class="fiscal-item">
 
-                        <span class="fiscal-bolinha cinza"></span>
+                        <span
+                            class="
+                                fiscal-bolinha
+                                cinza
+                            "
+                        >
+                        </span>
 
                         <div>
 
                             <strong>
-                                3
+                                0
                             </strong>
 
                             <span>
@@ -710,8 +800,14 @@
                 </div>
 
 
-                <button class="btn-admin-secundario">
-                    Ver notas com problema
+
+                <button
+                    type="button"
+                    class="btn-admin-secundario"
+                    disabled
+                    title="Módulo fiscal ainda não implementado"
+                >
+                    Fiscal em desenvolvimento
                 </button>
 
             </article>
@@ -721,7 +817,15 @@
     </main>
 
 
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
     <script src="../js/gerente.js"></script>
+
+    <script src="../js/dashboard-gerente.js"></script>
+
 
 </body>
 
