@@ -590,3 +590,728 @@
 .acesso-gerencia a:hover {
     color: var(--laranja);
 }
+
+/* =====================================================
+   NOVO LOGIN / IDENTIFICAÇÃO
+===================================================== */
+
+.pagina-login {
+    min-height: 100vh;
+
+    padding: 55px 0 85px;
+
+    background: #f7f9fc;
+}
+
+
+/* =====================================================
+   PROGRESSO
+===================================================== */
+
+.login-progresso {
+    max-width: 760px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 45px;
+}
+
+
+.login-etapa {
+    min-width: 80px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 6px;
+
+    color: #9aa2ae;
+
+    font-size: 9px;
+}
+
+
+.login-etapa > span {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #dce2e9;
+
+    border-radius: 50%;
+
+    background: white;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+.login-etapa.ativa {
+    color: var(--laranja);
+}
+
+
+.login-etapa.ativa > span {
+    border-color: var(--laranja);
+
+    background: var(--laranja);
+
+    color: white;
+}
+
+
+.login-etapa.concluida {
+    color: var(--azul);
+}
+
+
+.login-etapa.concluida > span {
+    border-color: var(--azul);
+
+    background: var(--azul);
+
+    color: white;
+}
+
+
+.login-linha {
+    width: 75px;
+    height: 2px;
+
+    margin-bottom: 20px;
+
+    background: #dfe4eb;
+}
+
+
+.login-linha.ativa {
+    background: var(--azul);
+}
+
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+.login-cabecalho {
+    max-width: 650px;
+
+    margin-bottom: 28px;
+}
+
+
+.login-cabecalho > span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--laranja);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.login-cabecalho h1 {
+    margin-bottom: 6px;
+
+    color: var(--azul-escuro);
+
+    font-size: 34px;
+}
+
+
+.login-cabecalho p {
+    color: var(--cinza-texto);
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.login-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 350px;
+
+    gap: 25px;
+
+    align-items: start;
+}
+
+
+.login-card,
+.login-resumo {
+    border: 1px solid #e0e6ed;
+
+    border-radius: 16px;
+
+    background: white;
+
+    box-shadow:
+        0 8px 30px
+        rgba(16, 38, 79, 0.05);
+}
+
+
+.login-card {
+    padding: 28px;
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.login-card-titulo {
+    margin-bottom: 22px;
+}
+
+
+.login-card-titulo > span {
+    color: var(--laranja);
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+.login-card-titulo h2 {
+    margin: 3px 0 5px;
+
+    color: var(--azul-escuro);
+
+    font-size: 22px;
+}
+
+
+.login-card-titulo p {
+    max-width: 520px;
+
+    color: #7d8694;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   GOOGLE
+===================================================== */
+
+.btn-login-google {
+    width: 100%;
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border: 1px solid #dce2e9;
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: var(--azul-escuro);
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.btn-login-google:hover {
+    background: #f8fafc;
+}
+
+
+.google-icone {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f1f3f6;
+
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   DIVISOR
+===================================================== */
+
+.login-divisor {
+    position: relative;
+
+    margin: 23px 0;
+
+    text-align: center;
+}
+
+
+.login-divisor::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background: #e6eaf0;
+}
+
+
+.login-divisor span {
+    position: relative;
+
+    padding: 0 10px;
+
+    background: white;
+
+    color: #969da7;
+
+    font-size: 9px;
+}
+
+
+/* =====================================================
+   CAMPOS
+===================================================== */
+
+.login-campo {
+    margin-bottom: 17px;
+}
+
+
+.login-campo label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--azul-escuro);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.login-campo input {
+    width: 100%;
+    min-height: 49px;
+
+    padding: 0 14px;
+
+    border: 1px solid #dce2e9;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    color: var(--azul-escuro);
+}
+
+
+.login-campo input:focus {
+    border-color: var(--azul);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(23, 75, 154, 0.08);
+}
+
+
+.login-campo input.campo-erro {
+    border-color: #dc5656;
+}
+
+
+.login-erro {
+    display: block;
+
+    min-height: 14px;
+
+    margin-top: 4px;
+
+    color: #d14c4c;
+
+    font-size: 9px;
+}
+
+
+/* =====================================================
+   LEMBRAR
+===================================================== */
+
+.login-lembrar {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 20px;
+
+    color: #7d8592;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+
+.login-lembrar input {
+    accent-color: var(--azul);
+}
+
+
+/* =====================================================
+   BOTÃO
+===================================================== */
+
+.btn-continuar-login {
+    width: 100%;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   ADMIN
+===================================================== */
+
+.acesso-gerencia {
+    margin-top: 22px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #e8ebef;
+
+    text-align: center;
+}
+
+
+.acesso-gerencia span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #949ba5;
+
+    font-size: 9px;
+}
+
+
+.acesso-gerencia a {
+    color: var(--azul);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   RESUMO
+===================================================== */
+
+.login-resumo {
+    position: sticky;
+
+    top: 110px;
+
+    padding: 24px;
+}
+
+
+.login-resumo-etiqueta {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--laranja);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+}
+
+
+.login-resumo h2 {
+    margin-bottom: 17px;
+
+    color: var(--azul-escuro);
+
+    font-size: 20px;
+}
+
+
+/* =====================================================
+   TIPO
+===================================================== */
+
+.login-tipo-reserva {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+
+    padding: 12px;
+
+    border-radius: 9px;
+
+    background: #f5f8fc;
+}
+
+
+.login-tipo-reserva.avulso {
+    border: 1px solid #dae8fa;
+
+    background: #f6faff;
+}
+
+
+.login-tipo-reserva.fixo {
+    border: 1px solid #ffddc5;
+
+    background: #fff8f3;
+}
+
+
+.login-tipo-reserva > div:first-child {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: white;
+}
+
+
+.login-tipo-reserva small {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #939aa5;
+
+    font-size: 7px;
+}
+
+
+.login-tipo-reserva strong {
+    color: var(--azul-escuro);
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   LINHAS
+===================================================== */
+
+.login-resumo-linha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid #edf0f4;
+}
+
+
+.login-resumo-linha span {
+    color: #8b939f;
+
+    font-size: 9px;
+}
+
+
+.login-resumo-linha strong {
+    color: var(--azul-escuro);
+
+    font-size: 9px;
+
+    text-align: right;
+
+    text-transform: capitalize;
+}
+
+
+/* =====================================================
+   TOTAL
+===================================================== */
+
+.login-resumo-total {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+
+.login-resumo-total span {
+    display: block;
+
+    color: var(--azul-escuro);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+.login-resumo-total small {
+    color: #969da7;
+
+    font-size: 8px;
+}
+
+
+.login-resumo-total > strong {
+    color: var(--azul);
+
+    font-size: 22px;
+}
+
+
+/* =====================================================
+   AVISO
+===================================================== */
+
+.login-resumo-aviso {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 7px;
+
+    margin-top: 17px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background: #f6f8fb;
+}
+
+
+.login-resumo-aviso p {
+    color: #7b8491;
+
+    font-size: 8px;
+
+    line-height: 1.5;
+}
+
+
+.login-alterar-horario {
+    display: block;
+
+    margin-top: 13px;
+
+    color: var(--azul);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .login-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .login-resumo {
+        position: static;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .pagina-login {
+        padding: 35px 0 60px;
+    }
+
+
+    .login-progresso {
+        overflow-x: auto;
+
+        justify-content: flex-start;
+    }
+
+
+    .login-etapa {
+        min-width: 65px;
+    }
+
+
+    .login-linha {
+        min-width: 30px;
+    }
+
+
+    .login-cabecalho h1 {
+        font-size: 28px;
+    }
+
+
+    .login-card {
+        padding: 20px;
+    }
+
+
+    .login-resumo {
+        padding: 20px;
+    }
+
+}

@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,28 +10,60 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Entrar | La Cancha Fut 7</title>
+    <title>
+        Identificação | La Cancha Fut 7
+    </title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login.css">
+
+    <!-- FAVICON -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/login.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- =========================
+
+    <!-- ==================================================
          CABEÇALHO
-    ========================== -->
+    =================================================== -->
 
     <header class="cabecalho">
 
         <div class="container cabecalho-conteudo">
 
-            <a href="index.html" class="logo">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
                 <img
                     src="img/logo.png"
                     alt="La Cancha Fut 7"
                 >
+
             </a>
+
+
 
             <nav class="menu-principal">
 
@@ -46,20 +79,21 @@
                     Planos Fixos
                 </a>
 
-                <a href="login.html" class="ativo">
-                    Entrar
-                </a>
-
             </nav>
+
+
 
             <a
                 href="agenda.html"
                 class="btn btn-reservar-topo"
             >
-                Reservar horário
+                Voltar à agenda
             </a>
 
+
+
             <button
+                type="button"
                 class="btn-menu-mobile"
                 id="btnMenuMobile"
                 aria-label="Abrir menu"
@@ -68,6 +102,7 @@
             </button>
 
         </div>
+
 
 
         <nav
@@ -87,196 +122,87 @@
                 Planos Fixos
             </a>
 
-            <a href="login.html">
-                Entrar
-            </a>
-
         </nav>
 
     </header>
 
 
-    <!-- =========================
+
+    <!-- ==================================================
          CONTEÚDO
-    ========================== -->
+    =================================================== -->
 
     <main class="pagina-login">
 
-        <div class="container login-container">
+        <div class="container">
 
 
-            <!-- =========================
-                 LOGIN
-            ========================== -->
+            <!-- ==================================================
+                 PROGRESSO
+            =================================================== -->
 
-            <section class="login-card">
+            <section class="login-progresso">
 
-                <div class="login-topo">
+                <div class="login-etapa concluida">
 
                     <span>
-                        IDENTIFICAÇÃO
+                        ✓
                     </span>
 
-                    <h1>
-                        Finalize sua reserva
-                    </h1>
-
-                    <p>
-                        Entre com sua conta ou informe seus
-                        dados para continuar.
-                    </p>
-
-                </div>
-
-           
-                <!--LOGIN GERENTE-->
-            <div class="acesso-gerencia">
-                <span>Você trabalha na La Cancha?</span>
-
-                <a href="gerente/login.html">
-                    Acessar painel administrativo →
-                </a>
-            </div>
-
-
-                <!-- GOOGLE -->
-
-                <button
-                    type="button"
-                    class="btn-google"
-                    id="btnGoogle"
-                >
-
-                    <span class="google-icone">
-                        G
-                    </span>
-
-                    Continuar com Google
-
-                </button>
-
-
-                <!-- SEPARADOR -->
-
-                <div class="separador">
-
-                    <span></span>
-
-                    <p>
-                        ou continue com seus dados
-                    </p>
-
-                    <span></span>
+                    <strong>
+                        Horário
+                    </strong>
 
                 </div>
 
 
-                <!-- FORMULÁRIO -->
-
-                <form id="formLogin">
-
-                    <div class="campo">
-
-                        <label for="nome">
-                            Nome completo
-                        </label>
-
-                        <input
-                            type="text"
-                            id="nome"
-                            name="nome"
-                            placeholder="Digite seu nome"
-                            autocomplete="name"
-                            required
-                        >
-
-                        <small
-                            class="erro"
-                            id="erroNome"
-                        ></small>
-
-                    </div>
+                <div class="login-linha ativa">
+                </div>
 
 
-                    <div class="campo">
+                <div class="login-etapa concluida">
 
-                        <label for="whatsapp">
-                            WhatsApp
-                        </label>
+                    <span>
+                        ✓
+                    </span>
 
-                        <input
-                            type="tel"
-                            id="whatsapp"
-                            name="whatsapp"
-                            placeholder="(51) 99999-9999"
-                            maxlength="15"
-                            autocomplete="tel"
-                            required
-                        >
+                    <strong>
+                        Confirmação
+                    </strong>
 
-                        <small
-                            class="erro"
-                            id="erroWhatsapp"
-                        ></small>
-
-                    </div>
+                </div>
 
 
-                    <div class="campo">
-
-                        <label for="email">
-                            E-mail
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="seuemail@email.com"
-                            autocomplete="email"
-                            required
-                        >
-
-                        <small
-                            class="erro"
-                            id="erroEmail"
-                        ></small>
-
-                    </div>
+                <div class="login-linha ativa">
+                </div>
 
 
-                    <label class="lembrar-dados">
+                <div class="login-etapa ativa">
 
-                        <input
-                            type="checkbox"
-                            id="lembrar"
-                        >
+                    <span>
+                        3
+                    </span>
 
-                        <span>
-                            Lembrar meus dados neste dispositivo
-                        </span>
+                    <strong>
+                        Identificação
+                    </strong>
 
-                    </label>
-
-
-                    <button
-                        type="submit"
-                        class="btn btn-principal btn-continuar"
-                    >
-                        Continuar para pagamento
-                    </button>
-
-                </form>
+                </div>
 
 
-                <div class="seguranca-login">
+                <div class="login-linha">
+                </div>
 
-                    🔒
 
-                    <p>
-                        Seus dados serão utilizados somente
-                        para sua reserva.
-                    </p>
+                <div class="login-etapa">
+
+                    <span>
+                        4
+                    </span>
+
+                    <strong>
+                        Pagamento
+                    </strong>
 
                 </div>
 
@@ -284,118 +210,391 @@
 
 
 
-            <!-- =========================
-                 RESUMO DA RESERVA
-            ========================== -->
+            <!-- ==================================================
+                 CABEÇALHO
+            =================================================== -->
 
-            <aside
-                class="login-reserva"
-                id="cardReserva"
-            >
+            <section class="login-cabecalho">
 
-                <span class="login-reserva-etiqueta">
-                    SUA RESERVA
+                <span>
+                    IDENTIFICAÇÃO
                 </span>
 
-                <h2>
-                    Resumo
-                </h2>
+
+                <h1>
+                    Quase lá!
+                </h1>
 
 
-                <div class="quadra-login">
+                <p id="loginDescricao">
 
-                    <div class="quadra-login-icone">
-                        ⚽
-                    </div>
+                    Informe seus dados para
+                    continuar com sua reserva.
 
-                    <div>
+                </p>
 
-                        <strong>
-                            La Cancha Fut 7
-                        </strong>
+            </section>
+
+
+
+            <!-- ==================================================
+                 LAYOUT
+            =================================================== -->
+
+            <section class="login-layout">
+
+
+                <!-- ==================================================
+                     IDENTIFICAÇÃO
+                =================================================== -->
+
+                <div class="login-card">
+
+
+                    <div class="login-card-titulo">
 
                         <span>
-                            Quadra Society
+                            SEUS DADOS
+                        </span>
+
+                        <h2>
+                            Identifique-se
+                        </h2>
+
+                        <p>
+                            Essas informações serão utilizadas
+                            para identificar sua reserva e
+                            entrar em contato quando necessário.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- GOOGLE -->
+
+                    <button
+                        type="button"
+                        class="btn-login-google"
+                        id="btnGoogle"
+                    >
+
+                        <span class="google-icone">
+                            G
+                        </span>
+
+                        Continuar com Google
+
+                    </button>
+
+
+
+                    <div class="login-divisor">
+
+                        <span>
+                            ou continue com seus dados
                         </span>
 
                     </div>
 
+
+
+                    <!-- FORMULÁRIO -->
+
+                    <form id="formCliente">
+
+
+                        <!-- NOME -->
+
+                        <div class="login-campo">
+
+                            <label for="clienteNome">
+                                Nome completo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="clienteNome"
+                                placeholder="Digite seu nome"
+                                autocomplete="name"
+                                required
+                            >
+
+                            <small
+                                class="login-erro"
+                                id="erroClienteNome"
+                            >
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- WHATSAPP -->
+
+                        <div class="login-campo">
+
+                            <label for="clienteWhatsapp">
+                                WhatsApp
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="clienteWhatsapp"
+                                placeholder="(51) 99999-9999"
+                                autocomplete="tel"
+                                maxlength="15"
+                                required
+                            >
+
+                            <small
+                                class="login-erro"
+                                id="erroClienteWhatsapp"
+                            >
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- EMAIL -->
+
+                        <div class="login-campo">
+
+                            <label for="clienteEmail">
+                                E-mail
+                            </label>
+
+                            <input
+                                type="email"
+                                id="clienteEmail"
+                                placeholder="seuemail@email.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                            <small
+                                class="login-erro"
+                                id="erroClienteEmail"
+                            >
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- LEMBRAR -->
+
+                        <label class="login-lembrar">
+
+                            <input
+                                type="checkbox"
+                                id="lembrarCliente"
+                            >
+
+                            <span>
+                                Lembrar meus dados
+                                neste dispositivo
+                            </span>
+
+                        </label>
+
+
+
+                        <!-- CONTINUAR -->
+
+                        <button
+                            type="submit"
+                            class="btn btn-principal btn-continuar-login"
+                            id="btnContinuarPagamento"
+                        >
+                            Continuar para pagamento
+                        </button>
+
+                    </form>
+
+
+
+                    <!-- ADMIN -->
+
+                    <div class="acesso-gerencia">
+
+                        <span>
+                            Você trabalha na La Cancha?
+                        </span>
+
+                        <a href="gerente/login.html">
+                            Acessar painel administrativo →
+                        </a>
+
+                    </div>
+
                 </div>
 
 
-                <div class="login-reserva-linha">
 
-                    <span>
-                        📅 Data
+                <!-- ==================================================
+                     RESUMO DA RESERVA
+                =================================================== -->
+
+                <aside class="login-resumo">
+
+
+                    <span class="login-resumo-etiqueta">
+                        SUA ESCOLHA
                     </span>
 
-                    <strong id="loginData">
-                        -
-                    </strong>
 
-                </div>
-
-
-                <div class="login-reserva-linha">
-
-                    <span>
-                        🕐 Horário
-                    </span>
-
-                    <strong id="loginHorario">
-                        -
-                    </strong>
-
-                </div>
+                    <h2 id="loginResumoTitulo">
+                        Resumo da reserva
+                    </h2>
 
 
-                <div class="login-reserva-linha">
 
-                    <span>
-                        ⏱ Duração
-                    </span>
+                    <!-- TIPO -->
 
-                    <strong id="loginDuracao">
-                        -
-                    </strong>
+                    <div
+                        class="login-tipo-reserva"
+                        id="loginTipoReserva"
+                    >
 
-                </div>
+                        <div id="loginTipoIcone">
+                            ⚽
+                        </div>
+
+                        <div>
+
+                            <small>
+                                MODALIDADE
+                            </small>
+
+                            <strong id="loginTipoTexto">
+                                Reserva avulsa
+                            </strong>
+
+                        </div>
+
+                    </div>
 
 
-                <div class="login-reserva-total">
 
-                    <span>
-                        Total
-                    </span>
+                    <!-- DATA / MÊS -->
 
-                    <strong id="loginValor">
-                        R$ 0,00
-                    </strong>
+                    <div class="login-resumo-linha">
 
-                </div>
+                        <span id="loginLabelData">
+                            Data
+                        </span>
+
+                        <strong id="loginResumoData">
+                            -
+                        </strong>
+
+                    </div>
 
 
-                <a
-                    href="agenda.html"
-                    class="alterar-horario"
-                >
-                    Alterar horário
-                </a>
 
-            </aside>
+                    <!-- HORÁRIO -->
+
+                    <div class="login-resumo-linha">
+
+                        <span>
+                            Horário
+                        </span>
+
+                        <strong id="loginResumoHorario">
+                            -
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- RECORRÊNCIA -->
+
+                    <div
+                        class="login-resumo-linha"
+                        id="loginLinhaRecorrencia"
+                    >
+
+                        <span>
+                            Recorrência
+                        </span>
+
+                        <strong id="loginResumoRecorrencia">
+                            -
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- TOTAL -->
+
+                    <div class="login-resumo-total">
+
+                        <div>
+
+                            <span id="loginLabelValor">
+                                Valor
+                            </span>
+
+                            <small id="loginComplementoValor">
+                                pagamento único
+                            </small>
+
+                        </div>
+
+
+                        <strong id="loginResumoValor">
+                            R$ 0,00
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- SEGURANÇA -->
+
+                    <div class="login-resumo-aviso">
+
+                        <span>
+                            🔒
+                        </span>
+
+                        <p id="loginTextoAviso">
+                            Seu horário só será confirmado
+                            após a aprovação do pagamento.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="agenda.html"
+                        class="login-alterar-horario"
+                    >
+                        ← Alterar horário
+                    </a>
+
+                </aside>
+
+            </section>
 
         </div>
 
     </main>
 
 
-    <!-- =========================
+
+    <!-- ==================================================
          RODAPÉ
-    ========================== -->
+    =================================================== -->
 
     <footer class="rodape">
 
         <div class="container rodape-grid">
+
 
             <div class="rodape-marca">
 
@@ -412,16 +611,27 @@
             </div>
 
 
+
             <div class="rodape-coluna">
 
                 <h3>
-                    Reservas
+                    La Cancha
                 </h3>
 
-                <p>Agenda online</p>
-                <p>Horários fixos</p>
+                <p>
+                    Agenda online
+                </p>
+
+                <p>
+                    Reserva avulsa
+                </p>
+
+                <p>
+                    Horário fixo
+                </p>
 
             </div>
+
 
 
             <div class="rodape-coluna">
@@ -430,35 +640,46 @@
                     Contato
                 </h3>
 
-                <p>WhatsApp</p>
-                <p>Instagram</p>
+                <p>
+                    📱 WhatsApp
+                </p>
+
+                <p>
+                    📷 Instagram
+                </p>
 
             </div>
+
 
 
             <div class="rodape-coluna">
 
                 <h3>
-                    Segurança
+                    Funcionamento
                 </h3>
 
                 <p>
-                    Pagamentos e dados protegidos.
+                    Consulte nossos horários
+                    disponíveis.
                 </p>
 
             </div>
+
 
         </div>
 
     </footer>
 
 
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
     <script src="js/main.js"></script>
     <script src="js/login.js"></script>
 
-    
 
 </body>
 
 </html>
-

@@ -2,34 +2,75 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Agenda | La Cancha Fut 7</title>
+    <title>
+        Agenda | La Cancha Fut 7
+    </title>
+
+
+    <!-- FAVICON -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
 
     <!-- CSS PRINCIPAL -->
-    <link rel="stylesheet" href="css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 
     <!-- CSS DA AGENDA -->
-    <link rel="stylesheet" href="css/agenda.css">
+
+    <link
+        rel="stylesheet"
+        href="css/agenda.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- =============================
+
+    <!-- ==================================================
          CABEÇALHO
-    ============================== -->
+    =================================================== -->
 
     <header class="cabecalho">
 
         <div class="container cabecalho-conteudo">
 
-            <a href="index.html" class="logo">
-                <img src="img/logo.png"
-                     alt="La Cancha Fut 7">
+
+            <!-- LOGO -->
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <img
+                    src="img/logo.png"
+                    alt="La Cancha Fut 7"
+                >
+
             </a>
+
+
+
+            <!-- MENU DESKTOP -->
 
             <nav class="menu-principal">
 
@@ -37,8 +78,10 @@
                     Início
                 </a>
 
-                <a href="agenda.html"
-                   class="ativo">
+                <a
+                    href="agenda.html"
+                    class="ativo"
+                >
                     Agenda
                 </a>
 
@@ -52,20 +95,40 @@
 
             </nav>
 
-            <a href="agenda.html"
-               class="btn btn-reservar-topo">
+
+
+            <!-- BOTÃO RESERVAR -->
+
+            <a
+                href="agenda.html"
+                class="btn btn-reservar-topo"
+            >
                 Reservar horário
             </a>
 
-            <button class="btn-menu-mobile"
-                    id="btnMenuMobile">
+
+
+            <!-- MENU MOBILE -->
+
+            <button
+                type="button"
+                class="btn-menu-mobile"
+                id="btnMenuMobile"
+                aria-label="Abrir menu"
+            >
                 ☰
             </button>
 
         </div>
 
-        <nav class="menu-mobile"
-             id="menuMobile">
+
+
+        <!-- MENU MOBILE ABERTO -->
+
+        <nav
+            class="menu-mobile"
+            id="menuMobile"
+        >
 
             <a href="index.html">
                 Início
@@ -88,605 +151,302 @@
     </header>
 
 
-    <!-- =============================
-         CONTEÚDO
-    ============================== -->
+
+    <!-- ==================================================
+         CONTEÚDO PRINCIPAL
+    =================================================== -->
 
     <main class="pagina-agenda">
 
-        <div class="container">
 
-            <!-- TOPO -->
-
-            <section class="agenda-cabecalho">
-
-                <span class="agenda-etiqueta">
-                    AGENDA ONLINE
-                </span>
-
-                <h1>
-                    Escolha seu horário
-                </h1>
-
-                <p>
-                    Selecione o dia e depois escolha um dos
-                    horários disponíveis para sua partida.
-                </p>
-
-            </section>
+        <section class="agenda-pagina">
 
 
-            <!-- =============================
-                 SELETOR DE DATA
-            ============================== -->
+            <!-- ==================================================
+                 CABEÇALHO DA AGENDA
+            =================================================== -->
 
-            <section class="seletor-data">
+            <div class="agenda-cabecalho">
 
-                <button class="btn-navegar-data">
-                    ‹
-                </button>
+                <div>
 
-                <div class="datas-lista">
-
-                    <button class="data-card">
-
-                        <span>SEG</span>
-
-                        <strong>24</strong>
-
-                        <small>AGO</small>
-
-                    </button>
+                    <span class="agenda-mini-titulo">
+                        AGENDA ONLINE
+                    </span>
 
 
-                    <button class="data-card ativo"
-                            data-data="25/08/2026">
-
-                        <span>TER</span>
-
-                        <strong>25</strong>
-
-                        <small>AGO</small>
-
-                    </button>
+                    <h1>
+                        Escolha seu horário
+                    </h1>
 
 
-                    <button class="data-card"
-                            data-data="26/08/2026">
-
-                        <span>QUA</span>
-
-                        <strong>26</strong>
-
-                        <small>AGO</small>
-
-                    </button>
-
-
-                    <button class="data-card"
-                            data-data="27/08/2026">
-
-                        <span>QUI</span>
-
-                        <strong>27</strong>
-
-                        <small>AGO</small>
-
-                    </button>
-
-
-                    <button class="data-card"
-                            data-data="28/08/2026">
-
-                        <span>SEX</span>
-
-                        <strong>28</strong>
-
-                        <small>AGO</small>
-
-                    </button>
-
-
-                    <button class="data-card"
-                            data-data="29/08/2026">
-
-                        <span>SÁB</span>
-
-                        <strong>29</strong>
-
-                        <small>AGO</small>
-
-                    </button>
+                    <p>
+                        Consulte os horários disponíveis
+                        da La Cancha Fut 7 e escolha entre
+                        uma reserva avulsa ou um horário
+                        fixo mensal.
+                    </p>
 
                 </div>
-
-                <button class="btn-navegar-data">
-                    ›
-                </button>
-
-            </section>
-
-
-            <!-- =============================
-                 LEGENDA
-            ============================== -->
-
-            <div class="agenda-legenda">
-
-                <span>
-                    <i class="bolinha verde"></i>
-                    Disponível
-                </span>
-
-                <span>
-                    <i class="bolinha vermelha"></i>
-                    Reservado
-                </span>
-
-                <span>
-                    <i class="bolinha cinza"></i>
-                    Horário fixo
-                </span>
 
             </div>
 
 
-            <!-- =============================
-                 GRID
-            ============================== -->
 
-            <section class="agenda-layout">
+            <!-- ==================================================
+                 EXPLICAÇÃO AVULSO / FIXO
+            =================================================== -->
+
+            <section class="agenda-tipos-reserva">
 
 
-                <!-- HORÁRIOS -->
-                <div class="agenda-horarios">
+                <!-- AVULSO -->
 
-                    <div class="agenda-dia-titulo">
+                <article class="agenda-tipo-card">
 
-                        <div>
-
-                            <small>
-                                Horários para
-                            </small>
-
-                            <h2 id="dataSelecionadaTitulo">
-                                Terça-feira, 25 de Agosto
-                            </h2>
-
-                        </div>
-
+                    <div class="agenda-tipo-icone">
+                        ⚽
                     </div>
 
 
-                    <!-- HORÁRIO 1 -->
-
-                    <button
-                        class="horario-card disponivel"
-                        data-inicio="14:00"
-                        data-fim="15:30"
-                        data-valor="130.00"
-                    >
-
-                        <div class="horario-hora">
-
-                            <strong>
-                                14:00
-                            </strong>
-
-                            <span>
-                                até
-                            </span>
-
-                            <strong>
-                                15:30
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-detalhes">
-
-                            <span>
-                                Quadra Society
-                            </span>
-
-                            <strong>
-                                Disponível
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-valor">
-
-                            <small>
-                                Valor
-                            </small>
-
-                            <strong>
-                                R$ 130,00
-                            </strong>
-
-                        </div>
-
-                    </button>
-
-
-                    <!-- HORÁRIO 2 -->
-
-                    <button
-                        class="horario-card disponivel"
-                        data-inicio="16:15"
-                        data-fim="17:15"
-                        data-valor="150.00"
-                    >
-
-                        <div class="horario-hora">
-
-                            <strong>
-                                16:15
-                            </strong>
-
-                            <span>
-                                até
-                            </span>
-
-                            <strong>
-                                17:15
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-detalhes">
-
-                            <span>
-                                Quadra Society
-                            </span>
-
-                            <strong>
-                                Disponível
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-valor">
-
-                            <small>
-                                Valor
-                            </small>
-
-                            <strong>
-                                R$ 150,00
-                            </strong>
-
-                        </div>
-
-                    </button>
-
-
-                    <!-- RESERVADO -->
-
-                    <div class="horario-card reservado">
-
-                        <div class="horario-hora">
-
-                            <strong>
-                                17:30
-                            </strong>
-
-                            <span>
-                                até
-                            </span>
-
-                            <strong>
-                                18:30
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-detalhes">
-
-                            <span>
-                                Quadra Society
-                            </span>
-
-                            <strong>
-                                Reservado
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-status">
-                            Indisponível
-                        </div>
-
-                    </div>
-
-
-                    <!-- HORÁRIO 3 -->
-
-                    <button
-                        class="horario-card disponivel"
-                        data-inicio="18:45"
-                        data-fim="20:15"
-                        data-valor="180.00"
-                    >
-
-                        <div class="horario-hora">
-
-                            <strong>
-                                18:45
-                            </strong>
-
-                            <span>
-                                até
-                            </span>
-
-                            <strong>
-                                20:15
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-detalhes">
-
-                            <span>
-                                Quadra Society
-                            </span>
-
-                            <strong>
-                                Disponível
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-valor">
-
-                            <small>
-                                Valor
-                            </small>
-
-                            <strong>
-                                R$ 180,00
-                            </strong>
-
-                        </div>
-
-                    </button>
-
-
-                    <!-- FIXO -->
-
-                    <div class="horario-card fixo">
-
-                        <div class="horario-hora">
-
-                            <strong>
-                                20:30
-                            </strong>
-
-                            <span>
-                                até
-                            </span>
-
-                            <strong>
-                                21:30
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-detalhes">
-
-                            <span>
-                                Horário recorrente
-                            </span>
-
-                            <strong>
-                                Horário fixo
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-status">
-                            Fixo
-                        </div>
-
-                    </div>
-
-
-                    <!-- HORÁRIO 4 -->
-
-                    <button
-                        class="horario-card disponivel"
-                        data-inicio="21:45"
-                        data-fim="23:00"
-                        data-valor="180.00"
-                    >
-
-                        <div class="horario-hora">
-
-                            <strong>
-                                21:45
-                            </strong>
-
-                            <span>
-                                até
-                            </span>
-
-                            <strong>
-                                23:00
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-detalhes">
-
-                            <span>
-                                Quadra Society
-                            </span>
-
-                            <strong>
-                                Disponível
-                            </strong>
-
-                        </div>
-
-
-                        <div class="horario-valor">
-
-                            <small>
-                                Valor
-                            </small>
-
-                            <strong>
-                                R$ 180,00
-                            </strong>
-
-                        </div>
-
-                    </button>
-
-                </div>
-
-
-                <!-- =============================
-                     RESUMO
-                ============================== -->
-
-                <aside class="resumo-reserva">
-
-                    <span class="resumo-etiqueta">
-                        SUA RESERVA
-                    </span>
-
-                    <h2>
-                        Resumo da seleção
-                    </h2>
-
-
-                    <div class="resumo-vazio"
-                         id="resumoVazio">
-
-                        <div class="icone-resumo">
-                            ⚽
-                        </div>
+                    <div>
+
+                        <span>
+                            RESERVA AVULSA
+                        </span>
+
+                        <h3>
+                            Jogue somente neste dia
+                        </h3>
 
                         <p>
-                            Escolha um horário disponível
-                            para continuar.
+                            Escolha uma data e pague apenas
+                            pelo jogo reservado.
                         </p>
 
                     </div>
 
-
-                    <div class="resumo-dados"
-                         id="resumoDados">
-
-                        <div class="resumo-linha">
-
-                            <span>
-                                Data
-                            </span>
-
-                            <strong id="resumoData">
-                                25/08/2026
-                            </strong>
-
-                        </div>
+                </article>
 
 
-                        <div class="resumo-linha">
 
-                            <span>
-                                Horário
-                            </span>
+                <!-- FIXO -->
 
-                            <strong id="resumoHorario">
-                                -
-                            </strong>
+                <article class="agenda-tipo-card destaque-fixo">
 
-                        </div>
+                    <div class="agenda-tipo-icone">
+                        🔁
+                    </div>
 
 
-                        <div class="resumo-linha">
+                    <div>
 
-                            <span>
-                                Duração
-                            </span>
+                        <span>
+                            HORÁRIO FIXO
+                        </span>
 
-                            <strong id="resumoDuracao">
-                                -
-                            </strong>
+                        <h3>
+                            Garanta seu horário semanal
+                        </h3>
 
-                        </div>
-
-
-                        <div class="resumo-linha">
-
-                            <span>
-                                Quadra
-                            </span>
-
-                            <strong>
-                                Society Fut 7
-                            </strong>
-
-                        </div>
-
-
-                        <div class="resumo-total">
-
-                            <span>
-                                Total
-                            </span>
-
-                            <strong id="resumoValor">
-                                R$ 0,00
-                            </strong>
-
-                        </div>
-
-
-                        <a
-                            href="#"
-                            id="btnContinuar"
-                            class="btn btn-principal btn-continuar"
-                        >
-                            Continuar reserva
-                        </a>
+                        <p>
+                            Reserve o mesmo dia e horário
+                            toda semana através de uma
+                            mensalidade.
+                        </p>
 
                     </div>
 
-                </aside>
+                </article>
 
             </section>
 
-        </div>
+
+
+            <!-- ==================================================
+                 SELEÇÃO DA DATA
+            =================================================== -->
+
+            <section class="agenda-filtro-data">
+
+
+                <div>
+
+                    <label for="agendaData">
+                        Escolha a data
+                    </label>
+
+
+                    <input
+                        type="date"
+                        id="agendaData"
+                    >
+
+                </div>
+
+
+
+                <!-- CONTADOR -->
+
+                <div class="agenda-contador">
+
+                    <span>
+                        Horários disponíveis
+                    </span>
+
+
+                    <strong id="quantidadeAgenda">
+                        0
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 TÍTULO DOS RESULTADOS
+            =================================================== -->
+
+            <div class="agenda-resultados-topo">
+
+                <div>
+
+                    <span>
+                        DISPONIBILIDADE
+                    </span>
+
+                    <h2>
+                        Horários encontrados
+                    </h2>
+
+                </div>
+
+
+                <p>
+                    Os horários abaixo foram cadastrados
+                    pela administração da La Cancha.
+                </p>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 LISTA DINÂMICA
+
+                 O JAVASCRIPT VAI CRIAR OS HORÁRIOS AQUI.
+            =================================================== -->
+
+            <section
+                class="agenda-lista-dinamica"
+                id="listaAgenda"
+            >
+            </section>
+
+
+
+            <!-- ==================================================
+                 SEM HORÁRIOS
+            =================================================== -->
+
+            <section
+                class="agenda-vazia"
+                id="agendaVazia"
+            >
+
+                <span>
+                    ⚽
+                </span>
+
+
+                <h2>
+                    Nenhum horário disponível
+                </h2>
+
+
+                <p>
+                    Não encontramos horários
+                    disponíveis para esta data.
+                </p>
+
+
+                <small>
+                    Escolha outra data para consultar
+                    a disponibilidade.
+                </small>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 INFORMAÇÃO HORÁRIO FIXO
+            =================================================== -->
+
+            <section class="agenda-info-fixo">
+
+                <div class="agenda-info-fixo-icone">
+                    🔁
+                </div>
+
+
+                <div>
+
+                    <span>
+                        HORÁRIO FIXO
+                    </span>
+
+
+                    <h2>
+                        Quer jogar toda semana?
+                    </h2>
+
+
+                    <p>
+                        Alguns horários também podem ser
+                        contratados como horário fixo.
+                        Nesse caso, você paga uma mensalidade
+                        e mantém o mesmo dia e horário
+                        durante o mês.
+                    </p>
+
+
+                    <small>
+                        A renovação será realizada novamente
+                        no mês seguinte para manter o horário.
+                    </small>
+
+                </div>
+
+            </section>
+
+
+        </section>
 
     </main>
 
 
-    <!-- =============================
+
+    <!-- ==================================================
          RODAPÉ
-    ============================== -->
+    =================================================== -->
 
     <footer class="rodape">
 
         <div class="container rodape-grid">
 
+
+            <!-- MARCA -->
+
             <div class="rodape-marca">
 
-                <img src="img/logo.png"
-                     alt="La Cancha Fut 7">
+                <img
+                    src="img/logo.png"
+                    alt="La Cancha Fut 7"
+                >
+
 
                 <p>
                     Mais que uma quadra,
@@ -695,6 +455,9 @@
 
             </div>
 
+
+
+            <!-- LA CANCHA -->
 
             <div class="rodape-coluna">
 
@@ -707,11 +470,18 @@
                 </p>
 
                 <p>
+                    Reservas avulsas
+                </p>
+
+                <p>
                     Horários fixos
                 </p>
 
             </div>
 
+
+
+            <!-- CONTATO -->
 
             <div class="rodape-coluna">
 
@@ -730,6 +500,9 @@
             </div>
 
 
+
+            <!-- FUNCIONAMENTO -->
+
             <div class="rodape-coluna">
 
                 <h3>
@@ -738,7 +511,8 @@
 
                 <p>
                     Consulte os horários
-                    disponíveis.
+                    disponíveis em nossa
+                    agenda online.
                 </p>
 
             </div>
@@ -748,8 +522,15 @@
     </footer>
 
 
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
     <script src="js/main.js"></script>
+
     <script src="js/agenda.js"></script>
+
 
 </body>
 

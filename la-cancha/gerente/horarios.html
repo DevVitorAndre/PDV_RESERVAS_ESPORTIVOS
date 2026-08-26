@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Horários | La Cancha Fut 7
+    </title>
+
+
+    <!-- FAVICON -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../img/logo.png"
+    >
+
+
+    <!-- CSS PRINCIPAL -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <!-- CSS GERENTE -->
+
+    <link
+        rel="stylesheet"
+        href="../css/gerente.css"
+    >
+
+</head>
+
+
+<body class="admin-body">
+
+
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+
+        <!-- LOGO -->
+
+        <div class="sidebar-logo">
+
+            <img
+                src="../img/logo.png"
+                alt="La Cancha Fut 7"
+            >
+
+        </div>
+
+
+
+        <!-- MENU -->
+
+        <nav class="sidebar-menu">
+
+
+            <a href="dashboard.html">
+
+                <span>
+                    🏠
+                </span>
+
+                Dashboard
+
+            </a>
+
+
+            <a href="agenda.html">
+
+                <span>
+                    📅
+                </span>
+
+                Agenda
+
+            </a>
+
+
+            <a
+                href="horarios.html"
+                class="ativo"
+            >
+
+                <span>
+                    🕐
+                </span>
+
+                Horários
+
+            </a>
+
+
+            <a href="#">
+
+                <span>
+                    🔁
+                </span>
+
+                Horários Fixos
+
+            </a>
+
+
+            <a href="clientes.html">
+
+                <span>
+                    👥
+                </span>
+
+                Clientes
+
+            </a>
+
+
+            <a href="#">
+
+                <span>
+                    🛒
+                </span>
+
+                PDV / Caixa
+
+            </a>
+
+
+            <a href="#">
+
+                <span>
+                    📦
+                </span>
+
+                Produtos
+
+            </a>
+
+
+            <a href="#">
+
+                <span>
+                    💰
+                </span>
+
+                Financeiro
+
+            </a>
+
+
+            <a href="#">
+
+                <span>
+                    🧾
+                </span>
+
+                Fiscal
+
+            </a>
+
+
+            <a href="precos.html">
+
+                <span>
+                    ⚙️
+                </span>
+
+                Configurações
+
+            </a>
+
+        </nav>
+
+
+
+        <!-- RODAPÉ DA SIDEBAR -->
+
+        <div class="sidebar-rodape">
+
+            <a href="../index.html">
+                ← Voltar ao site
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         CONTEÚDO PRINCIPAL
+    =================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- ==================================================
+             TOPO
+        =================================================== -->
+
+        <header class="admin-topo">
+
+
+            <!-- MENU MOBILE -->
+
+            <button
+                type="button"
+                class="btn-sidebar-mobile"
+                id="btnSidebar"
+                aria-label="Abrir menu"
+            >
+                ☰
+            </button>
+
+
+
+            <!-- TÍTULO -->
+
+            <div>
+
+                <span class="admin-boas-vindas">
+                    DISPONIBILIDADE
+                </span>
+
+                <h1>
+                    Horários disponíveis
+                </h1>
+
+            </div>
+
+
+
+            <!-- USUÁRIO -->
+
+            <div class="admin-usuario">
+
+                <div class="admin-avatar">
+                    G
+                </div>
+
+                <div>
+
+                    <strong>
+                        Gerente
+                    </strong>
+
+                    <span>
+                        Administrador
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==================================================
+             GERENCIAMENTO DE DISPONIBILIDADE
+        =================================================== -->
+
+        <section class="disp-gerente">
+
+
+            <!-- ==================================================
+                 CABEÇALHO
+            =================================================== -->
+
+            <div class="disp-cabecalho">
+
+                <div>
+
+                    <span>
+                        DISPONIBILIDADE DA CANCHA
+                    </span>
+
+                    <h1>
+                        Gerenciar horários
+                    </h1>
+
+                    <p>
+                        Cadastre horários para uma data específica
+                        ou gere automaticamente os horários de
+                        vários dias durante todo o mês.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 ESCOLHER MODO
+            =================================================== -->
+
+            <div class="disp-modos">
+
+
+                <!-- POR DIA -->
+
+                <button
+                    type="button"
+                    class="disp-modo ativo"
+                    id="modoCadastroDia"
+                >
+
+                    <span>
+                        📅
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Por dia
+                        </strong>
+
+                        <small>
+                            Cadastrar uma data específica
+                        </small>
+
+                    </div>
+
+                </button>
+
+
+
+                <!-- POR MÊS -->
+
+                <button
+                    type="button"
+                    class="disp-modo"
+                    id="modoCadastroMes"
+                >
+
+                    <span>
+                        🗓️
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Por mês
+                        </strong>
+
+                        <small>
+                            Repetir durante o mês inteiro
+                        </small>
+
+                    </div>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 MENSAGENS
+            =================================================== -->
+
+            <div
+                class="disp-mensagem"
+                id="mensagemDisponibilidade"
+            >
+            </div>
+
+
+
+            <!-- ==================================================
+                 CADASTRO POR DIA
+            =================================================== -->
+
+            <section
+                class="disp-painel ativo"
+                id="painelCadastroDia"
+            >
+
+                <div class="disp-card">
+
+
+                    <!-- TÍTULO -->
+
+                    <div class="disp-card-topo">
+
+                        <div>
+
+                            <span>
+                                CADASTRO POR DIA
+                            </span>
+
+                            <h2 id="tituloCadastroDia">
+                                Nova disponibilidade
+                            </h2>
+
+                            <p>
+                                Escolha uma data e adicione
+                                quantos horários forem necessários.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ==================================================
+                         DATA E SITUAÇÃO
+                    =================================================== -->
+
+                    <div class="disp-dados-principais">
+
+
+                        <!-- DATA -->
+
+                        <div class="disp-campo">
+
+                            <label for="cadastroDiaData">
+                                Data
+                            </label>
+
+                            <input
+                                type="date"
+                                id="cadastroDiaData"
+                            >
+
+                        </div>
+
+
+
+                        <!-- STATUS -->
+
+                        <div class="disp-campo">
+
+                            <label for="cadastroDiaStatus">
+                                Situação
+                            </label>
+
+                            <select id="cadastroDiaStatus">
+
+                                <option value="disponivel">
+                                    Disponível
+                                </option>
+
+                                <option value="bloqueado">
+                                    Bloqueado
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ==================================================
+                         HORÁRIOS DO DIA
+                    =================================================== -->
+
+                    <div class="disp-subtitulo">
+
+                        <div>
+
+                            <strong>
+                                Horários deste dia
+                            </strong>
+
+                            <small>
+                                Cadastre mais de um jogo
+                                para a mesma data.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- JS CRIA OS HORÁRIOS -->
+
+                    <div id="listaFaixasDia">
+                    </div>
+
+
+
+                    <!-- ADICIONAR -->
+
+                    <button
+                        type="button"
+                        class="disp-btn-adicionar"
+                        id="btnAdicionarFaixaDia"
+                    >
+                        + Adicionar outro horário
+                    </button>
+
+
+
+                    <!-- ==================================================
+                         AÇÕES
+                    =================================================== -->
+
+                    <div class="disp-acoes-form">
+
+
+                        <button
+                            type="button"
+                            class="disp-btn-principal"
+                            id="btnSalvarDia"
+                        >
+                            Salvar disponibilidade
+                        </button>
+
+
+
+                        <button
+                            type="button"
+                            class="disp-btn-secundario disp-escondido"
+                            id="btnCancelarEdicaoDisponibilidade"
+                        >
+                            Cancelar edição
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 CADASTRO POR MÊS
+            =================================================== -->
+
+            <section
+                class="disp-painel"
+                id="painelCadastroMes"
+            >
+
+                <div class="disp-card">
+
+
+                    <!-- TÍTULO -->
+
+                    <div class="disp-card-topo">
+
+                        <div>
+
+                            <span>
+                                CADASTRO MENSAL
+                            </span>
+
+                            <h2>
+                                Gerar disponibilidade do mês
+                            </h2>
+
+                            <p>
+                                Escolha o mês, marque os dias da semana
+                                e configure os horários e valores de
+                                cada dia separadamente.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ==================================================
+                         MÊS
+                    =================================================== -->
+
+                    <div class="disp-campo disp-campo-mes">
+
+                        <label for="cadastroMesReferencia">
+                            Mês de referência
+                        </label>
+
+                        <input
+                            type="month"
+                            id="cadastroMesReferencia"
+                        >
+
+                    </div>
+
+
+
+                    <!-- ==================================================
+                         DIAS DA SEMANA
+                    =================================================== -->
+
+                    <div class="disp-subtitulo">
+
+                        <div>
+
+                            <strong>
+                                Repetir em
+                            </strong>
+
+                            <small>
+                                Escolha todos os dias
+                                que terão jogos.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="disp-dias-semana">
+
+
+                        <!-- SEGUNDA -->
+
+                        <label class="disp-dia-checkbox">
+
+                            <input
+                                type="checkbox"
+                                data-dia-semana="1"
+                            >
+
+                            <span>
+                                SEG
+                            </span>
+
+                            <strong>
+                                Segunda
+                            </strong>
+
+                        </label>
+
+
+
+                        <!-- TERÇA -->
+
+                        <label class="disp-dia-checkbox">
+
+                            <input
+                                type="checkbox"
+                                data-dia-semana="2"
+                            >
+
+                            <span>
+                                TER
+                            </span>
+
+                            <strong>
+                                Terça
+                            </strong>
+
+                        </label>
+
+
+
+                        <!-- QUARTA -->
+
+                        <label class="disp-dia-checkbox">
+
+                            <input
+                                type="checkbox"
+                                data-dia-semana="3"
+                            >
+
+                            <span>
+                                QUA
+                            </span>
+
+                            <strong>
+                                Quarta
+                            </strong>
+
+                        </label>
+
+
+
+                        <!-- QUINTA -->
+
+                        <label class="disp-dia-checkbox">
+
+                            <input
+                                type="checkbox"
+                                data-dia-semana="4"
+                            >
+
+                            <span>
+                                QUI
+                            </span>
+
+                            <strong>
+                                Quinta
+                            </strong>
+
+                        </label>
+
+
+
+                        <!-- SEXTA -->
+
+                        <label class="disp-dia-checkbox">
+
+                            <input
+                                type="checkbox"
+                                data-dia-semana="5"
+                            >
+
+                            <span>
+                                SEX
+                            </span>
+
+                            <strong>
+                                Sexta
+                            </strong>
+
+                        </label>
+
+
+
+                        <!-- SÁBADO -->
+
+                        <label class="disp-dia-checkbox">
+
+                            <input
+                                type="checkbox"
+                                data-dia-semana="6"
+                            >
+
+                            <span>
+                                SÁB
+                            </span>
+
+                            <strong>
+                                Sábado
+                            </strong>
+
+                        </label>
+
+
+
+                        <!-- DOMINGO -->
+
+                        <label class="disp-dia-checkbox">
+
+                            <input
+                                type="checkbox"
+                                data-dia-semana="0"
+                            >
+
+                            <span>
+                                DOM
+                            </span>
+
+                            <strong>
+                                Domingo
+                            </strong>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- ==================================================
+                         CONFIGURAÇÕES DOS DIAS
+
+                         O JAVASCRIPT CRIA:
+                         SEGUNDA
+                         QUARTA
+                         SÁBADO
+                         ETC.
+                    =================================================== -->
+
+                    <div
+                        class="disp-configuracoes-mensais"
+                        id="configuracoesMensais"
+                    >
+
+                        <div class="disp-mes-vazio">
+
+                            <span>
+                                👆
+                            </span>
+
+                            <strong>
+                                Selecione os dias da semana
+                            </strong>
+
+                            <p>
+                                Os horários e valores de cada
+                                dia aparecerão aqui.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- GERAR MÊS -->
+
+                    <button
+                        type="button"
+                        class="disp-btn-principal disp-btn-gerar"
+                        id="btnGerarMes"
+                    >
+                        Gerar horários do mês
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 LISTAGEM DE HORÁRIOS
+            =================================================== -->
+
+            <section class="disp-listagem">
+
+
+                <!-- TOPO -->
+
+                <div class="disp-listagem-topo">
+
+                    <div>
+
+                        <span>
+                            DISPONIBILIDADES
+                        </span>
+
+                        <h2>
+                            Horários cadastrados
+                        </h2>
+
+                    </div>
+
+
+
+                    <!-- TOTAL -->
+
+                    <div class="disp-quantidade">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="quantidadeDisponibilidades">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     FILTROS
+                =================================================== -->
+
+                <div class="disp-filtros">
+
+
+                    <!-- DATA -->
+
+                    <div class="disp-campo">
+
+                        <label for="filtroDisponibilidadeData">
+                            Filtrar por data
+                        </label>
+
+                        <input
+                            type="date"
+                            id="filtroDisponibilidadeData"
+                        >
+
+                    </div>
+
+
+
+                    <!-- MÊS -->
+
+                    <div class="disp-campo">
+
+                        <label for="filtroDisponibilidadeMes">
+                            Filtrar por mês
+                        </label>
+
+                        <input
+                            type="month"
+                            id="filtroDisponibilidadeMes"
+                        >
+
+                    </div>
+
+
+
+                    <!-- LIMPAR -->
+
+                    <button
+                        type="button"
+                        class="disp-btn-limpar"
+                        id="btnLimparFiltrosDisponibilidade"
+                    >
+                        Limpar filtros
+                    </button>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     LISTA GERADA PELO JS
+                =================================================== -->
+
+                <div id="listaDisponibilidades">
+                </div>
+
+
+
+                <!-- ==================================================
+                     LISTA VAZIA
+                =================================================== -->
+
+                <div
+                    class="disp-lista-vazia"
+                    id="disponibilidadesVazio"
+                >
+
+                    <span>
+                        ⚽
+                    </span>
+
+                    <strong>
+                        Nenhum horário encontrado
+                    </strong>
+
+                    <p>
+                        Cadastre uma disponibilidade
+                        ou altere os filtros.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
+    <script src="../js/gerente.js"></script>
+
+    <script src="../js/horarios-gerente.js"></script>
+
+
+</body>
+
+</html>

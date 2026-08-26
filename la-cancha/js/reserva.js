@@ -1,106 +1,418 @@
-// ===========================================
+// ======================================================
 // LA CANCHA FUT 7
-// CONFIRMAÇÃO DA RESERVA
-// ===========================================
+// CONFIRMAÇÃO DE RESERVA
+// ======================================================
 
 
-// PEGA OS PARÂMETROS DA URL
 
-const parametros =
-    new URLSearchParams(window.location.search);
+// ======================================================
+// 1. PARÂMETROS RECEBIDOS DA AGENDA
+// ======================================================
 
-
-const data =
-    parametros.get("data");
-
-const inicio =
-    parametros.get("inicio");
-
-const fim =
-    parametros.get("fim");
-
-const valor =
-    parametros.get("valor");
-
-
-// ELEMENTOS DA TELA
-
-const reservaData =
-    document.getElementById("reservaData");
-
-const reservaHorario =
-    document.getElementById("reservaHorario");
-
-const reservaDuracao =
-    document.getElementById("reservaDuracao");
-
-const reservaValor =
-    document.getElementById("reservaValor");
-
-
-const resumoData =
-    document.getElementById("resumoData");
-
-const resumoHorario =
-    document.getElementById("resumoHorario");
-
-const resumoDuracao =
-    document.getElementById("resumoDuracao");
-
-
-const btnContinuarLogin =
-    document.getElementById("btnContinuarLogin");
-
-
-// ===========================================
-// VERIFICAR SE RECEBEU UMA RESERVA
-// ===========================================
-
-if (!data || !inicio || !fim || !valor) {
-
-    alert(
-        "Nenhum horário foi selecionado. Escolha um horário na agenda."
+const parametrosReserva =
+    new URLSearchParams(
+        window.location.search
     );
 
-    window.location.href = "agenda.html";
+
+const tipoReserva =
+    parametrosReserva.get("tipo");
+
+const dataReserva =
+    parametrosReserva.get("data");
+
+const inicioReserva =
+    parametrosReserva.get("inicio");
+
+const fimReserva =
+    parametrosReserva.get("fim");
+
+const valorReserva =
+    Number(
+        parametrosReserva.get("valor")
+    );
+
+const horarioIdReserva =
+    parametrosReserva.get("horarioId");
+
+
+
+// ======================================================
+// 2. ELEMENTOS DA PÁGINA
+// ======================================================
+
+const reservaEtiqueta =
+    document.getElementById(
+        "reservaEtiqueta"
+    );
+
+const reservaTitulo =
+    document.getElementById(
+        "reservaTitulo"
+    );
+
+const reservaDescricao =
+    document.getElementById(
+        "reservaDescricao"
+    );
+
+const reservaTipoBanner =
+    document.getElementById(
+        "reservaTipoBanner"
+    );
+
+const reservaTipoIcone =
+    document.getElementById(
+        "reservaTipoIcone"
+    );
+
+const reservaTipoTexto =
+    document.getElementById(
+        "reservaTipoTexto"
+    );
+
+const reservaTipoDescricao =
+    document.getElementById(
+        "reservaTipoDescricao"
+    );
+
+
+const reservaData =
+    document.getElementById(
+        "reservaData"
+    );
+
+const reservaHorario =
+    document.getElementById(
+        "reservaHorario"
+    );
+
+const reservaDuracao =
+    document.getElementById(
+        "reservaDuracao"
+    );
+
+
+const labelReservaData =
+    document.getElementById(
+        "labelReservaData"
+    );
+
+
+const reservaFixoInfo =
+    document.getElementById(
+        "reservaFixoInfo"
+    );
+
+const fixoDiaSemana =
+    document.getElementById(
+        "fixoDiaSemana"
+    );
+
+const fixoMesReferencia =
+    document.getElementById(
+        "fixoMesReferencia"
+    );
+
+const fixoQuantidadeJogos =
+    document.getElementById(
+        "fixoQuantidadeJogos"
+    );
+
+
+const tituloResumoPagamento =
+    document.getElementById(
+        "tituloResumoPagamento"
+    );
+
+const resumoTipo =
+    document.getElementById(
+        "resumoTipo"
+    );
+
+const resumoLabelData =
+    document.getElementById(
+        "resumoLabelData"
+    );
+
+const resumoData =
+    document.getElementById(
+        "resumoData"
+    );
+
+const resumoHorario =
+    document.getElementById(
+        "resumoHorario"
+    );
+
+const linhaResumoRecorrencia =
+    document.getElementById(
+        "linhaResumoRecorrencia"
+    );
+
+const resumoRecorrencia =
+    document.getElementById(
+        "resumoRecorrencia"
+    );
+
+
+const labelValorTotal =
+    document.getElementById(
+        "labelValorTotal"
+    );
+
+const descricaoValorTotal =
+    document.getElementById(
+        "descricaoValorTotal"
+    );
+
+const reservaValor =
+    document.getElementById(
+        "reservaValor"
+    );
+
+
+const textoReservaAviso =
+    document.getElementById(
+        "textoReservaAviso"
+    );
+
+
+const btnContinuarReserva =
+    document.getElementById(
+        "btnContinuarReserva"
+    );
+
+
+
+// ======================================================
+// 3. VALIDAR PARÂMETROS
+// ======================================================
+
+function dadosReservaValidos() {
+
+    const tipoValido =
+        tipoReserva === "avulso" ||
+        tipoReserva === "fixo";
+
+
+    return (
+        tipoValido &&
+        dataReserva &&
+        inicioReserva &&
+        fimReserva &&
+        valorReserva > 0
+    );
 
 }
 
 
-// ===========================================
-// CALCULAR DURAÇÃO
-// ===========================================
 
-function calcularDuracao(inicio, fim) {
+// ======================================================
+// 4. FORMATAR VALOR
+// ======================================================
 
-    const [horaInicio, minutoInicio] =
-        inicio.split(":").map(Number);
+function formatarValorReserva(
+    valor
+) {
 
-    const [horaFim, minutoFim] =
-        fim.split(":").map(Number);
+    return Number(valor)
+        .toLocaleString(
+            "pt-BR",
+            {
+                style: "currency",
+                currency: "BRL"
+            }
+        );
+
+}
 
 
-    const minutosInicio =
-        horaInicio * 60 + minutoInicio;
 
-    const minutosFim =
-        horaFim * 60 + minutoFim;
+// ======================================================
+// 5. TRANSFORMAR DATA
+// ======================================================
+
+function criarDataLocal(
+    data
+) {
+
+    const [
+        ano,
+        mes,
+        dia
+    ] =
+        data
+            .split("-")
+            .map(Number);
 
 
-    const total =
-        minutosFim - minutosInicio;
+    return new Date(
+        ano,
+        mes - 1,
+        dia
+    );
+
+}
+
+
+
+// ======================================================
+// 6. FORMATAR DATA
+// ======================================================
+
+function formatarDataReserva(
+    data
+) {
+
+    const objetoData =
+        criarDataLocal(
+            data
+        );
+
+
+    return objetoData
+        .toLocaleDateString(
+            "pt-BR",
+            {
+                weekday:
+                    "long",
+
+                day:
+                    "2-digit",
+
+                month:
+                    "long",
+
+                year:
+                    "numeric"
+            }
+        );
+
+}
+
+
+
+// ======================================================
+// 7. DIA DA SEMANA
+// ======================================================
+
+function obterDiaSemana(
+    data
+) {
+
+    const objetoData =
+        criarDataLocal(
+            data
+        );
+
+
+    return objetoData
+        .toLocaleDateString(
+            "pt-BR",
+            {
+                weekday:
+                    "long"
+            }
+        );
+
+}
+
+
+
+// ======================================================
+// 8. MÊS DE REFERÊNCIA
+// ======================================================
+
+function obterMesReferencia(
+    data
+) {
+
+    const objetoData =
+        criarDataLocal(
+            data
+        );
+
+
+    return objetoData
+        .toLocaleDateString(
+            "pt-BR",
+            {
+                month:
+                    "long",
+
+                year:
+                    "numeric"
+            }
+        );
+
+}
+
+
+
+// ======================================================
+// 9. HORÁRIO PARA MINUTOS
+// ======================================================
+
+function horarioParaMinutosReserva(
+    horario
+) {
+
+    const [
+        hora,
+        minuto
+    ] =
+        horario
+            .split(":")
+            .map(Number);
+
+
+    return (
+        hora * 60 +
+        minuto
+    );
+
+}
+
+
+
+// ======================================================
+// 10. CALCULAR DURAÇÃO
+// ======================================================
+
+function calcularDuracaoReserva(
+    inicio,
+    fim
+) {
+
+    const totalMinutos =
+        horarioParaMinutosReserva(
+            fim
+        )
+        -
+        horarioParaMinutosReserva(
+            inicio
+        );
 
 
     const horas =
-        Math.floor(total / 60);
+        Math.floor(
+            totalMinutos / 60
+        );
+
 
     const minutos =
-        total % 60;
+        totalMinutos % 60;
 
 
-    if (horas > 0 && minutos > 0) {
+    if (
+        horas > 0 &&
+        minutos > 0
+    ) {
 
-        return `${horas}h ${minutos}min`;
+        return (
+            `${horas}h ${minutos}min`
+        );
 
     }
 
@@ -117,91 +429,462 @@ function calcularDuracao(inicio, fim) {
 }
 
 
-// ===========================================
-// FORMATAR VALOR
-// ===========================================
 
-const valorFormatado =
-    Number(valor).toLocaleString(
-        "pt-BR",
-        {
-            style: "currency",
-            currency: "BRL"
-        }
-    );
+// ======================================================
+// 11. QUANTAS VEZES O DIA OCORRE NO MÊS
+// ======================================================
 
+function contarOcorrenciasNoMes(
+    data
+) {
 
-const duracao =
-    calcularDuracao(inicio, fim);
-
-
-const horarioFormatado =
-    `${inicio} às ${fim}`;
-
-
-// ===========================================
-// MOSTRAR NA TELA
-// ===========================================
-
-reservaData.textContent =
-    data;
-
-reservaHorario.textContent =
-    horarioFormatado;
-
-reservaDuracao.textContent =
-    duracao;
-
-reservaValor.textContent =
-    valorFormatado;
-
-
-// RESUMO
-
-resumoData.textContent =
-    data;
-
-resumoHorario.textContent =
-    horarioFormatado;
-
-resumoDuracao.textContent =
-    duracao;
-
-
-// ===========================================
-// CONTINUAR PARA LOGIN
-// ===========================================
-
-btnContinuarLogin.addEventListener(
-    "click",
-    () => {
-
-        const dadosReserva =
-            new URLSearchParams();
-
-        dadosReserva.set(
-            "data",
+    const dataInicial =
+        criarDataLocal(
             data
         );
 
-        dadosReserva.set(
-            "inicio",
-            inicio
+
+    const ano =
+        dataInicial.getFullYear();
+
+    const mes =
+        dataInicial.getMonth();
+
+    const diaSemana =
+        dataInicial.getDay();
+
+
+    const ultimoDiaMes =
+        new Date(
+            ano,
+            mes + 1,
+            0
+        ).getDate();
+
+
+    let quantidade = 0;
+
+
+    for (
+        let dia = 1;
+        dia <= ultimoDiaMes;
+        dia++
+    ) {
+
+        const dataTeste =
+            new Date(
+                ano,
+                mes,
+                dia
+            );
+
+
+        if (
+            dataTeste.getDay() ===
+            diaSemana
+        ) {
+
+            quantidade++;
+
+        }
+
+    }
+
+
+    return quantidade;
+
+}
+
+
+
+// ======================================================
+// 12. MONTAR TELA AVULSA
+// ======================================================
+
+function configurarReservaAvulsa() {
+
+    if (reservaTipoBanner) {
+
+        reservaTipoBanner.classList.add(
+            "tipo-avulso"
         );
 
-        dadosReserva.set(
-            "fim",
-            fim
+    }
+
+
+    reservaEtiqueta.textContent =
+        "CONFIRME SUA RESERVA";
+
+
+    reservaTitulo.textContent =
+        "Revise os dados da sua partida";
+
+
+    reservaDescricao.textContent =
+        "Confira a data, horário e valor antes de continuar.";
+
+
+    reservaTipoIcone.textContent =
+        "⚽";
+
+
+    reservaTipoTexto.textContent =
+        "Reserva avulsa";
+
+
+    reservaTipoDescricao.textContent =
+        "Esta reserva é válida somente para a data selecionada.";
+
+
+
+    labelReservaData.textContent =
+        "Data da partida";
+
+
+    reservaData.textContent =
+        formatarDataReserva(
+            dataReserva
         );
 
-        dadosReserva.set(
-            "valor",
-            valor
+
+    reservaHorario.textContent =
+        `${inicioReserva} → ${fimReserva}`;
+
+
+    reservaDuracao.textContent =
+        calcularDuracaoReserva(
+            inicioReserva,
+            fimReserva
+        );
+
+
+
+    // ESCONDE INFORMAÇÃO DE FIXO
+
+    reservaFixoInfo.style.display =
+        "none";
+
+
+    linhaResumoRecorrencia.style.display =
+        "none";
+
+
+
+    // RESUMO
+
+    tituloResumoPagamento.textContent =
+        "Sua reserva";
+
+
+    resumoTipo.textContent =
+        "Avulsa";
+
+
+    resumoLabelData.textContent =
+        "Data";
+
+
+    resumoData.textContent =
+        formatarDataReserva(
+            dataReserva
+        );
+
+
+    resumoHorario.textContent =
+        `${inicioReserva} → ${fimReserva}`;
+
+
+
+    // VALOR
+
+    labelValorTotal.textContent =
+        "Valor da reserva";
+
+
+    descricaoValorTotal.textContent =
+        "Pagamento único";
+
+
+    reservaValor.textContent =
+        formatarValorReserva(
+            valorReserva
+        );
+
+
+    textoReservaAviso.textContent =
+        "O horário será confirmado somente após a aprovação do pagamento.";
+
+
+    btnContinuarReserva.textContent =
+        "Continuar reserva";
+
+}
+
+
+
+// ======================================================
+// 13. MONTAR TELA DO HORÁRIO FIXO
+// ======================================================
+
+function configurarHorarioFixo() {
+
+    const diaSemana =
+        obterDiaSemana(
+            dataReserva
+        );
+
+
+    const mesReferencia =
+        obterMesReferencia(
+            dataReserva
+        );
+
+
+    const quantidadeJogos =
+        contarOcorrenciasNoMes(
+            dataReserva
+        );
+
+
+
+    if (reservaTipoBanner) {
+
+        reservaTipoBanner.classList.add(
+            "tipo-fixo"
+        );
+
+    }
+
+
+
+    reservaEtiqueta.textContent =
+        "HORÁRIO FIXO";
+
+
+    reservaTitulo.textContent =
+        "Confirme seu horário fixo mensal";
+
+
+    reservaDescricao.textContent =
+        "Confira os dados do horário semanal e da mensalidade antes de continuar.";
+
+
+
+    reservaTipoIcone.textContent =
+        "🔁";
+
+
+    reservaTipoTexto.textContent =
+        "Horário fixo mensal";
+
+
+    reservaTipoDescricao.textContent =
+        `Seu grupo ficará com este horário toda ${diaSemana} durante o mês.`;
+
+
+
+    // DADOS
+
+    labelReservaData.textContent =
+        "Primeira referência";
+
+
+    reservaData.textContent =
+        formatarDataReserva(
+            dataReserva
+        );
+
+
+    reservaHorario.textContent =
+        `${inicioReserva} → ${fimReserva}`;
+
+
+    reservaDuracao.textContent =
+        calcularDuracaoReserva(
+            inicioReserva,
+            fimReserva
+        );
+
+
+
+    // BLOCO FIXO
+
+    reservaFixoInfo.style.display =
+        "block";
+
+
+    fixoDiaSemana.textContent =
+        diaSemana;
+
+
+    fixoMesReferencia.textContent =
+        mesReferencia;
+
+
+    fixoQuantidadeJogos.textContent =
+        quantidadeJogos;
+
+
+
+    // RESUMO
+
+    tituloResumoPagamento.textContent =
+        "Sua mensalidade";
+
+
+    resumoTipo.textContent =
+        "Horário fixo";
+
+
+    resumoLabelData.textContent =
+        "Mês";
+
+
+    resumoData.textContent =
+        mesReferencia;
+
+
+    resumoHorario.textContent =
+        `${inicioReserva} → ${fimReserva}`;
+
+
+    linhaResumoRecorrencia.style.display =
+        "flex";
+
+
+    resumoRecorrencia.textContent =
+        `Toda ${diaSemana}`;
+
+
+
+    // VALOR
+
+    labelValorTotal.textContent =
+        "Mensalidade";
+
+
+    descricaoValorTotal.textContent =
+        "Valor referente ao mês";
+
+
+    reservaValor.textContent =
+        formatarValorReserva(
+            valorReserva
+        );
+
+
+    textoReservaAviso.textContent =
+        "Após o pagamento, este horário ficará reservado para seu grupo durante o mês. A renovação do próximo mês será feita separadamente.";
+
+
+    btnContinuarReserva.textContent =
+        "Continuar contratação";
+
+}
+
+
+
+// ======================================================
+// 14. CONTINUAR PARA IDENTIFICAÇÃO
+// ======================================================
+
+if (btnContinuarReserva) {
+
+    btnContinuarReserva.addEventListener(
+        "click",
+        () => {
+
+            const parametros =
+                new URLSearchParams();
+
+
+            parametros.set(
+                "tipo",
+                tipoReserva
+            );
+
+
+            parametros.set(
+                "data",
+                dataReserva
+            );
+
+
+            parametros.set(
+                "inicio",
+                inicioReserva
+            );
+
+
+            parametros.set(
+                "fim",
+                fimReserva
+            );
+
+
+            parametros.set(
+                "valor",
+                valorReserva
+            );
+
+
+            if (horarioIdReserva) {
+
+                parametros.set(
+                    "horarioId",
+                    horarioIdReserva
+                );
+
+            }
+
+
+            window.location.href =
+                `login.html?${parametros.toString()}`;
+
+        }
+    );
+
+}
+
+
+
+// ======================================================
+// 15. INICIALIZAR
+// ======================================================
+
+function iniciarReserva() {
+
+    if (!dadosReservaValidos()) {
+
+        alert(
+            "Não foi possível identificar o horário selecionado."
         );
 
 
         window.location.href =
-            `login.html?${dadosReserva.toString()}`;
+            "agenda.html";
+
+
+        return;
 
     }
-);
+
+
+    if (
+        tipoReserva ===
+        "fixo"
+    ) {
+
+        configurarHorarioFixo();
+
+    } else {
+
+        configurarReservaAvulsa();
+
+    }
+
+}
+
+
+
+iniciarReserva();

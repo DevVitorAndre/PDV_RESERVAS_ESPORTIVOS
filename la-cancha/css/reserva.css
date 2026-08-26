@@ -573,3 +573,652 @@
     }
 
 }
+
+/* =====================================================
+   NOVA CONFIRMAÇÃO DA RESERVA
+===================================================== */
+
+.pagina-reserva {
+    min-height: 100vh;
+
+    padding: 55px 0 85px;
+
+    background: #f7f9fc;
+}
+
+
+/* =====================================================
+   PROGRESSO
+===================================================== */
+
+.reserva-progresso {
+    max-width: 760px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 45px;
+}
+
+
+.reserva-etapa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 6px;
+
+    min-width: 80px;
+
+    color: #9aa2ae;
+
+    font-size: 9px;
+}
+
+
+.reserva-etapa > span {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #dce2e9;
+
+    border-radius: 50%;
+
+    background: white;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+.reserva-etapa.ativa {
+    color: var(--laranja);
+}
+
+
+.reserva-etapa.ativa > span {
+    border-color: var(--laranja);
+
+    background: var(--laranja);
+
+    color: white;
+}
+
+
+.reserva-etapa.concluida {
+    color: var(--azul);
+}
+
+
+.reserva-etapa.concluida > span {
+    border-color: var(--azul);
+
+    background: var(--azul);
+
+    color: white;
+}
+
+
+.reserva-linha {
+    width: 75px;
+    height: 2px;
+
+    margin-bottom: 20px;
+
+    background: #dfe4eb;
+}
+
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+.reserva-cabecalho {
+    max-width: 700px;
+
+    margin-bottom: 30px;
+}
+
+
+.reserva-etiqueta {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--laranja);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.reserva-cabecalho h1 {
+    margin-bottom: 8px;
+
+    color: var(--azul-escuro);
+
+    font-size: 34px;
+}
+
+
+.reserva-cabecalho p {
+    color: var(--cinza-texto);
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.reserva-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 350px;
+
+    gap: 25px;
+
+    align-items: start;
+}
+
+
+.reserva-card-principal,
+.reserva-resumo {
+    border: 1px solid #e0e6ed;
+
+    border-radius: 16px;
+
+    background: white;
+
+    box-shadow:
+        0 8px 30px
+        rgba(16, 38, 79, 0.05);
+}
+
+
+/* =====================================================
+   CARD PRINCIPAL
+===================================================== */
+
+.reserva-card-principal {
+    padding: 26px;
+}
+
+
+/* =====================================================
+   TIPO
+===================================================== */
+
+.reserva-tipo-banner {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 25px;
+
+    padding: 17px;
+
+    border-radius: 12px;
+
+    background: #f5f8fc;
+}
+
+
+.reserva-tipo-banner.tipo-avulso {
+    border: 1px solid #dae8fa;
+
+    background: #f7faff;
+}
+
+
+.reserva-tipo-banner.tipo-fixo {
+    border: 1px solid #ffdcc3;
+
+    background: #fff8f3;
+}
+
+
+.reserva-tipo-icone {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: white;
+
+    font-size: 22px;
+}
+
+
+.reserva-tipo-banner span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #8a929e;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 0.7px;
+}
+
+
+.reserva-tipo-banner strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: var(--azul-escuro);
+
+    font-size: 16px;
+}
+
+
+.reserva-tipo-banner p {
+    color: #7d8694;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   DETALHES
+===================================================== */
+
+.reserva-detalhes {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+.reserva-detalhe {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 16px;
+
+    border: 1px solid #e5e9ef;
+
+    border-radius: 11px;
+}
+
+
+.reserva-detalhe-icone {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: var(--azul-claro);
+
+    font-size: 17px;
+}
+
+
+.reserva-detalhe span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #9299a4;
+
+    font-size: 9px;
+}
+
+
+.reserva-detalhe strong {
+    color: var(--azul-escuro);
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   FIXO
+===================================================== */
+
+.reserva-fixo-info {
+    display: none;
+
+    margin-top: 22px;
+
+    padding: 20px;
+
+    border: 1px solid #ffd9bd;
+
+    border-radius: 12px;
+
+    background: #fff9f5;
+}
+
+
+.reserva-fixo-topo span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--laranja);
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+.reserva-fixo-topo h2 {
+    margin-bottom: 15px;
+
+    color: var(--azul-escuro);
+
+    font-size: 18px;
+}
+
+
+.reserva-fixo-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 9px;
+
+    margin-bottom: 15px;
+}
+
+
+.reserva-fixo-grid > div {
+    padding: 12px;
+
+    border-radius: 8px;
+
+    background: white;
+}
+
+
+.reserva-fixo-grid span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #9299a4;
+
+    font-size: 8px;
+}
+
+
+.reserva-fixo-grid strong {
+    color: var(--azul-escuro);
+
+    font-size: 11px;
+
+    text-transform: capitalize;
+}
+
+
+.reserva-fixo-info p {
+    color: #727c8a;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+.reserva-fixo-info small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #979ea8;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   RESUMO
+===================================================== */
+
+.reserva-resumo {
+    position: sticky;
+
+    top: 110px;
+
+    padding: 24px;
+}
+
+
+.reserva-resumo h2 {
+    margin-bottom: 20px;
+
+    color: var(--azul-escuro);
+
+    font-size: 20px;
+}
+
+
+.resumo-reserva-linha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid #edf0f4;
+}
+
+
+.resumo-reserva-linha span {
+    color: #89919d;
+
+    font-size: 10px;
+}
+
+
+.resumo-reserva-linha strong {
+    color: var(--azul-escuro);
+
+    font-size: 10px;
+
+    text-align: right;
+
+    text-transform: capitalize;
+}
+
+
+/* =====================================================
+   TOTAL
+===================================================== */
+
+.reserva-total {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+
+.reserva-total span {
+    display: block;
+
+    color: var(--azul-escuro);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.reserva-total small {
+    color: #969da7;
+
+    font-size: 8px;
+}
+
+
+.reserva-total > strong {
+    color: var(--azul);
+
+    font-size: 23px;
+}
+
+
+/* =====================================================
+   AVISO
+===================================================== */
+
+.reserva-aviso {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 8px;
+
+    margin-top: 18px;
+
+    padding: 11px;
+
+    border-radius: 8px;
+
+    background: #f6f8fb;
+}
+
+
+.reserva-aviso p {
+    color: #7b8491;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+.btn-continuar-reserva {
+    width: 100%;
+
+    margin-top: 18px;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+
+.reserva-alterar {
+    display: block;
+
+    margin-top: 12px;
+
+    color: var(--azul);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .reserva-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .reserva-resumo {
+        position: static;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .pagina-reserva {
+        padding: 35px 0 60px;
+    }
+
+
+    .reserva-progresso {
+        overflow-x: auto;
+
+        justify-content: flex-start;
+    }
+
+
+    .reserva-linha {
+        min-width: 30px;
+    }
+
+
+    .reserva-etapa {
+        min-width: 65px;
+    }
+
+
+    .reserva-cabecalho h1 {
+        font-size: 28px;
+    }
+
+
+    .reserva-detalhes {
+        grid-template-columns: 1fr;
+    }
+
+
+    .reserva-fixo-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .reserva-card-principal {
+        padding: 18px;
+    }
+
+
+    .reserva-resumo {
+        padding: 20px;
+    }
+
+}

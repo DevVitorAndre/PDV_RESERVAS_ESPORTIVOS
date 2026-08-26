@@ -2,24 +2,45 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
         content="La Cancha Fut 7 - Reserve sua quadra society de forma rápida e fácil."
     >
 
-    <title>La Cancha Fut 7 | Reserve sua quadra</title>
+    <title>
+        La Cancha Fut 7 | Reserve sua quadra
+    </title>
+
 
     <!-- CSS PRINCIPAL -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="img/logo.png">
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+
+    <!-- FAVICON -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
 </head>
 
 
 <body>
+
 
     <!-- =========================================
          CABEÇALHO
@@ -29,8 +50,13 @@
 
         <div class="container cabecalho-conteudo">
 
+
             <!-- LOGO -->
-            <a href="index.html" class="logo">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
 
                 <img
                     src="img/logo.png"
@@ -40,20 +66,28 @@
             </a>
 
 
+
             <!-- MENU DESKTOP -->
+
             <nav class="menu-principal">
 
-                <a href="index.html" class="ativo">
+                <a
+                    href="index.html"
+                    class="ativo"
+                >
                     Início
                 </a>
+
 
                 <a href="agenda.html">
                     Agenda
                 </a>
 
+
                 <a href="#planos-fixos">
                     Planos Fixos
                 </a>
+
 
                 <a href="login.html">
                     Entrar
@@ -62,7 +96,9 @@
             </nav>
 
 
+
             <!-- BOTÃO RESERVA -->
+
             <a
                 href="agenda.html"
                 class="btn btn-reservar-topo"
@@ -71,8 +107,11 @@
             </a>
 
 
+
             <!-- BOTÃO MENU CELULAR -->
+
             <button
+                type="button"
                 class="btn-menu-mobile"
                 id="btnMenuMobile"
                 aria-label="Abrir menu"
@@ -83,7 +122,9 @@
         </div>
 
 
+
         <!-- MENU MOBILE -->
+
         <nav
             class="menu-mobile"
             id="menuMobile"
@@ -93,17 +134,21 @@
                 Início
             </a>
 
+
             <a href="agenda.html">
                 Agenda
             </a>
+
 
             <a href="#planos-fixos">
                 Planos Fixos
             </a>
 
+
             <a href="login.html">
                 Entrar
             </a>
+
 
             <a
                 href="agenda.html"
@@ -135,6 +180,7 @@
 
 
                 <!-- TEXTO HERO -->
+
                 <div class="hero-texto">
 
                     <span class="hero-etiqueta">
@@ -154,11 +200,15 @@
 
 
                     <p>
-                        Escolha o melhor horário para sua partida,
-                        faça sua reserva online e venha curtir sua
-                        resenha no La Cancha Fut 7.
+                        Escolha o melhor horário para sua
+                        partida, faça sua reserva online
+                        e venha curtir sua resenha no
+                        La Cancha Fut 7.
                     </p>
 
+
+
+                    <!-- BOTÕES -->
 
                     <div class="hero-botoes">
 
@@ -180,8 +230,13 @@
                     </div>
 
 
+
                     <!-- BENEFÍCIOS PEQUENOS -->
+
                     <div class="hero-beneficios">
+
+
+                        <!-- AGENDA -->
 
                         <div class="hero-beneficio">
 
@@ -204,6 +259,9 @@
                         </div>
 
 
+
+                        <!-- PAGAMENTO -->
+
                         <div class="hero-beneficio">
 
                             <span class="icone-beneficio">
@@ -224,6 +282,9 @@
 
                         </div>
 
+
+
+                        <!-- FIXO -->
 
                         <div class="hero-beneficio">
 
@@ -261,6 +322,8 @@
                 >
 
 
+                    <!-- TOPO -->
+
                     <div class="card-agenda-topo">
 
                         <div>
@@ -270,7 +333,7 @@
                             </span>
 
                             <h2>
-                                Próximos horários
+                                Horários de hoje
                             </h2>
 
                         </div>
@@ -284,11 +347,14 @@
 
 
 
+                    <!-- DATA -->
+
                     <div class="agenda-data">
 
                         <span>
                             📅
                         </span>
+
 
                         <div>
 
@@ -296,7 +362,12 @@
                                 Horários disponíveis
                             </small>
 
-                            <strong>
+                            <!--
+                                O JAVASCRIPT COLOCA
+                                A DATA DE HOJE AQUI
+                            -->
+
+                            <strong id="homeDataHoje">
                                 Hoje
                             </strong>
 
@@ -306,31 +377,44 @@
 
 
 
-                    <!-- HORÁRIO 1 -->
-                    <div class="horario-item">
+                    <!-- =================================
+                         HORÁRIOS DE HOJE
 
-                        <div class="horario-info">
+                         NÃO EXISTEM MAIS HORÁRIOS
+                         ESCRITOS MANUALMENTE.
+
+                         main.js vai gerar aqui.
+                    ================================== -->
+
+                    <div id="homeListaHorarios">
+                    </div>
+
+
+
+                    <!-- =================================
+                         SEM DISPONIBILIDADE HOJE
+                    ================================== -->
+
+                    <div
+                        class="home-sem-horarios"
+                        id="homeSemHorarios"
+                    >
+
+                        <span class="home-sem-horarios-icone">
+                            ⚽
+                        </span>
+
+
+                        <div>
 
                             <strong>
-                                16:15 - 17:15
+                                Sem horários disponíveis hoje
                             </strong>
 
-                            <span>
-                                Quadra Society
-                            </span>
-
-                        </div>
-
-
-                        <div class="horario-preco">
-
-                            <strong>
-                                R$ 150,00
-                            </strong>
-
-                            <span class="status-disponivel">
-                                Disponível
-                            </span>
+                            <p>
+                                Existem outros dias disponíveis.
+                                Consulte a agenda completa.
+                            </p>
 
                         </div>
 
@@ -338,69 +422,9 @@
 
 
 
-                    <!-- HORÁRIO 2 -->
-                    <div class="horario-item">
-
-                        <div class="horario-info">
-
-                            <strong>
-                                17:30 - 18:30
-                            </strong>
-
-                            <span>
-                                Quadra Society
-                            </span>
-
-                        </div>
-
-
-                        <div class="horario-preco">
-
-                            <strong>
-                                R$ 150,00
-                            </strong>
-
-                            <span class="status-disponivel">
-                                Disponível
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- HORÁRIO 3 -->
-                    <div class="horario-item">
-
-                        <div class="horario-info">
-
-                            <strong>
-                                19:45 - 21:15
-                            </strong>
-
-                            <span>
-                                Quadra Society
-                            </span>
-
-                        </div>
-
-
-                        <div class="horario-preco">
-
-                            <strong>
-                                R$ 180,00
-                            </strong>
-
-                            <span class="status-disponivel">
-                                Disponível
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
+                    <!-- =================================
+                         AGENDA COMPLETA
+                    ================================== -->
 
                     <a
                         href="agenda.html"
@@ -437,8 +461,8 @@
                     </h2>
 
                     <p>
-                        Consulte horários, reserve e faça tudo
-                        pelo próprio site.
+                        Consulte horários, reserve e faça
+                        tudo pelo próprio site.
                     </p>
 
                 </div>
@@ -448,7 +472,8 @@
                 <div class="recursos-grid">
 
 
-                    <!-- RECURSO -->
+                    <!-- AGENDA -->
+
                     <article class="recurso-card">
 
                         <div class="recurso-icone">
@@ -461,14 +486,16 @@
 
                         <p>
                             Veja os horários disponíveis
-                            e escolha o melhor para sua partida.
+                            e escolha o melhor para
+                            sua partida.
                         </p>
 
                     </article>
 
 
 
-                    <!-- RECURSO -->
+                    <!-- PAGAMENTO -->
+
                     <article class="recurso-card">
 
                         <div class="recurso-icone">
@@ -488,7 +515,8 @@
 
 
 
-                    <!-- RECURSO -->
+                    <!-- HORÁRIO FIXO -->
+
                     <article class="recurso-card">
 
                         <div class="recurso-icone">
@@ -508,7 +536,8 @@
 
 
 
-                    <!-- RECURSO -->
+                    <!-- FUT 7 -->
+
                     <article class="recurso-card">
 
                         <div class="recurso-icone">
@@ -557,8 +586,9 @@
                     </h2>
 
                     <p>
-                        Consulte a disponibilidade para garantir
-                        um horário recorrente para o seu grupo.
+                        Consulte a disponibilidade para
+                        garantir um horário recorrente
+                        para o seu grupo.
                     </p>
 
                 </div>
@@ -567,22 +597,29 @@
 
                 <div class="plano-destaque">
 
+
                     <div class="plano-texto">
 
                         <span class="plano-etiqueta">
                             ⚽ HORÁRIO SEMANAL
                         </span>
 
+
                         <h3>
-                            Seu horário garantido toda semana
+                            Seu horário garantido
+                            toda semana
                         </h3>
 
+
                         <p>
-                            Ideal para grupos que jogam sempre
-                            no mesmo dia e horário.
+                            Ideal para grupos que jogam
+                            sempre no mesmo dia e horário.
+                            O horário fixo funciona através
+                            de mensalidade.
                         </p>
 
                     </div>
+
 
 
                     <a
@@ -608,6 +645,7 @@
 
             <div class="container cta-conteudo">
 
+
                 <div>
 
                     <span>
@@ -624,6 +662,7 @@
                     </p>
 
                 </div>
+
 
 
                 <a
@@ -652,6 +691,7 @@
 
 
             <!-- LOGO -->
+
             <div class="rodape-marca">
 
                 <img
@@ -669,6 +709,7 @@
 
 
             <!-- CONTATO -->
+
             <div class="rodape-coluna">
 
                 <h3>
@@ -688,6 +729,7 @@
 
 
             <!-- LOCALIZAÇÃO -->
+
             <div class="rodape-coluna">
 
                 <h3>
@@ -706,7 +748,8 @@
 
 
 
-            <!-- HORÁRIO -->
+            <!-- FUNCIONAMENTO -->
+
             <div class="rodape-coluna">
 
                 <h3>
@@ -722,6 +765,8 @@
         </div>
 
 
+
+        <!-- FINAL -->
 
         <div class="rodape-final">
 
@@ -740,8 +785,12 @@
 
 
 
-    <!-- JAVASCRIPT -->
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
     <script src="js/main.js"></script>
+
 
 </body>
 

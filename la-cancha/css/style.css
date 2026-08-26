@@ -1375,3 +1375,133 @@ textarea {
     }
 
 }
+
+/* =====================================================
+   AGENDA DINÂMICA - INDEX
+===================================================== */
+
+
+/* CONTAINER DOS HORÁRIOS GERADOS PELO JS */
+
+#homeListaHorarios {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =====================================================
+   COMPLEMENTO DO PREÇO
+   ex: por jogo / por mês
+===================================================== */
+
+.home-tipo-preco {
+    display: block;
+
+    margin-top: 1px;
+
+    margin-bottom: 4px;
+
+    color: var(--cinza-texto);
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    text-align: right;
+}
+
+
+/* =====================================================
+   SEM HORÁRIOS DISPONÍVEIS HOJE
+===================================================== */
+
+.home-sem-horarios {
+    min-height: 135px;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    margin: 5px 0 10px;
+
+    padding: 20px;
+
+    border: 1px dashed #d9e0e8;
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+}
+
+
+.home-sem-horarios-icone {
+    flex-shrink: 0;
+
+    font-size: 30px;
+}
+
+
+.home-sem-horarios strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--azul-escuro);
+
+    font-size: 12px;
+}
+
+
+.home-sem-horarios p {
+    max-width: 230px;
+
+    color: var(--cinza-texto);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   PEQUENO AJUSTE NO HORÁRIO DINÂMICO
+===================================================== */
+
+#homeListaHorarios .horario-item {
+    transition: 0.2s;
+}
+
+
+#homeListaHorarios .horario-item:hover {
+    background: #fafcff;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 500px) {
+
+    .home-sem-horarios {
+        min-height: 120px;
+
+        padding: 16px;
+    }
+
+
+    .home-sem-horarios-icone {
+        font-size: 25px;
+    }
+
+
+    .home-tipo-preco {
+        font-size: 8px;
+    }
+
+}

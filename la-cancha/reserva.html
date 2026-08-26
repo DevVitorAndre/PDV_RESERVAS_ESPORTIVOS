@@ -2,31 +2,60 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Confirmar Reserva | La Cancha Fut 7</title>
+    <title>
+        Confirmar Reserva | La Cancha Fut 7
+    </title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/reserva.css">
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/reserva.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- =========================
+
+    <!-- ==================================================
          CABEÇALHO
-    ========================== -->
+    =================================================== -->
 
     <header class="cabecalho">
 
         <div class="container cabecalho-conteudo">
 
-            <a href="index.html" class="logo">
-                <img src="img/logo.png"
-                     alt="La Cancha Fut 7">
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <img
+                    src="img/logo.png"
+                    alt="La Cancha Fut 7"
+                >
+
             </a>
+
 
             <nav class="menu-principal">
 
@@ -48,12 +77,17 @@
 
             </nav>
 
-            <a href="agenda.html"
-               class="btn btn-reservar-topo">
-                Reservar horário
+
+            <a
+                href="agenda.html"
+                class="btn btn-reservar-topo"
+            >
+                Voltar à agenda
             </a>
 
+
             <button
+                type="button"
                 class="btn-menu-mobile"
                 id="btnMenuMobile"
                 aria-label="Abrir menu"
@@ -62,6 +96,7 @@
             </button>
 
         </div>
+
 
         <nav
             class="menu-mobile"
@@ -89,163 +124,159 @@
     </header>
 
 
-    <!-- =========================
+
+    <!-- ==================================================
          CONTEÚDO
-    ========================== -->
+    =================================================== -->
 
     <main class="pagina-reserva">
 
         <div class="container">
 
 
-            <!-- VOLTAR -->
+            <!-- ==================================================
+                 PROGRESSO
+            =================================================== -->
 
-            <a href="agenda.html"
-               class="voltar-agenda">
+            <section class="reserva-progresso">
 
-                ← Voltar para agenda
+                <div class="reserva-etapa concluida">
 
-            </a>
+                    <span>
+                        1
+                    </span>
+
+                    <strong>
+                        Horário
+                    </strong>
+
+                </div>
 
 
-            <!-- TÍTULO -->
+                <div class="reserva-linha">
+                </div>
+
+
+                <div class="reserva-etapa ativa">
+
+                    <span>
+                        2
+                    </span>
+
+                    <strong>
+                        Confirmação
+                    </strong>
+
+                </div>
+
+
+                <div class="reserva-linha">
+                </div>
+
+
+                <div class="reserva-etapa">
+
+                    <span>
+                        3
+                    </span>
+
+                    <strong>
+                        Identificação
+                    </strong>
+
+                </div>
+
+
+                <div class="reserva-linha">
+                </div>
+
+
+                <div class="reserva-etapa">
+
+                    <span>
+                        4
+                    </span>
+
+                    <strong>
+                        Pagamento
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 CABEÇALHO
+            =================================================== -->
 
             <section class="reserva-cabecalho">
 
-                <span>
-                    CONFIRMAÇÃO
+                <span
+                    class="reserva-etiqueta"
+                    id="reservaEtiqueta"
+                >
+                    CONFIRME SUA RESERVA
                 </span>
 
-                <h1>
-                    Confira sua reserva
+
+                <h1 id="reservaTitulo">
+                    Revise os dados da sua partida
                 </h1>
 
-                <p>
-                    Verifique os dados abaixo antes de continuar.
+
+                <p id="reservaDescricao">
+                    Confira o horário escolhido antes
+                    de continuar.
                 </p>
 
             </section>
 
 
-            <!-- PROGRESSO -->
 
-            <div class="passos-reserva">
-
-                <div class="passo concluido">
-
-                    <div class="passo-numero">
-                        ✓
-                    </div>
-
-                    <span>
-                        Horário
-                    </span>
-
-                </div>
-
-
-                <div class="passo-linha ativo"></div>
-
-
-                <div class="passo ativo">
-
-                    <div class="passo-numero">
-                        2
-                    </div>
-
-                    <span>
-                        Confirmação
-                    </span>
-
-                </div>
-
-
-                <div class="passo-linha"></div>
-
-
-                <div class="passo">
-
-                    <div class="passo-numero">
-                        3
-                    </div>
-
-                    <span>
-                        Identificação
-                    </span>
-
-                </div>
-
-
-                <div class="passo-linha"></div>
-
-
-                <div class="passo">
-
-                    <div class="passo-numero">
-                        4
-                    </div>
-
-                    <span>
-                        Pagamento
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-                 GRID
-            ========================== -->
+            <!-- ==================================================
+                 LAYOUT
+            =================================================== -->
 
             <section class="reserva-layout">
 
 
-                <!-- DADOS DA RESERVA -->
+                <!-- ==============================================
+                     DETALHES
+                =============================================== -->
 
                 <div class="reserva-card-principal">
 
-                    <div class="reserva-card-topo">
 
-                        <div>
+                    <!-- TIPO DA RESERVA -->
 
-                            <span class="mini-titulo">
-                                SUA PARTIDA
-                            </span>
+                    <div
+                        class="reserva-tipo-banner"
+                        id="reservaTipoBanner"
+                    >
 
-                            <h2>
-                                Detalhes da reserva
-                            </h2>
-
-                        </div>
-
-                        <div class="reserva-status">
-                            ✓ Disponível
-                        </div>
-
-                    </div>
-
-
-                    <!-- QUADRA -->
-
-                    <div class="quadra-destaque">
-
-                        <div class="quadra-icone">
+                        <div
+                            class="reserva-tipo-icone"
+                            id="reservaTipoIcone"
+                        >
                             ⚽
                         </div>
 
+
                         <div>
 
-                            <small>
-                                Quadra
-                            </small>
+                            <span>
+                                MODALIDADE
+                            </span>
 
-                            <h3>
-                                La Cancha Fut 7
-                            </h3>
+                            <strong id="reservaTipoTexto">
+                                Reserva avulsa
+                            </strong>
 
-                            <p>
-                                Quadra Society
+                            <p id="reservaTipoDescricao">
+                                Reserva válida somente
+                                para a data selecionada.
                             </p>
 
                         </div>
@@ -253,20 +284,23 @@
                     </div>
 
 
-                    <!-- INFORMAÇÕES -->
 
-                    <div class="reserva-informacoes">
+                    <!-- DADOS -->
+
+                    <div class="reserva-detalhes">
 
 
-                        <div class="informacao-card">
+                        <!-- DATA -->
 
-                            <div class="informacao-icone">
+                        <div class="reserva-detalhe">
+
+                            <div class="reserva-detalhe-icone">
                                 📅
                             </div>
 
                             <div>
 
-                                <span>
+                                <span id="labelReservaData">
                                     Data
                                 </span>
 
@@ -279,9 +313,12 @@
                         </div>
 
 
-                        <div class="informacao-card">
 
-                            <div class="informacao-icone">
+                        <!-- HORÁRIO -->
+
+                        <div class="reserva-detalhe">
+
+                            <div class="reserva-detalhe-icone">
                                 🕐
                             </div>
 
@@ -300,10 +337,13 @@
                         </div>
 
 
-                        <div class="informacao-card">
 
-                            <div class="informacao-icone">
-                                ⏱
+                        <!-- DURAÇÃO -->
+
+                        <div class="reserva-detalhe">
+
+                            <div class="reserva-detalhe-icone">
+                                ⏱️
                             </div>
 
                             <div>
@@ -321,16 +361,19 @@
                         </div>
 
 
-                        <div class="informacao-card">
 
-                            <div class="informacao-icone">
-                                🏟️
+                        <!-- QUADRA -->
+
+                        <div class="reserva-detalhe">
+
+                            <div class="reserva-detalhe-icone">
+                                ⚽
                             </div>
 
                             <div>
 
                                 <span>
-                                    Tipo
+                                    Quadra
                                 </span>
 
                                 <strong>
@@ -344,18 +387,99 @@
                     </div>
 
 
-                    <!-- AVISO -->
 
-                    <div class="aviso-reserva">
+                    <!-- ==================================================
+                         INFORMAÇÕES DO FIXO
+                    =================================================== -->
 
-                        <span>
-                            ℹ️
-                        </span>
+                    <div
+                        class="reserva-fixo-info"
+                        id="reservaFixoInfo"
+                    >
+
+                        <div class="reserva-fixo-topo">
+
+                            <span>
+                                🔁 HORÁRIO FIXO
+                            </span>
+
+                            <h2>
+                                Como funciona?
+                            </h2>
+
+                        </div>
+
+
+                        <div class="reserva-fixo-grid">
+
+
+                            <div>
+
+                                <span>
+                                    Dia semanal
+                                </span>
+
+                                <strong id="fixoDiaSemana">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Período
+                                </span>
+
+                                <strong id="fixoMesReferencia">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Jogos no mês
+                                </span>
+
+                                <strong id="fixoQuantidadeJogos">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Renovação
+                                </span>
+
+                                <strong>
+                                    Mensal
+                                </strong>
+
+                            </div>
+
+                        </div>
+
 
                         <p>
-                            O horário será reservado definitivamente
-                            após a confirmação do pagamento.
+                            Ao contratar este horário,
+                            o mesmo dia da semana e período
+                            ficam reservados para você
+                            durante o mês indicado.
                         </p>
+
+
+                        <small>
+                            Para continuar com o horário
+                            no próximo mês será necessário
+                            realizar uma nova mensalidade.
+                        </small>
 
                     </div>
 
@@ -363,37 +487,40 @@
 
 
 
-                <!-- =========================
+                <!-- ==============================================
                      RESUMO DO PAGAMENTO
-                ========================== -->
+                =============================================== -->
 
                 <aside class="reserva-resumo">
 
-                    <span class="mini-titulo">
+                    <span class="resumo-etiqueta">
                         RESUMO
                     </span>
 
-                    <h2>
+
+                    <h2 id="tituloResumoPagamento">
                         Sua reserva
                     </h2>
 
 
-                    <div class="resumo-item">
+
+                    <div class="resumo-reserva-linha">
 
                         <span>
-                            Quadra
+                            Modalidade
                         </span>
 
-                        <strong>
-                            La Cancha Fut 7
+                        <strong id="resumoTipo">
+                            -
                         </strong>
 
                     </div>
 
 
-                    <div class="resumo-item">
 
-                        <span>
+                    <div class="resumo-reserva-linha">
+
+                        <span id="resumoLabelData">
                             Data
                         </span>
 
@@ -404,7 +531,8 @@
                     </div>
 
 
-                    <div class="resumo-item">
+
+                    <div class="resumo-reserva-linha">
 
                         <span>
                             Horário
@@ -417,24 +545,38 @@
                     </div>
 
 
-                    <div class="resumo-item">
+
+                    <div
+                        class="resumo-reserva-linha"
+                        id="linhaResumoRecorrencia"
+                    >
 
                         <span>
-                            Duração
+                            Recorrência
                         </span>
 
-                        <strong id="resumoDuracao">
+                        <strong id="resumoRecorrencia">
                             -
                         </strong>
 
                     </div>
 
 
-                    <div class="resumo-total-reserva">
 
-                        <span>
-                            Total
-                        </span>
+                    <div class="reserva-total">
+
+                        <div>
+
+                            <span id="labelValorTotal">
+                                Valor da reserva
+                            </span>
+
+                            <small id="descricaoValorTotal">
+                                Pagamento único
+                            </small>
+
+                        </div>
+
 
                         <strong id="reservaValor">
                             R$ 0,00
@@ -443,17 +585,41 @@
                     </div>
 
 
+
+                    <div
+                        class="reserva-aviso"
+                        id="reservaAviso"
+                    >
+
+                        <span>
+                            🔒
+                        </span>
+
+                        <p id="textoReservaAviso">
+                            O horário será confirmado
+                            somente após o pagamento.
+                        </p>
+
+                    </div>
+
+
+
                     <button
-                        class="btn btn-principal btn-continuar-login"
-                        id="btnContinuarLogin"
+                        type="button"
+                        class="btn btn-principal btn-continuar-reserva"
+                        id="btnContinuarReserva"
                     >
                         Continuar
                     </button>
 
 
-                    <p class="texto-seguranca">
-                        🔒 Seus dados estarão protegidos.
-                    </p>
+
+                    <a
+                        href="agenda.html"
+                        class="reserva-alterar"
+                    >
+                        ← Escolher outro horário
+                    </a>
 
                 </aside>
 
@@ -464,9 +630,10 @@
     </main>
 
 
-    <!-- =========================
+
+    <!-- ==================================================
          RODAPÉ
-    ========================== -->
+    =================================================== -->
 
     <footer class="rodape">
 
@@ -474,8 +641,10 @@
 
             <div class="rodape-marca">
 
-                <img src="img/logo.png"
-                     alt="La Cancha Fut 7">
+                <img
+                    src="img/logo.png"
+                    alt="La Cancha Fut 7"
+                >
 
                 <p>
                     Mais que uma quadra,
@@ -488,11 +657,20 @@
             <div class="rodape-coluna">
 
                 <h3>
-                    Reservas
+                    La Cancha
                 </h3>
 
-                <p>Agenda online</p>
-                <p>Horários fixos</p>
+                <p>
+                    Agenda online
+                </p>
+
+                <p>
+                    Reserva avulsa
+                </p>
+
+                <p>
+                    Horário fixo
+                </p>
 
             </div>
 
@@ -503,8 +681,13 @@
                     Contato
                 </h3>
 
-                <p>WhatsApp</p>
-                <p>Instagram</p>
+                <p>
+                    📱 WhatsApp
+                </p>
+
+                <p>
+                    📷 Instagram
+                </p>
 
             </div>
 
@@ -512,11 +695,12 @@
             <div class="rodape-coluna">
 
                 <h3>
-                    La Cancha
+                    Funcionamento
                 </h3>
 
                 <p>
-                    Futebol, resenha e diversão.
+                    Consulte os horários
+                    disponíveis na agenda.
                 </p>
 
             </div>
@@ -524,6 +708,7 @@
         </div>
 
     </footer>
+
 
 
     <script src="js/main.js"></script>
