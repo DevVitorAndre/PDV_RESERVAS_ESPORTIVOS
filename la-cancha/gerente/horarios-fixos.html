@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Horários Fixos | La Cancha Fut 7
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../img/logo.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/gerente.css"
+    >
+
+</head>
+
+
+<body class="admin-body">
+
+
+    <!-- ==================================================
+         MENU LATERAL
+    =================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="sidebar-logo">
+
+            <img
+                src="../img/logo.png"
+                alt="La Cancha Fut 7"
+            >
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="agenda.html">
+                <span>📅</span>
+                Agenda
+            </a>
+
+            <a href="horarios.html">
+                <span>🕐</span>
+                Horários
+            </a>
+
+            <a
+                href="horarios-fixos.html"
+                class="ativo"
+            >
+                <span>🔁</span>
+                Horários Fixos
+            </a>
+
+            <a href="clientes.html">
+                <span>👥</span>
+                Clientes
+            </a>
+
+            <a href="#">
+                <span>🛒</span>
+                PDV / Caixa
+            </a>
+
+            <a href="#">
+                <span>📦</span>
+                Produtos
+            </a>
+
+            <a href="#">
+                <span>💰</span>
+                Financeiro
+            </a>
+
+            <a href="#">
+                <span>🧾</span>
+                Fiscal
+            </a>
+
+            <a href="precos.html">
+                <span>⚙️</span>
+                Configurações
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-rodape">
+
+            <a href="../index.html">
+                ← Voltar ao site
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         CONTEÚDO
+    =================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- TOPO -->
+
+        <header class="admin-topo">
+
+            <button
+                type="button"
+                class="btn-sidebar-mobile"
+                id="btnSidebar"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <span class="admin-boas-vindas">
+                    CONTRATOS MENSAIS
+                </span>
+
+                <h1>
+                    Horários Fixos
+                </h1>
+
+            </div>
+
+
+            <div class="admin-usuario">
+
+                <div class="admin-avatar">
+                    G
+                </div>
+
+                <div>
+
+                    <strong>
+                        Gerente
+                    </strong>
+
+                    <span>
+                        Administrador
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==================================================
+             CABEÇALHO
+        =================================================== -->
+
+        <section class="fixos-cabecalho">
+
+            <div>
+
+                <span class="mini-etiqueta">
+                    HORÁRIOS RECORRENTES
+                </span>
+
+                <h2>
+                    Contratos de horários fixos
+                </h2>
+
+                <p>
+                    Consulte os clientes que possuem
+                    horário semanal contratado.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             INDICADORES
+        =================================================== -->
+
+        <section class="fixos-indicadores">
+
+
+            <article class="fixos-indicador-card">
+
+                <span>
+                    Contratos ativos
+                </span>
+
+                <strong id="fixosTotalAtivos">
+                    0
+                </strong>
+
+                <small>
+                    horários fixos
+                </small>
+
+            </article>
+
+
+
+            <article class="fixos-indicador-card receita">
+
+                <span>
+                    Mensalidades
+                </span>
+
+                <strong id="fixosReceitaMensal">
+                    R$ 0,00
+                </strong>
+
+                <small>
+                    contratos do mês
+                </small>
+
+            </article>
+
+
+
+            <article class="fixos-indicador-card jogos">
+
+                <span>
+                    Partidas reservadas
+                </span>
+
+                <strong id="fixosPartidas">
+                    0
+                </strong>
+
+                <small>
+                    ocorrências bloqueadas
+                </small>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             FILTROS
+        =================================================== -->
+
+        <section class="fixos-filtros">
+
+            <div>
+
+                <label for="fixosFiltroMes">
+                    Mês
+                </label>
+
+                <input
+                    type="month"
+                    id="fixosFiltroMes"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label for="fixosFiltroStatus">
+                    Status
+                </label>
+
+                <select id="fixosFiltroStatus">
+
+                    <option value="todos">
+                        Todos
+                    </option>
+
+                    <option value="ativo">
+                        Ativos
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="fixos-busca">
+
+                <label for="fixosBusca">
+                    Buscar cliente
+                </label>
+
+                <input
+                    type="search"
+                    id="fixosBusca"
+                    placeholder="Nome, WhatsApp ou e-mail..."
+                >
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             LISTAGEM
+        =================================================== -->
+
+        <section class="painel-card">
+
+            <div class="painel-card-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        CONTRATOS
+                    </span>
+
+                    <h2>
+                        Horários contratados
+                    </h2>
+
+                </div>
+
+                <span
+                    class="fixos-contagem"
+                    id="fixosQuantidade"
+                >
+                    0 contratos
+                </span>
+
+            </div>
+
+
+            <div
+                class="fixos-lista"
+                id="fixosLista"
+            >
+            </div>
+
+
+            <div
+                class="fixos-vazio"
+                id="fixosVazio"
+            >
+
+                <div>
+                    🔁
+                </div>
+
+                <h3>
+                    Nenhum horário fixo encontrado
+                </h3>
+
+                <p>
+                    Quando um cliente contratar e pagar
+                    um horário fixo, ele aparecerá aqui.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==================================================
+         MODAL
+    =================================================== -->
+
+    <div
+        class="fixos-modal-fundo"
+        id="fixosModal"
+    >
+
+        <div class="fixos-modal">
+
+            <div class="fixos-modal-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        CONTRATO FIXO
+                    </span>
+
+                    <h2>
+                        Detalhes
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="fixosModalFechar"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div id="fixosModalConteudo">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="../js/gerente.js"></script>
+    <script src="../js/horarios-fixos-gerente.js"></script>
+
+</body>
+
+</html>
