@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Produtos | La Cancha Fut 7
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../img/logo.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/gerente.css"
+    >
+
+</head>
+
+
+<body class="admin-body">
+
+
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="sidebar-logo">
+
+            <img
+                src="../img/logo.png"
+                alt="La Cancha Fut 7"
+            >
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="agenda.html">
+                <span>📅</span>
+                Agenda
+            </a>
+
+            <a href="horarios.html">
+                <span>🕐</span>
+                Horários
+            </a>
+
+            <a href="horarios-fixos.html">
+                <span>🔁</span>
+                Horários Fixos
+            </a>
+
+            <a href="clientes.html">
+                <span>👥</span>
+                Clientes
+            </a>
+
+            <a href="#">
+                <span>🛒</span>
+                PDV / Caixa
+            </a>
+
+            <a
+                href="produtos.html"
+                class="ativo"
+            >
+                <span>📦</span>
+                Produtos
+            </a>
+
+            <a href="#">
+                <span>💰</span>
+                Financeiro
+            </a>
+
+            <a href="#">
+                <span>🧾</span>
+                Fiscal
+            </a>
+
+            <a href="precos.html">
+                <span>⚙️</span>
+                Configurações
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-rodape">
+
+            <a href="../index.html">
+                ← Voltar ao site
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         CONTEÚDO
+    =================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- ==================================================
+             TOPO
+        =================================================== -->
+
+        <header class="admin-topo">
+
+            <button
+                type="button"
+                class="btn-sidebar-mobile"
+                id="btnSidebar"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <span class="admin-boas-vindas">
+                    ESTOQUE E VENDAS
+                </span>
+
+                <h1>
+                    Produtos
+                </h1>
+
+            </div>
+
+
+            <div class="admin-usuario">
+
+                <div class="admin-avatar">
+                    G
+                </div>
+
+                <div>
+
+                    <strong>
+                        Gerente
+                    </strong>
+
+                    <span>
+                        Administrador
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==================================================
+             CABEÇALHO
+        =================================================== -->
+
+        <section class="produtos-cabecalho">
+
+            <div>
+
+                <span class="mini-etiqueta">
+                    PRODUTOS E ESTOQUE
+                </span>
+
+                <h2>
+                    Controle de produtos
+                </h2>
+
+                <p>
+                    Cadastre produtos, preços e controle
+                    a quantidade disponível para venda.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn-produto-novo"
+                id="btnNovoProduto"
+            >
+                + Novo produto
+            </button>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             INDICADORES
+        =================================================== -->
+
+        <section class="produtos-indicadores">
+
+
+            <article class="produto-indicador-card">
+
+                <span>
+                    Produtos ativos
+                </span>
+
+                <strong id="produtoTotalAtivos">
+                    0
+                </strong>
+
+                <small>
+                    disponíveis para venda
+                </small>
+
+            </article>
+
+
+
+            <article class="produto-indicador-card estoque">
+
+                <span>
+                    Itens em estoque
+                </span>
+
+                <strong id="produtoTotalEstoque">
+                    0
+                </strong>
+
+                <small>
+                    unidades cadastradas
+                </small>
+
+            </article>
+
+
+
+            <article class="produto-indicador-card alerta">
+
+                <span>
+                    Estoque baixo
+                </span>
+
+                <strong id="produtoEstoqueBaixo">
+                    0
+                </strong>
+
+                <small>
+                    produtos em atenção
+                </small>
+
+            </article>
+
+
+
+            <article class="produto-indicador-card valor">
+
+                <span>
+                    Valor em estoque
+                </span>
+
+                <strong id="produtoValorEstoque">
+                    R$ 0,00
+                </strong>
+
+                <small>
+                    baseado no custo
+                </small>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             FILTROS
+        =================================================== -->
+
+        <section class="produtos-filtros">
+
+
+            <div class="produtos-busca">
+
+                <label for="produtoBusca">
+                    Buscar produto
+                </label>
+
+                <input
+                    type="search"
+                    id="produtoBusca"
+                    placeholder="Nome, categoria ou código..."
+                >
+
+            </div>
+
+
+            <div>
+
+                <label for="produtoFiltroStatus">
+                    Status
+                </label>
+
+                <select id="produtoFiltroStatus">
+
+                    <option value="todos">
+                        Todos
+                    </option>
+
+                    <option value="ativo">
+                        Ativos
+                    </option>
+
+                    <option value="inativo">
+                        Inativos
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label for="produtoFiltroEstoque">
+                    Estoque
+                </label>
+
+                <select id="produtoFiltroEstoque">
+
+                    <option value="todos">
+                        Todos
+                    </option>
+
+                    <option value="baixo">
+                        Estoque baixo
+                    </option>
+
+                    <option value="zerado">
+                        Sem estoque
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             LISTAGEM
+        =================================================== -->
+
+        <section class="painel-card">
+
+
+            <div class="painel-card-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        CATÁLOGO
+                    </span>
+
+                    <h2>
+                        Produtos cadastrados
+                    </h2>
+
+                </div>
+
+
+                <span
+                    class="produtos-contagem"
+                    id="produtoQuantidade"
+                >
+                    0 produtos
+                </span>
+
+            </div>
+
+
+
+            <div
+                class="produtos-lista"
+                id="produtoLista"
+            >
+            </div>
+
+
+
+            <div
+                class="produtos-vazio"
+                id="produtoVazio"
+            >
+
+                <div>
+                    📦
+                </div>
+
+                <h3>
+                    Nenhum produto cadastrado
+                </h3>
+
+                <p>
+                    Cadastre o primeiro produto
+                    para começar o controle de estoque.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==================================================
+         MODAL PRODUTO
+    =================================================== -->
+
+    <div
+        class="produto-modal-fundo"
+        id="produtoModal"
+    >
+
+        <div class="produto-modal">
+
+
+            <div class="produto-modal-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        CADASTRO
+                    </span>
+
+                    <h2 id="produtoModalTitulo">
+                        Novo produto
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="produtoModalFechar"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+
+            <form id="produtoForm">
+
+
+                <input
+                    type="hidden"
+                    id="produtoId"
+                >
+
+
+                <div class="produto-form-grid">
+
+
+                    <div class="produto-form-campo produto-form-grande">
+
+                        <label for="produtoNome">
+                            Nome do produto *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="produtoNome"
+                            placeholder="Ex.: Água 500ml"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="produto-form-campo">
+
+                        <label for="produtoCategoria">
+                            Categoria
+                        </label>
+
+                        <select id="produtoCategoria">
+
+                            <option value="bebidas">
+                                Bebidas
+                            </option>
+
+                            <option value="alimentos">
+                                Alimentos
+                            </option>
+
+                            <option value="doces">
+                                Doces
+                            </option>
+
+                            <option value="esportivo">
+                                Esportivo
+                            </option>
+
+                            <option value="outros">
+                                Outros
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="produto-form-campo">
+
+                        <label for="produtoCodigo">
+                            Código / Código de barras
+                        </label>
+
+                        <input
+                            type="text"
+                            id="produtoCodigo"
+                            placeholder="Ex.: 7891234567890"
+                        >
+
+                    </div>
+
+
+                    <div class="produto-form-campo">
+
+                        <label for="produtoCusto">
+                            Preço de custo
+                        </label>
+
+                        <input
+                            type="number"
+                            id="produtoCusto"
+                            min="0"
+                            step="0.01"
+                            placeholder="0,00"
+                        >
+
+                    </div>
+
+
+                    <div class="produto-form-campo">
+
+                        <label for="produtoVenda">
+                            Preço de venda *
+                        </label>
+
+                        <input
+                            type="number"
+                            id="produtoVenda"
+                            min="0.01"
+                            step="0.01"
+                            placeholder="0,00"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="produto-form-campo">
+
+                        <label for="produtoEstoque">
+                            Estoque atual
+                        </label>
+
+                        <input
+                            type="number"
+                            id="produtoEstoque"
+                            min="0"
+                            step="1"
+                            value="0"
+                        >
+
+                    </div>
+
+
+                    <div class="produto-form-campo">
+
+                        <label for="produtoEstoqueMinimo">
+                            Estoque mínimo
+                        </label>
+
+                        <input
+                            type="number"
+                            id="produtoEstoqueMinimo"
+                            min="0"
+                            step="1"
+                            value="5"
+                        >
+
+                    </div>
+
+
+                    <div class="produto-form-campo">
+
+                        <label for="produtoStatus">
+                            Status
+                        </label>
+
+                        <select id="produtoStatus">
+
+                            <option value="ativo">
+                                Ativo
+                            </option>
+
+                            <option value="inativo">
+                                Inativo
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <div
+                    class="produto-form-erro"
+                    id="produtoFormErro"
+                >
+                </div>
+
+
+
+                <div class="produto-modal-acoes">
+
+                    <button
+                        type="button"
+                        class="btn-produto-cancelar"
+                        id="btnCancelarProduto"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-produto-salvar"
+                    >
+                        Salvar produto
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         MODAL MOVIMENTAR ESTOQUE
+    =================================================== -->
+
+    <div
+        class="produto-modal-fundo"
+        id="estoqueModal"
+    >
+
+        <div class="produto-modal produto-modal-menor">
+
+
+            <div class="produto-modal-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        ESTOQUE
+                    </span>
+
+                    <h2>
+                        Movimentar estoque
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="estoqueModalFechar"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+
+            <div
+                class="estoque-produto-info"
+                id="estoqueProdutoInfo"
+            >
+            </div>
+
+
+
+            <form id="estoqueForm">
+
+
+                <input
+                    type="hidden"
+                    id="estoqueProdutoId"
+                >
+
+
+                <div class="produto-form-campo">
+
+                    <label for="estoqueTipo">
+                        Tipo de movimentação
+                    </label>
+
+                    <select id="estoqueTipo">
+
+                        <option value="entrada">
+                            Entrada
+                        </option>
+
+                        <option value="saida">
+                            Saída / Ajuste
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="produto-form-campo">
+
+                    <label for="estoqueQuantidade">
+                        Quantidade
+                    </label>
+
+                    <input
+                        type="number"
+                        id="estoqueQuantidade"
+                        min="1"
+                        step="1"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="produto-form-campo">
+
+                    <label for="estoqueObservacao">
+                        Observação
+                    </label>
+
+                    <input
+                        type="text"
+                        id="estoqueObservacao"
+                        placeholder="Ex.: Compra do fornecedor"
+                    >
+
+                </div>
+
+
+
+                <div
+                    class="produto-form-erro"
+                    id="estoqueFormErro"
+                >
+                </div>
+
+
+
+                <div class="produto-modal-acoes">
+
+                    <button
+                        type="button"
+                        class="btn-produto-cancelar"
+                        id="btnCancelarEstoque"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-produto-salvar"
+                    >
+                        Confirmar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="../js/gerente.js"></script>
+    <script src="../js/produtos-gerente.js"></script>
+
+</body>
+
+</html>
