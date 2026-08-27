@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Clientes | La Cancha Fut 7
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../img/logo.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/gerente.css"
+    >
+
+</head>
+
+
+<body class="admin-body">
+
+
+    <!-- ==================================================
+         MENU LATERAL
+    =================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="sidebar-logo">
+
+            <img
+                src="../img/logo.png"
+                alt="La Cancha Fut 7"
+            >
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="agenda.html">
+                <span>📅</span>
+                Agenda
+            </a>
+
+            <a href="horarios.html">
+                <span>🕐</span>
+                Horários
+            </a>
+
+            <a href="horarios-fixos.html">
+                <span>🔁</span>
+                Horários Fixos
+            </a>
+
+            <a
+                href="clientes.html"
+                class="ativo"
+            >
+                <span>👥</span>
+                Clientes
+            </a>
+
+            <a href="#">
+                <span>🛒</span>
+                PDV / Caixa
+            </a>
+
+            <a href="#">
+                <span>📦</span>
+                Produtos
+            </a>
+
+            <a href="#">
+                <span>💰</span>
+                Financeiro
+            </a>
+
+            <a href="#">
+                <span>🧾</span>
+                Fiscal
+            </a>
+
+            <a href="precos.html">
+                <span>⚙️</span>
+                Configurações
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-rodape">
+
+            <a href="../index.html">
+                ← Voltar ao site
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         CONTEÚDO
+    =================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- ==================================================
+             TOPO
+        =================================================== -->
+
+        <header class="admin-topo">
+
+            <button
+                type="button"
+                class="btn-sidebar-mobile"
+                id="btnSidebar"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <span class="admin-boas-vindas">
+                    RELACIONAMENTO
+                </span>
+
+                <h1>
+                    Clientes
+                </h1>
+
+            </div>
+
+
+            <div class="admin-usuario">
+
+                <div class="admin-avatar">
+                    G
+                </div>
+
+                <div>
+
+                    <strong>
+                        Gerente
+                    </strong>
+
+                    <span>
+                        Administrador
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==================================================
+             INTRODUÇÃO
+        =================================================== -->
+
+        <section class="clientes-cabecalho">
+
+            <div>
+
+                <span class="mini-etiqueta">
+                    BASE DE CLIENTES
+                </span>
+
+                <h2>
+                    Clientes da La Cancha
+                </h2>
+
+                <p>
+                    Consulte dados, reservas realizadas
+                    e histórico dos clientes.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             INDICADORES
+        =================================================== -->
+
+        <section class="clientes-indicadores">
+
+
+            <article class="clientes-indicador">
+
+                <div class="clientes-indicador-icone">
+                    👥
+                </div>
+
+                <div>
+
+                    <span>
+                        Total de clientes
+                    </span>
+
+                    <strong id="clientesTotal">
+                        0
+                    </strong>
+
+                    <small>
+                        clientes identificados
+                    </small>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="clientes-indicador">
+
+                <div class="clientes-indicador-icone fixo">
+                    🔁
+                </div>
+
+                <div>
+
+                    <span>
+                        Com horário fixo
+                    </span>
+
+                    <strong id="clientesFixos">
+                        0
+                    </strong>
+
+                    <small>
+                        clientes recorrentes
+                    </small>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="clientes-indicador">
+
+                <div class="clientes-indicador-icone reservas">
+                    ⚽
+                </div>
+
+                <div>
+
+                    <span>
+                        Reservas realizadas
+                    </span>
+
+                    <strong id="clientesReservas">
+                        0
+                    </strong>
+
+                    <small>
+                        reservas pagas
+                    </small>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="clientes-indicador">
+
+                <div class="clientes-indicador-icone receita">
+                    💰
+                </div>
+
+                <div>
+
+                    <span>
+                        Valor movimentado
+                    </span>
+
+                    <strong id="clientesReceita">
+                        R$ 0,00
+                    </strong>
+
+                    <small>
+                        através das reservas
+                    </small>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             FILTROS
+        =================================================== -->
+
+        <section class="clientes-filtros">
+
+
+            <div class="clientes-busca">
+
+                <label for="clientesBusca">
+                    Buscar cliente
+                </label>
+
+                <div class="clientes-busca-campo">
+
+                    <span>
+                        🔎
+                    </span>
+
+                    <input
+                        type="search"
+                        id="clientesBusca"
+                        placeholder="Nome, WhatsApp ou e-mail..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <label for="clientesFiltro">
+                    Tipo
+                </label>
+
+                <select id="clientesFiltro">
+
+                    <option value="todos">
+                        Todos os clientes
+                    </option>
+
+                    <option value="fixo">
+                        Com horário fixo
+                    </option>
+
+                    <option value="avulso">
+                        Somente avulso
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label for="clientesOrdenacao">
+                    Ordenar
+                </label>
+
+                <select id="clientesOrdenacao">
+
+                    <option value="recente">
+                        Mais recentes
+                    </option>
+
+                    <option value="reservas">
+                        Mais reservas
+                    </option>
+
+                    <option value="valor">
+                        Maior valor gasto
+                    </option>
+
+                    <option value="nome">
+                        Nome A-Z
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             LISTAGEM
+        =================================================== -->
+
+        <section class="painel-card">
+
+
+            <div class="painel-card-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        CLIENTES
+                    </span>
+
+                    <h2>
+                        Base de clientes
+                    </h2>
+
+                </div>
+
+
+                <span
+                    class="clientes-contagem"
+                    id="clientesQuantidade"
+                >
+                    0 clientes
+                </span>
+
+            </div>
+
+
+
+            <div
+                class="clientes-lista"
+                id="clientesLista"
+            >
+            </div>
+
+
+
+            <div
+                class="clientes-vazio"
+                id="clientesVazio"
+            >
+
+                <div>
+                    👥
+                </div>
+
+                <h3>
+                    Nenhum cliente encontrado
+                </h3>
+
+                <p>
+                    Quando uma reserva for paga,
+                    o cliente aparecerá automaticamente aqui.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==================================================
+         MODAL HISTÓRICO
+    =================================================== -->
+
+    <div
+        class="clientes-modal-fundo"
+        id="clientesModal"
+    >
+
+        <div class="clientes-modal">
+
+
+            <div class="clientes-modal-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        FICHA DO CLIENTE
+                    </span>
+
+                    <h2>
+                        Histórico
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="clientesModalFechar"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+
+            <div id="clientesModalConteudo">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="../js/gerente.js"></script>
+    <script src="../js/clientes-gerente.js"></script>
+
+</body>
+
+</html>
