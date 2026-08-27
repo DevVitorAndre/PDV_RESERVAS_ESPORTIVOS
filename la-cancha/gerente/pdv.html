@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        PDV / Caixa | La Cancha Fut 7
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../img/logo.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/gerente.css"
+    >
+
+</head>
+
+
+<body class="admin-body">
+
+
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="sidebar-logo">
+
+            <img
+                src="../img/logo.png"
+                alt="La Cancha Fut 7"
+            >
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="agenda.html">
+                <span>📅</span>
+                Agenda
+            </a>
+
+            <a href="horarios.html">
+                <span>🕐</span>
+                Horários
+            </a>
+
+            <a href="horarios-fixos.html">
+                <span>🔁</span>
+                Horários Fixos
+            </a>
+
+            <a href="clientes.html">
+                <span>👥</span>
+                Clientes
+            </a>
+
+            <a
+                href="pdv.html"
+                class="ativo"
+            >
+                <span>🛒</span>
+                PDV / Caixa
+            </a>
+
+            <a href="produtos.html">
+                <span>📦</span>
+                Produtos
+            </a>
+
+            <a href="#">
+                <span>💰</span>
+                Financeiro
+            </a>
+
+            <a href="#">
+                <span>🧾</span>
+                Fiscal
+            </a>
+
+            <a href="precos.html">
+                <span>⚙️</span>
+                Configurações
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-rodape">
+
+            <a href="../index.html">
+                ← Voltar ao site
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         CONTEÚDO
+    =================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- TOPO -->
+
+        <header class="admin-topo">
+
+            <button
+                type="button"
+                class="btn-sidebar-mobile"
+                id="btnSidebar"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <span class="admin-boas-vindas">
+                    VENDAS E COMANDAS
+                </span>
+
+                <h1>
+                    PDV / Caixa
+                </h1>
+
+            </div>
+
+
+            <div class="admin-usuario">
+
+                <div class="admin-avatar">
+                    G
+                </div>
+
+                <div>
+
+                    <strong>
+                        Gerente
+                    </strong>
+
+                    <span>
+                        Administrador
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==================================================
+             CABEÇALHO
+        =================================================== -->
+
+        <section class="pdv-cabecalho">
+
+            <div>
+
+                <span class="mini-etiqueta">
+                    OPERAÇÃO DO CAIXA
+                </span>
+
+                <h2>
+                    Comandas
+                </h2>
+
+                <p>
+                    Abra uma comanda, adicione produtos
+                    durante o atendimento e feche somente
+                    no momento do pagamento.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="pdv-btn-nova"
+                id="btnNovaComanda"
+            >
+                + Nova comanda
+            </button>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             INDICADORES
+        =================================================== -->
+
+        <section class="pdv-indicadores">
+
+            <article class="pdv-indicador">
+
+                <span>
+                    Comandas abertas
+                </span>
+
+                <strong id="pdvComandasAbertas">
+                    0
+                </strong>
+
+                <small>
+                    em atendimento
+                </small>
+
+            </article>
+
+
+            <article class="pdv-indicador fechadas">
+
+                <span>
+                    Fechadas hoje
+                </span>
+
+                <strong id="pdvFechadasHoje">
+                    0
+                </strong>
+
+                <small>
+                    vendas finalizadas
+                </small>
+
+            </article>
+
+
+            <article class="pdv-indicador fiscal">
+
+                <span>
+                    Fiscal pendente
+                </span>
+
+                <strong id="pdvFiscalPendente">
+                    0
+                </strong>
+
+                <small>
+                    aguardando emissão/configuração
+                </small>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             ABAS
+        =================================================== -->
+
+        <section class="pdv-abas">
+
+            <button
+                type="button"
+                id="btnAbaAbertas"
+                class="ativo"
+            >
+                Comandas abertas
+            </button>
+
+            <button
+                type="button"
+                id="btnAbaHistorico"
+            >
+                Histórico
+            </button>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             COMANDAS ABERTAS
+        =================================================== -->
+
+        <section
+            class="painel-card"
+            id="painelComandasAbertas"
+        >
+
+            <div class="painel-card-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        MURAL
+                    </span>
+
+                    <h2>
+                        Comandas abertas
+                    </h2>
+
+                </div>
+
+
+                <span
+                    class="pdv-contagem"
+                    id="pdvQuantidadeAbertas"
+                >
+                    0 comandas
+                </span>
+
+            </div>
+
+
+            <div
+                class="pdv-mural"
+                id="pdvMural"
+            >
+            </div>
+
+
+            <div
+                class="pdv-vazio"
+                id="pdvVazio"
+            >
+
+                <div>
+                    📝
+                </div>
+
+                <h3>
+                    Nenhuma comanda aberta
+                </h3>
+
+                <p>
+                    Clique em Nova comanda para
+                    iniciar um atendimento.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             HISTÓRICO
+        =================================================== -->
+
+        <section
+            class="painel-card"
+            id="painelHistoricoComandas"
+            style="display: none;"
+        >
+
+            <div class="painel-card-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        HISTÓRICO
+                    </span>
+
+                    <h2>
+                        Comandas fechadas
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="pdv-historico"
+                id="pdvHistorico"
+            >
+            </div>
+
+
+            <div
+                class="pdv-vazio"
+                id="pdvHistoricoVazio"
+            >
+
+                <div>
+                    🧾
+                </div>
+
+                <h3>
+                    Nenhuma comanda finalizada
+                </h3>
+
+                <p>
+                    As vendas concluídas aparecerão aqui.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==================================================
+         MODAL NOVA COMANDA
+    =================================================== -->
+
+    <div
+        class="pdv-modal-fundo"
+        id="modalNovaComanda"
+    >
+
+        <div class="pdv-modal pdv-modal-pequeno">
+
+            <div class="pdv-modal-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        NOVO ATENDIMENTO
+                    </span>
+
+                    <h2>
+                        Abrir comanda
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="btnFecharNovaComanda"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <form id="formNovaComanda">
+
+                <div class="pdv-campo">
+
+                    <label for="novaComandaNome">
+                        Nome da comanda *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="novaComandaNome"
+                        placeholder="Ex.: João, Time do Pedro, Quadra 20h..."
+                        maxlength="60"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="pdv-campo">
+
+                    <label for="novaComandaObservacao">
+                        Observação inicial
+                    </label>
+
+                    <textarea
+                        id="novaComandaObservacao"
+                        placeholder="Opcional..."
+                        maxlength="500"
+                    ></textarea>
+
+                </div>
+
+
+                <div
+                    class="pdv-erro"
+                    id="novaComandaErro"
+                >
+                </div>
+
+
+                <div class="pdv-modal-acoes">
+
+                    <button
+                        type="button"
+                        class="pdv-btn-secundario"
+                        id="btnCancelarNovaComanda"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="pdv-btn-principal"
+                    >
+                        Abrir comanda
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         MODAL COMANDA
+    =================================================== -->
+
+    <div
+        class="pdv-modal-fundo"
+        id="modalComanda"
+    >
+
+        <div class="pdv-modal pdv-modal-comanda">
+
+            <div class="pdv-modal-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        COMANDA ABERTA
+                    </span>
+
+                    <h2 id="comandaTitulo">
+                        Comanda
+                    </h2>
+
+                    <small id="comandaNumero">
+                    </small>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="btnFecharComandaModal"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+
+            <!-- OBSERVAÇÕES -->
+
+            <div class="pdv-comanda-observacao">
+
+                <label for="comandaObservacao">
+                    BLOCO DE ANOTAÇÕES
+                </label>
+
+                <textarea
+                    id="comandaObservacao"
+                    placeholder="Anotações da comanda..."
+                    maxlength="500"
+                ></textarea>
+
+                <small>
+                    Salvo automaticamente
+                </small>
+
+            </div>
+
+
+
+            <!-- ITENS -->
+
+            <div class="pdv-comanda-secao-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        CONSUMO
+                    </span>
+
+                    <h3>
+                        Itens da comanda
+                    </h3>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="pdv-btn-adicionar"
+                    id="btnAdicionarProduto"
+                >
+                    + Adicionar produto
+                </button>
+
+            </div>
+
+
+            <div
+                class="pdv-comanda-itens"
+                id="comandaItens"
+            >
+            </div>
+
+
+            <div
+                class="pdv-comanda-sem-itens"
+                id="comandaSemItens"
+            >
+                Nenhum produto adicionado.
+            </div>
+
+
+
+            <!-- TOTAL -->
+
+            <div class="pdv-comanda-total">
+
+                <span>
+                    Total da comanda
+                </span>
+
+                <strong id="comandaTotal">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+
+
+            <div class="pdv-modal-acoes">
+
+                <button
+                    type="button"
+                    class="pdv-btn-secundario"
+                    id="btnVoltarComanda"
+                >
+                    Voltar
+                </button>
+
+                <button
+                    type="button"
+                    class="pdv-btn-fechar-venda"
+                    id="btnIrPagamento"
+                >
+                    Fechar comanda
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         MODAL PRODUTOS
+    =================================================== -->
+
+    <div
+        class="pdv-modal-fundo"
+        id="modalProdutos"
+    >
+
+        <div class="pdv-modal">
+
+            <div class="pdv-modal-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        PRODUTOS
+                    </span>
+
+                    <h2>
+                        Adicionar produto
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="btnFecharProdutos"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div class="pdv-campo">
+
+                <label for="buscaProdutoPdv">
+                    Buscar
+                </label>
+
+                <input
+                    type="search"
+                    id="buscaProdutoPdv"
+                    placeholder="Nome ou código de barras..."
+                >
+
+            </div>
+
+
+            <div
+                class="pdv-produtos-grade"
+                id="pdvProdutosLista"
+            >
+            </div>
+
+
+            <div
+                class="pdv-produtos-vazio"
+                id="pdvProdutosVazio"
+            >
+                Nenhum produto disponível.
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         MODAL PAGAMENTO
+    =================================================== -->
+
+    <div
+        class="pdv-modal-fundo"
+        id="modalPagamento"
+    >
+
+        <div class="pdv-modal pdv-modal-pequeno">
+
+            <div class="pdv-modal-topo">
+
+                <div>
+
+                    <span class="mini-etiqueta">
+                        FECHAMENTO
+                    </span>
+
+                    <h2>
+                        Receber comanda
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="btnFecharPagamento"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div class="pdv-pagamento-resumo">
+
+                <span id="pagamentoComandaNome">
+                    Comanda
+                </span>
+
+                <strong id="pagamentoComandaTotal">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+
+            <div class="pdv-formas-pagamento">
+
+                <button
+                    type="button"
+                    class="ativo"
+                    data-forma="pix"
+                >
+                    📱 PIX
+                </button>
+
+                <button
+                    type="button"
+                    data-forma="dinheiro"
+                >
+                    💵 Dinheiro
+                </button>
+
+                <button
+                    type="button"
+                    data-forma="cartao"
+                >
+                     💳 Cartão
+                </button>
+
+            </div>
+
+
+            <div
+                class="pdv-erro"
+                id="pagamentoErro"
+            >
+            </div>
+
+
+            <div class="pdv-aviso-fiscal">
+
+                <strong>
+                    🧾 Registro fiscal
+                </strong>
+
+                <p>
+                    A venda será adicionada à fila fiscal.
+                    A emissão real será integrada posteriormente.
+                </p>
+
+            </div>
+
+
+            <div class="pdv-modal-acoes">
+
+                <button
+                    type="button"
+                    class="pdv-btn-secundario"
+                    id="btnCancelarPagamento"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="button"
+                    class="pdv-btn-principal"
+                    id="btnConfirmarPagamento"
+                >
+                    Confirmar pagamento
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         TOAST
+    =================================================== -->
+
+    <div
+        class="pdv-toast"
+        id="pdvToast"
+    >
+    </div>
+
+
+
+    <script src="../js/gerente.js"></script>
+    <script src="../js/pdv-gerente.js"></script>
+
+</body>
+
+</html>

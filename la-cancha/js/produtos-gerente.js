@@ -17,6 +17,45 @@
 
 
     // ==================================================
+    // IMAGENS POR CATEGORIA
+    // ==================================================
+
+    const imagensCategoria = {
+
+        bebidas:
+            "../img/produtos/bebida.png",
+
+        alimentos:
+            "../img/produtos/alimento.png",
+
+        doces:
+            "../img/produtos/doce.png",
+
+        esportivo:
+            "../img/produtos/esportivo.png",
+
+        servico:
+            "../img/produtos/servico.png",
+
+        outros:
+            "../img/produtos/servico.png"
+
+    };
+
+
+    function imagemCategoria(
+        categoria
+    ) {
+
+        return (
+            imagensCategoria[categoria] ||
+            imagensCategoria.outros
+        );
+
+    }
+
+
+    // ==================================================
     // ELEMENTOS
     // ==================================================
 
@@ -160,6 +199,30 @@
 
 
     // ==================================================
+    // CAMPOS QUE SOMEM
+    // SERVIÇO / ESPORTIVO
+    // ==================================================
+
+    const campoCodigo =
+        produtoCodigoEl
+            ?.closest(
+                ".produto-form-campo"
+            );
+
+    const campoEstoque =
+        produtoEstoqueEl
+            ?.closest(
+                ".produto-form-campo"
+            );
+
+    const campoEstoqueMinimo =
+        produtoEstoqueMinimoEl
+            ?.closest(
+                ".produto-form-campo"
+            );
+
+
+    // ==================================================
     // MODAL ESTOQUE
     // ==================================================
 
@@ -215,10 +278,12 @@
 
 
     // ==================================================
-    // LOCAL STORAGE
+    // STORAGE
     // ==================================================
 
-    function carregarLista(chave) {
+    function carregarLista(
+        chave
+    ) {
 
         try {
 
@@ -229,15 +294,21 @@
 
 
             if (!valor) {
+
                 return [];
+
             }
 
 
             const dados =
-                JSON.parse(valor);
+                JSON.parse(
+                    valor
+                );
 
 
-            return Array.isArray(dados)
+            return Array.isArray(
+                dados
+            )
                 ? dados
                 : [];
 
@@ -247,6 +318,7 @@
                 `Erro ao carregar ${chave}:`,
                 erro
             );
+
 
             return [];
 
@@ -282,7 +354,8 @@
             "function"
         ) {
 
-            return window.crypto.randomUUID();
+            return window.crypto
+                .randomUUID();
 
         }
 
@@ -298,31 +371,53 @@
     }
 
 
-    function moeda(valor) {
+    function moeda(
+        valor
+    ) {
 
         return Number(
             valor || 0
         ).toLocaleString(
             "pt-BR",
             {
-                style: "currency",
-                currency: "BRL"
+                style:
+                    "currency",
+
+                currency:
+                    "BRL"
             }
         );
 
     }
 
 
-    function escaparHTML(valor) {
+    function escaparHTML(
+        valor
+    ) {
 
         return String(
             valor ?? ""
         )
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
+            .replaceAll(
+                "&",
+                "&amp;"
+            )
+            .replaceAll(
+                "<",
+                "&lt;"
+            )
+            .replaceAll(
+                ">",
+                "&gt;"
+            )
+            .replaceAll(
+                '"',
+                "&quot;"
+            )
+            .replaceAll(
+                "'",
+                "&#039;"
+            );
 
     }
 
@@ -333,6 +428,7 @@
 
         const categorias =
         {
+
             bebidas:
                 "Bebidas",
 
@@ -345,8 +441,12 @@
             esportivo:
                 "Esportivo",
 
+            servico:
+                "Serviços",
+
             outros:
                 "Outros"
+
         };
 
 
@@ -359,17 +459,109 @@
     }
 
 
+    // ==================================================
+    // CATEGORIAS SEM ESTOQUE
+    // ==================================================
+
+    function categoriaSemEstoque(
+        categoria
+    ) {
+
+        return (
+            categoria ===
+            "servico"
+            ||
+            categoria ===
+            "esportivo"
+        );
+
+    }
+
+
+    // ==================================================
+    // PRODUTO CONTROLA ESTOQUE?
+    // ==================================================
+
+    function produtoControlaEstoque(
+        produto
+    ) {
+
+        /*
+            SERVIÇO E ESPORTIVO
+            NUNCA CONTROLAM ESTOQUE.
+
+            FAZEMOS ESSA VERIFICAÇÃO
+            PRIMEIRO PARA TAMBÉM CORRIGIR
+            PRODUTOS ANTIGOS QUE POSSAM
+            TER controlaEstoque:true
+            SALVO NO localStorage.
+        */
+
+        if (
+            categoriaSemEstoque(
+                produto?.categoria
+            )
+        ) {
+
+            return false;
+
+        }
+
+
+        /*
+            PARA OUTRAS CATEGORIAS,
+            RESPEITA O CAMPO SALVO.
+        */
+
+        if (
+            typeof produto?.controlaEstoque ===
+            "boolean"
+        ) {
+
+            return produto.controlaEstoque;
+
+        }
+
+
+        /*
+            PRODUTO ANTIGO SEM O CAMPO
+            controlaEstoque:
+            ASSUMIMOS PRODUTO FÍSICO.
+        */
+
+        return true;
+
+    }
+
+
+    // ==================================================
+    // ESTOQUE BAIXO
+    // ==================================================
+
     function estoqueBaixo(
         produto
     ) {
 
+        if (
+            !produtoControlaEstoque(
+                produto
+            )
+        ) {
+
+            return false;
+
+        }
+
+
         return (
             Number(
-                produto.estoque || 0
+                produto.estoque ||
+                0
             )
             <=
             Number(
-                produto.estoqueMinimo || 0
+                produto.estoqueMinimo ||
+                0
             )
         );
 
@@ -377,7 +569,89 @@
 
 
     // ==================================================
-    // PRODUTO NOVO
+    // FORMULÁRIO POR CATEGORIA
+    // ==================================================
+
+    function atualizarFormularioCategoria() {
+
+        const semEstoque =
+            categoriaSemEstoque(
+                produtoCategoriaEl.value
+            );
+
+
+        // ==============================================
+        // CÓDIGO
+        // ==============================================
+
+        if (
+            campoCodigo
+        ) {
+
+            campoCodigo.style.display =
+                semEstoque
+                    ? "none"
+                    : "flex";
+
+        }
+
+
+        // ==============================================
+        // ESTOQUE ATUAL
+        // ==============================================
+
+        if (
+            campoEstoque
+        ) {
+
+            campoEstoque.style.display =
+                semEstoque
+                    ? "none"
+                    : "flex";
+
+        }
+
+
+        // ==============================================
+        // ESTOQUE MÍNIMO
+        // ==============================================
+
+        if (
+            campoEstoqueMinimo
+        ) {
+
+            campoEstoqueMinimo.style.display =
+                semEstoque
+                    ? "none"
+                    : "flex";
+
+        }
+
+
+        // ==============================================
+        // LIMPAR CAMPOS
+        // ==============================================
+
+        if (
+            semEstoque
+        ) {
+
+            produtoCodigoEl.value =
+                "";
+
+            produtoEstoqueEl.value =
+                0;
+
+            produtoEstoqueMinimoEl.value =
+                0;
+
+        }
+
+    }
+
+
+    // ==================================================
+    // NOVO PRODUTO
     // ==================================================
 
     function abrirNovoProduto() {
@@ -388,14 +662,18 @@
         produtoIdEl.value =
             "";
 
+
         produtoEstoqueEl.value =
             0;
+
 
         produtoEstoqueMinimoEl.value =
             5;
 
+
         produtoStatusEl.value =
             "ativo";
+
 
         produtoCategoriaEl.value =
             "bebidas";
@@ -407,6 +685,9 @@
 
         produtoFormErro.textContent =
             "";
+
+
+        atualizarFormularioCategoria();
 
 
         produtoModal.classList.add(
@@ -437,35 +718,49 @@
         produtoIdEl.value =
             produto.id;
 
+
         produtoNomeEl.value =
-            produto.nome || "";
+            produto.nome ||
+            "";
+
 
         produtoCategoriaEl.value =
             produto.categoria ||
             "outros";
 
+
         produtoCodigoEl.value =
-            produto.codigo || "";
+            produto.codigo ||
+            "";
+
 
         produtoCustoEl.value =
             Number(
-                produto.custo || 0
+                produto.custo ||
+                0
             );
+
 
         produtoVendaEl.value =
             Number(
-                produto.precoVenda || 0
+                produto.precoVenda ||
+                0
             );
+
 
         produtoEstoqueEl.value =
             Number(
-                produto.estoque || 0
+                produto.estoque ||
+                0
             );
+
 
         produtoEstoqueMinimoEl.value =
             Number(
-                produto.estoqueMinimo || 0
+                produto.estoqueMinimo ||
+                0
             );
+
 
         produtoStatusEl.value =
             produto.status ||
@@ -480,12 +775,19 @@
             "";
 
 
+        atualizarFormularioCategoria();
+
+
         produtoModal.classList.add(
             "aberto"
         );
 
     }
 
+
+    // ==================================================
+    // FECHAR MODAL PRODUTO
+    // ==================================================
 
     function fecharProdutoModal() {
 
@@ -497,7 +799,45 @@
 
 
     // ==================================================
-    // SALVAR PRODUTO
+    // MOVIMENTAÇÃO DE ESTOQUE
+    // ==================================================
+
+    function registrarMovimentacao(
+        dados
+    ) {
+
+        const movimentacoes =
+            carregarLista(
+                STORAGE_MOVIMENTACOES
+            );
+
+
+        movimentacoes.push(
+            {
+
+                id:
+                    gerarId(),
+
+                ...dados,
+
+                criadoEm:
+                    new Date()
+                        .toISOString()
+
+            }
+        );
+
+
+        salvarLista(
+            STORAGE_MOVIMENTACOES,
+            movimentacoes
+        );
+
+    }
+
+
+    // ==================================================
+    // SALVAR PRODUTO / SERVIÇO / ESPORTIVO
     // ==================================================
 
     produtoForm.addEventListener(
@@ -510,6 +850,10 @@
             produtoFormErro.textContent =
                 "";
 
+
+            // ==============================================
+            // DADOS
+            // ==============================================
 
             const id =
                 produtoIdEl.value
@@ -525,9 +869,33 @@
                 produtoCategoriaEl.value;
 
 
+            const semEstoque =
+                categoriaSemEstoque(
+                    categoria
+                );
+
+
+            const controlaEstoque =
+                !semEstoque;
+
+
+            /*
+                ESPORTIVO E SERVIÇO
+                FUNCIONAM COMO SERVIÇO
+                DENTRO DO PDV.
+            */
+
+            const tipoItem =
+                semEstoque
+                    ? "servico"
+                    : "produto";
+
+
             const codigo =
-                produtoCodigoEl.value
-                    .trim();
+                controlaEstoque
+                    ? produtoCodigoEl.value
+                        .trim()
+                    : "";
 
 
             const custo =
@@ -545,27 +913,37 @@
 
 
             const estoque =
-                Number(
-                    produtoEstoqueEl.value ||
-                    0
-                );
+                controlaEstoque
+                    ? Number(
+                        produtoEstoqueEl.value ||
+                        0
+                    )
+                    : 0;
 
 
             const estoqueMinimo =
-                Number(
-                    produtoEstoqueMinimoEl.value ||
-                    0
-                );
+                controlaEstoque
+                    ? Number(
+                        produtoEstoqueMinimoEl.value ||
+                        0
+                    )
+                    : 0;
 
 
             const status =
                 produtoStatusEl.value;
 
 
-            if (!nome) {
+            // ==============================================
+            // VALIDAÇÕES
+            // ==============================================
+
+            if (
+                !nome
+            ) {
 
                 produtoFormErro.textContent =
-                    "Informe o nome do produto.";
+                    "Informe o nome do produto ou serviço.";
 
                 return;
 
@@ -586,9 +964,14 @@
 
 
             if (
-                custo < 0 ||
-                estoque < 0 ||
-                estoqueMinimo < 0
+                custo <
+                0
+                ||
+                estoque <
+                0
+                ||
+                estoqueMinimo <
+                0
             ) {
 
                 produtoFormErro.textContent =
@@ -605,23 +988,29 @@
                 );
 
 
-            // ==================================================
+            // ==============================================
             // CÓDIGO DUPLICADO
-            // ==================================================
+            // ==============================================
 
-            if (codigo) {
+            if (
+                controlaEstoque &&
+                codigo
+            ) {
 
                 const duplicado =
                     produtos.find(
                         produto =>
                             produto.codigo ===
-                                codigo &&
+                                codigo
+                            &&
                             produto.id !==
                                 id
                     );
 
 
-                if (duplicado) {
+                if (
+                    duplicado
+                ) {
 
                     produtoFormErro.textContent =
                         "Já existe um produto com este código.";
@@ -633,11 +1022,13 @@
             }
 
 
-            // ==================================================
+            // ==============================================
             // EDITAR
-            // ==================================================
+            // ==============================================
 
-            if (id) {
+            if (
+                id
+            ) {
 
                 const indice =
                     produtos.findIndex(
@@ -648,58 +1039,93 @@
 
 
                 if (
-                    indice === -1
+                    indice ===
+                    -1
                 ) {
 
                     produtoFormErro.textContent =
-                        "Produto não encontrado.";
+                        "Item não encontrado.";
 
                     return;
 
                 }
 
 
+                const produtoAnterior =
+                    produtos[indice];
+
+
                 const estoqueAnterior =
                     Number(
-                        produtos[indice]
+                        produtoAnterior
                             .estoque ||
                         0
                     );
 
 
+                const controlavaAntes =
+                    produtoControlaEstoque(
+                        produtoAnterior
+                    );
+
+
                 produtos[indice] =
                 {
-                    ...produtos[indice],
+
+                    ...produtoAnterior,
 
                     nome,
+
                     categoria,
+
+                    tipoItem,
+
+                    controlaEstoque,
+
                     codigo,
+
                     custo,
+
                     precoVenda,
+
                     estoque,
+
                     estoqueMinimo,
+
                     status,
 
                     atualizadoEm:
                         new Date()
                             .toISOString()
+
                 };
 
 
+                // ==========================================
+                // REGISTRAR AJUSTE
+                // ==========================================
+
                 /*
-                    CASO O GERENTE ALTERE
-                    O ESTOQUE DIRETAMENTE
-                    NA EDIÇÃO, REGISTRAMOS
-                    COMO AJUSTE.
+                    SÓ REGISTRA ALTERAÇÃO
+                    DE ESTOQUE SE:
+
+                    - ANTES CONTROLAVA ESTOQUE
+                    - AGORA CONTINUA CONTROLANDO
+                    - QUANTIDADE MUDOU
                 */
 
                 if (
+                    controlaEstoque
+                    &&
+                    controlavaAntes
+                    &&
                     estoque !==
                     estoqueAnterior
                 ) {
 
                     registrarMovimentacao(
                         {
+
                             produtoId:
                                 id,
 
@@ -725,6 +1151,7 @@
 
                             observacao:
                                 "Ajuste realizado na edição do produto"
+
                         }
                     );
 
@@ -733,9 +1160,9 @@
             }
 
 
-            // ==================================================
-            // NOVO
-            // ==================================================
+            // ==============================================
+            // NOVO ITEM
+            // ==============================================
 
             else {
 
@@ -745,16 +1172,37 @@
 
                 produtos.push(
                     {
+
                         id:
                             novoId,
 
                         nome,
+
                         categoria,
+
+                        tipoItem,
+
+                        controlaEstoque,
+
+                        /*
+                            DEIXAMOS PRONTO
+                            PARA FUTUROS TIPOS
+                            ESPECIAIS.
+                        */
+
+                        subtipo:
+                            null,
+
                         codigo,
+
                         custo,
+
                         precoVenda,
+
                         estoque,
+
                         estoqueMinimo,
+
                         status,
 
                         criadoEm:
@@ -763,17 +1211,25 @@
 
                         atualizadoEm:
                             null
+
                     }
                 );
 
 
+                // ==========================================
+                // ESTOQUE INICIAL
+                // ==========================================
+
                 if (
+                    controlaEstoque
+                    &&
                     estoque >
                     0
                 ) {
 
                     registrarMovimentacao(
                         {
+
                             produtoId:
                                 novoId,
 
@@ -794,6 +1250,7 @@
 
                             observacao:
                                 "Estoque inicial do produto"
+
                         }
                     );
 
@@ -801,6 +1258,10 @@
 
             }
 
+
+            // ==============================================
+            // SALVAR
+            // ==============================================
 
             salvarLista(
                 STORAGE_PRODUTOS,
@@ -810,46 +1271,11 @@
 
             fecharProdutoModal();
 
+
             renderizar();
 
         }
     );
-
-
-    // ==================================================
-    // MOVIMENTAÇÕES
-    // ==================================================
-
-    function registrarMovimentacao(
-        dados
-    ) {
-
-        const movimentacoes =
-            carregarLista(
-                STORAGE_MOVIMENTACOES
-            );
-
-
-        movimentacoes.push(
-            {
-                id:
-                    gerarId(),
-
-                ...dados,
-
-                criadoEm:
-                    new Date()
-                        .toISOString()
-            }
-        );
-
-
-        salvarLista(
-            STORAGE_MOVIMENTACOES,
-            movimentacoes
-        );
-
-    }
 
 
     // ==================================================
@@ -859,6 +1285,27 @@
     function abrirEstoque(
         produto
     ) {
+
+        /*
+            SERVIÇOS E ESPORTIVOS
+            NÃO PODEM ABRIR
+            CONTROLE DE ESTOQUE.
+        */
+
+        if (
+            !produtoControlaEstoque(
+                produto
+            )
+        ) {
+
+            mostrarErroEstoque(
+                "Este item não possui controle de estoque."
+            );
+
+            return;
+
+        }
+
 
         estoqueForm.reset();
 
@@ -874,19 +1321,27 @@
         estoqueProdutoInfo.innerHTML = `
 
             <strong>
+
                 ${escaparHTML(
                     produto.nome
                 )}
+
             </strong>
 
+
             <span>
+
                 Estoque atual:
+
                 <b>
+
                     ${Number(
                         produto.estoque ||
                         0
                     )}
+
                 </b>
+
             </span>
 
         `;
@@ -913,6 +1368,25 @@
     }
 
 
+    // ==================================================
+    // ERRO DE ESTOQUE
+    // ==================================================
+
+    function mostrarErroEstoque(
+        mensagem
+    ) {
+
+        console.warn(
+            mensagem
+        );
+
+    }
+
+
+    // ==================================================
+    // FECHAR ESTOQUE
+    // ==================================================
+
     function fecharEstoqueModal() {
 
         estoqueModal.classList.remove(
@@ -923,7 +1397,7 @@
 
 
     // ==================================================
-    // SALVAR MOVIMENTAÇÃO
+    // SALVAR ESTOQUE
     // ==================================================
 
     estoqueForm.addEventListener(
@@ -957,6 +1431,10 @@
                     .trim();
 
 
+            // ==============================================
+            // VALIDAÇÃO QUANTIDADE
+            // ==============================================
+
             if (
                 quantidade <=
                 0
@@ -984,12 +1462,35 @@
                 );
 
 
+            // ==============================================
+            // PRODUTO NÃO ENCONTRADO
+            // ==============================================
+
             if (
-                indice === -1
+                indice ===
+                -1
             ) {
 
                 estoqueFormErro.textContent =
                     "Produto não encontrado.";
+
+                return;
+
+            }
+
+
+            // ==============================================
+            // SEM ESTOQUE
+            // ==============================================
+
+            if (
+                !produtoControlaEstoque(
+                    produtos[indice]
+                )
+            ) {
+
+                estoqueFormErro.textContent =
+                    "Serviços e itens esportivos não possuem controle de estoque.";
 
                 return;
 
@@ -1008,6 +1509,10 @@
                 estoqueAnterior;
 
 
+            // ==============================================
+            // ENTRADA
+            // ==============================================
+
             if (
                 tipo ===
                 "entrada"
@@ -1016,7 +1521,14 @@
                 estoqueAtual +=
                     quantidade;
 
-            } else {
+            }
+
+
+            // ==============================================
+            // SAÍDA
+            // ==============================================
+
+            else {
 
                 if (
                     quantidade >
@@ -1037,6 +1549,10 @@
             }
 
 
+            // ==============================================
+            // ATUALIZA PRODUTO
+            // ==============================================
+
             produtos[indice].estoque =
                 estoqueAtual;
 
@@ -1052,8 +1568,13 @@
             );
 
 
+            // ==============================================
+            // REGISTRAR MOVIMENTAÇÃO
+            // ==============================================
+
             registrarMovimentacao(
                 {
+
                     produtoId,
 
                     tipo,
@@ -1075,11 +1596,13 @@
                                 ? "Entrada manual de estoque"
                                 : "Saída manual de estoque"
                         )
+
                 }
             );
 
 
             fecharEstoqueModal();
+
 
             renderizar();
 
@@ -1088,7 +1611,7 @@
 
 
     // ==================================================
-    // ATIVAR / DESATIVAR
+    // STATUS
     // ==================================================
 
     function alternarStatus(
@@ -1110,9 +1633,12 @@
 
 
         if (
-            indice === -1
+            indice ===
+            -1
         ) {
+
             return;
+
         }
 
 
@@ -1151,9 +1677,9 @@
             );
 
 
-        // ==================================================
-        // INDICADORES
-        // ==================================================
+        // ==============================================
+        // ATIVOS
+        // ==============================================
 
         const ativos =
             produtos.filter(
@@ -1163,53 +1689,93 @@
             );
 
 
+        // ==============================================
+        // SOMENTE PRODUTOS FÍSICOS
+        // ==============================================
+
+        const produtosFisicos =
+            produtos.filter(
+                produto =>
+                    produtoControlaEstoque(
+                        produto
+                    )
+            );
+
+
+        // ==============================================
+        // TOTAL ESTOQUE
+        // ==============================================
+
         const totalEstoque =
-            produtos.reduce(
+            produtosFisicos.reduce(
                 (
                     total,
                     produto
-                ) =>
-                    total +
-                    Number(
-                        produto.estoque ||
-                        0
-                    ),
+                ) => {
+
+                    return (
+                        total +
+                        Number(
+                            produto.estoque ||
+                            0
+                        )
+                    );
+
+                },
                 0
             );
 
 
+        // ==============================================
+        // ESTOQUE BAIXO
+        // ==============================================
+
         const baixos =
-            produtos.filter(
+            produtosFisicos.filter(
                 produto =>
                     produto.status ===
-                        "ativo" &&
+                        "ativo"
+                    &&
                     estoqueBaixo(
                         produto
                     )
             );
 
 
+        // ==============================================
+        // VALOR DO ESTOQUE
+        // ==============================================
+
         const valorEstoque =
-            produtos.reduce(
+            produtosFisicos.reduce(
                 (
                     total,
                     produto
-                ) =>
-                    total +
-                    (
-                        Number(
-                            produto.custo ||
-                            0
+                ) => {
+
+                    return (
+                        total +
+                        (
+                            Number(
+                                produto.custo ||
+                                0
+                            )
+                            *
+                            Number(
+                                produto.estoque ||
+                                0
+                            )
                         )
-                        *
-                        Number(
-                            produto.estoque ||
-                            0
-                        )
-                    ),
+                    );
+
+                },
                 0
             );
 
+
+        // ==============================================
+        // INDICADORES
+        // ==============================================
 
         totalAtivosEl.textContent =
             ativos.length;
@@ -1229,9 +1795,9 @@
             );
 
 
-        // ==================================================
+        // ==============================================
         // FILTROS
-        // ==================================================
+        // ==============================================
 
         const termo =
             buscaEl.value
@@ -1251,7 +1817,13 @@
             produtos.filter(
                 produto => {
 
-                    if (termo) {
+                    // ======================================
+                    // BUSCA
+                    // ======================================
+
+                    if (
+                        termo
+                    ) {
 
                         const texto =
                             (
@@ -1275,9 +1847,14 @@
                     }
 
 
+                    // ======================================
+                    // STATUS
+                    // ======================================
+
                     if (
                         statusFiltro !==
-                            "todos" &&
+                            "todos"
+                        &&
                         produto.status !==
                             statusFiltro
                     ) {
@@ -1287,30 +1864,56 @@
                     }
 
 
+                    // ======================================
+                    // ESTOQUE BAIXO
+                    // ======================================
+
                     if (
                         estoqueFiltro ===
-                            "baixo" &&
-                        !estoqueBaixo(
-                            produto
-                        )
+                        "baixo"
                     ) {
 
-                        return false;
+                        if (
+                            !produtoControlaEstoque(
+                                produto
+                            )
+                            ||
+                            !estoqueBaixo(
+                                produto
+                            )
+                        ) {
+
+                            return false;
+
+                        }
 
                     }
 
 
+                    // ======================================
+                    // ZERADO
+                    // ======================================
+
                     if (
                         estoqueFiltro ===
-                            "zerado" &&
-                        Number(
-                            produto.estoque ||
-                            0
-                        ) !==
-                            0
+                        "zerado"
                     ) {
 
-                        return false;
+                        if (
+                            !produtoControlaEstoque(
+                                produto
+                            )
+                            ||
+                            Number(
+                                produto.estoque ||
+                                0
+                            ) !==
+                            0
+                        ) {
+
+                            return false;
+
+                        }
 
                     }
 
@@ -1321,29 +1924,46 @@
             );
 
 
+        // ==============================================
+        // ORDENAR
+        // ==============================================
+
         filtrados.sort(
-            (a, b) =>
+            (
+                a,
+                b
+            ) =>
                 String(
-                    a.nome || ""
+                    a.nome ||
+                    ""
                 ).localeCompare(
                     String(
-                        b.nome || ""
+                        b.nome ||
+                        ""
                     ),
                     "pt-BR"
                 )
         );
 
 
+        // ==============================================
+        // QUANTIDADE
+        // ==============================================
+
         quantidadeEl.textContent =
             filtrados.length ===
-                1
-                ? "1 produto"
-                : `${filtrados.length} produtos`;
+            1
+                ? "1 item"
+                : `${filtrados.length} itens`;
 
 
         listaEl.innerHTML =
             "";
 
+
+        // ==============================================
+        // VAZIO
+        // ==============================================
 
         if (
             filtrados.length ===
@@ -1353,8 +1973,10 @@
             listaEl.style.display =
                 "none";
 
+
             vazioEl.style.display =
                 "block";
+
 
             return;
 
@@ -1364,16 +1986,23 @@
         listaEl.style.display =
             "flex";
 
+
         vazioEl.style.display =
             "none";
 
 
-        // ==================================================
+        // ==============================================
         // CARDS
-        // ==================================================
+        // ==============================================
 
         filtrados.forEach(
             produto => {
+
+                const controlaEstoque =
+                    produtoControlaEstoque(
+                        produto
+                    );
+
 
                 const qtd =
                     Number(
@@ -1397,7 +2026,29 @@
                     `${qtd} unidades`;
 
 
+                // ==========================================
+                // SERVIÇO / ESPORTIVO
+                // ==========================================
+
                 if (
+                    !controlaEstoque
+                ) {
+
+                    classeEstoque =
+                        "normal";
+
+
+                    textoEstoque =
+                        "Sem controle de estoque";
+
+                }
+
+
+                // ==========================================
+                // ESTOQUE ZERO
+                // ==========================================
+
+                else if (
                     qtd ===
                     0
                 ) {
@@ -1405,16 +2056,25 @@
                     classeEstoque =
                         "zerado";
 
+
                     textoEstoque =
                         "Sem estoque";
 
-                } else if (
+                }
+
+
+                // ==========================================
+                // ESTOQUE BAIXO
+                // ==========================================
+
+                else if (
                     qtd <=
                     minimo
                 ) {
 
                     classeEstoque =
                         "baixo";
+
 
                     textoEstoque =
                         `${qtd} unidades • Baixo`;
@@ -1432,12 +2092,44 @@
                     "produto-card";
 
 
+                // ==========================================
+                // TEXTO TIPO
+                // ==========================================
+
+                let descricaoSemEstoque =
+                    "Serviço sem estoque físico";
+
+
+                if (
+                    produto.categoria ===
+                    "esportivo"
+                ) {
+
+                    descricaoSemEstoque =
+                        "Item esportivo sem estoque físico";
+
+                }
+
+
+                // ==========================================
+                // CARD
+                // ==========================================
+
                 card.innerHTML = `
 
                     <div class="produto-card-principal">
 
                         <div class="produto-card-icone">
-                            📦
+
+                            <img
+                                src="${imagemCategoria(
+                                    produto.categoria
+                                )}"
+                                alt="${escaparHTML(
+                                    produto.nome
+                                )}"
+                            >
+
                         </div>
 
 
@@ -1446,38 +2138,57 @@
                             <div>
 
                                 <h3>
+
                                     ${escaparHTML(
                                         produto.nome
                                     )}
+
                                 </h3>
 
-                                <span class="produto-status ${produto.status}">
+
+                                <span
+                                    class="produto-status ${produto.status}"
+                                >
+
                                     ${
                                         produto.status ===
                                         "ativo"
                                             ? "● ATIVO"
                                             : "● INATIVO"
                                     }
+
                                 </span>
 
                             </div>
 
 
                             <span>
+
                                 ${escaparHTML(
                                     nomeCategoria(
                                         produto.categoria
                                     )
                                 )}
+
                             </span>
 
 
                             <small>
-                                Código:
-                                ${escaparHTML(
-                                    produto.codigo ||
-                                    "Não informado"
-                                )}
+
+                                ${
+                                    controlaEstoque
+
+                                        ? `
+                                            Código:
+                                            ${escaparHTML(
+                                                produto.codigo ||
+                                                "Não informado"
+                                            )}
+                                        `
+
+                                        : descricaoSemEstoque
+                                }
+
                             </small>
 
                         </div>
@@ -1493,10 +2204,13 @@
                                 Custo
                             </span>
 
+
                             <strong>
+
                                 ${moeda(
                                     produto.custo
                                 )}
+
                             </strong>
 
                         </div>
@@ -1508,10 +2222,15 @@
                                 Venda
                             </span>
 
-                            <strong class="produto-preco-venda">
+
+                            <strong
+                                class="produto-preco-venda"
+                            >
+
                                 ${moeda(
                                     produto.precoVenda
                                 )}
+
                             </strong>
 
                         </div>
@@ -1522,16 +2241,40 @@
                     <div class="produto-card-estoque">
 
                         <span>
-                            Estoque
+
+                            ${
+                                controlaEstoque
+                                    ? "Estoque"
+                                    : "Tipo"
+                            }
+
                         </span>
 
-                        <strong class="${classeEstoque}">
+
+                        <strong
+                            class="${classeEstoque}"
+                        >
+
                             ${textoEstoque}
+
                         </strong>
 
+
                         <small>
-                            Mínimo:
-                            ${minimo}
+
+                            ${
+                                controlaEstoque
+
+                                    ? `Mínimo: ${minimo}`
+
+                                    : (
+                                        produto.categoria ===
+                                        "esportivo"
+                                            ? "Esportivo"
+                                            : "Serviço"
+                                    )
+                            }
+
                         </small>
 
                     </div>
@@ -1539,12 +2282,22 @@
 
                     <div class="produto-card-acoes">
 
-                        <button
-                            type="button"
-                            class="btn-produto-estoque"
-                        >
-                            Estoque
-                        </button>
+                        ${
+                            controlaEstoque
+
+                                ? `
+
+                                    <button
+                                        type="button"
+                                        class="btn-produto-estoque"
+                                    >
+                                        Estoque
+                                    </button>
+
+                                `
+
+                                : ""
+                        }
 
 
                         <button
@@ -1559,12 +2312,14 @@
                             type="button"
                             class="btn-produto-status"
                         >
+
                             ${
                                 produto.status ===
                                 "ativo"
                                     ? "Desativar"
                                     : "Ativar"
                             }
+
                         </button>
 
                     </div>
@@ -1572,11 +2327,21 @@
                 `;
 
 
-                card
-                    .querySelector(
+                // ==========================================
+                // ESTOQUE
+                // ==========================================
+
+                const btnEstoque =
+                    card.querySelector(
                         ".btn-produto-estoque"
-                    )
-                    .addEventListener(
+                    );
+
+
+                if (
+                    btnEstoque
+                ) {
+
+                    btnEstoque.addEventListener(
                         "click",
                         () => {
 
@@ -1587,6 +2352,12 @@
                         }
                     );
 
+                }
+
+
+                // ==========================================
+                // EDITAR
+                // ==========================================
 
                 card
                     .querySelector(
@@ -1603,6 +2374,10 @@
                         }
                     );
 
+
+                // ==========================================
+                // STATUS
+                // ==========================================
 
                 card
                     .querySelector(
@@ -1640,6 +2415,20 @@
     );
 
 
+    // ==================================================
+    // TROCAR CATEGORIA
+    // ==================================================
+
+    produtoCategoriaEl.addEventListener(
+        "change",
+        atualizarFormularioCategoria
+    );
+
+
+    // ==================================================
+    // FECHAR PRODUTO
+    // ==================================================
+
     produtoModalFechar.addEventListener(
         "click",
         fecharProdutoModal
@@ -1652,6 +2441,10 @@
     );
 
 
+    // ==================================================
+    // FECHAR ESTOQUE
+    // ==================================================
+
     estoqueModalFechar.addEventListener(
         "click",
         fecharEstoqueModal
@@ -1663,6 +2456,10 @@
         fecharEstoqueModal
     );
 
+
+    // ==================================================
+    // CLICAR FORA PRODUTO
+    // ==================================================
 
     produtoModal.addEventListener(
         "click",
@@ -1681,6 +2478,10 @@
     );
 
 
+    // ==================================================
+    // CLICAR FORA ESTOQUE
+    // ==================================================
+
     estoqueModal.addEventListener(
         "click",
         event => {
@@ -1698,11 +2499,19 @@
     );
 
 
+    // ==================================================
+    // BUSCA
+    // ==================================================
+
     buscaEl.addEventListener(
         "input",
         renderizar
     );
 
+
+    // ==================================================
+    // FILTRO STATUS
+    // ==================================================
 
     filtroStatusEl.addEventListener(
         "change",
@@ -1710,11 +2519,19 @@
     );
 
 
+    // ==================================================
+    // FILTRO ESTOQUE
+    // ==================================================
+
     filtroEstoqueEl.addEventListener(
         "change",
         renderizar
     );
 
+
+    // ==================================================
+    // ESC
+    // ==================================================
 
     document.addEventListener(
         "keydown",
@@ -1726,6 +2543,7 @@
             ) {
 
                 fecharProdutoModal();
+
                 fecharEstoqueModal();
 
             }
@@ -1742,7 +2560,7 @@
 
 
     console.log(
-        "La Cancha: produtos e estoque carregados."
+        "La Cancha: produtos, esportivos e serviços carregados."
     );
 
 })();
